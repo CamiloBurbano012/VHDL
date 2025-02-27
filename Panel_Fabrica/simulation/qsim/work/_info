@@ -1,0 +1,85 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\altera\13.1\Panel_Fabrica\simulation\qsim
+vPanel_Fabrica
+Z1 IjSnoa^[77<j?C<iiX[dl10
+Z2 VKLd0ci22zT:a2aIR^CDBS2
+Z3 dC:\altera\13.1\Panel_Fabrica\simulation\qsim
+Z4 w1740693274
+Z5 8Panel_Fabrica.vo
+Z6 FPanel_Fabrica.vo
+L0 31
+Z7 OV;L;10.1d;51
+r1
+31
+Z8 !s90 -work|work|Panel_Fabrica.vo|
+Z9 o-work work -O0
+Z10 n@panel_@fabrica
+!i10b 1
+Z11 !s100 X7hFhSE^IN[oROcFYkaU<1
+!s85 0
+Z12 !s108 1740693276.621000
+Z13 !s107 Panel_Fabrica.vo|
+!s101 -O0
+vPanel_Fabrica_vlg_check_tst
+!i10b 1
+Z14 !s100 [3CVGbV?I:PCA:XldK;]o1
+Z15 I<8ga^:EV?C[SS0hmZ67ka1
+Z16 VKHS[jY@?gf54?<D6@3P`l3
+R3
+Z17 w1740693272
+Z18 8Waveform.vwf.vt
+Z19 FWaveform.vwf.vt
+L0 59
+R7
+r1
+!s85 0
+31
+Z20 !s108 1740693276.772000
+Z21 !s107 Waveform.vwf.vt|
+Z22 !s90 -work|work|Waveform.vwf.vt|
+!s101 -O0
+R9
+Z23 n@panel_@fabrica_vlg_check_tst
+vPanel_Fabrica_vlg_sample_tst
+!i10b 1
+Z24 !s100 z]@gCUWPYUl01d;3ATGO41
+Z25 IQcJMezIM_za9NAGMLKLE[1
+Z26 VQk;BaEThTlKAK`F7FHAI42
+R3
+R17
+R18
+R19
+L0 29
+R7
+r1
+!s85 0
+31
+R20
+R21
+R22
+!s101 -O0
+R9
+Z27 n@panel_@fabrica_vlg_sample_tst
+vPanel_Fabrica_vlg_vec_tst
+!i10b 1
+!s100 Vg<@^B7KX5Gi0[BAU4>gU1
+I]j=iNW@<`6Yn@2<[1hM=W2
+Z28 Va?T@>3`omGocU>`:_SnUm0
+R3
+R17
+R18
+R19
+Z29 L0 208
+R7
+r1
+!s85 0
+31
+R20
+R21
+R22
+!s101 -O0
+R9
+Z30 n@panel_@fabrica_vlg_vec_tst

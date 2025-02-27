@@ -1,0 +1,10 @@
+|Panel_Fabrica
+silo_a => process_0.IN0
+silo_a => process_0.IN0
+silo_b => process_0.IN1
+silo_b => process_0.IN1
+luz_c << process_0.DB_MAX_OUTPUT_PORT_TYPE
+luz_d << process_0.DB_MAX_OUTPUT_PORT_TYPE
+alarma << process_0.DB_MAX_OUTPUT_PORT_TYPE
+
+

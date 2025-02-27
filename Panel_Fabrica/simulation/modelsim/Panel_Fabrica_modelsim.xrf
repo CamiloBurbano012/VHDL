@@ -1,0 +1,15 @@
+vendor_name = ModelSim
+source_file = 1, C:/altera/13.1/Panel_Fabrica/Panel_Fabrica.vhd
+source_file = 1, C:/altera/13.1/Panel_Fabrica/db/Panel_Fabrica.cbx.xml
+source_file = 1, c:/altera/13.1/quartus/libraries/vhdl/ieee/prmtvs_b.vhd
+source_file = 1, c:/altera/13.1/quartus/libraries/vhdl/ieee/prmtvs_p.vhd
+source_file = 1, c:/altera/13.1/quartus/libraries/vhdl/ieee/timing_b.vhd
+source_file = 1, c:/altera/13.1/quartus/libraries/vhdl/ieee/timing_p.vhd
+design_name = Panel_Fabrica
+instance = comp, \luz_c~output\, luz_c~output, Panel_Fabrica, 1
+instance = comp, \luz_d~output\, luz_d~output, Panel_Fabrica, 1
+instance = comp, \alarma~output\, alarma~output, Panel_Fabrica, 1
+instance = comp, \silo_a~input\, silo_a~input, Panel_Fabrica, 1
+instance = comp, \silo_b~input\, silo_b~input, Panel_Fabrica, 1
+instance = comp, \luz_c~0\, luz_c~0, Panel_Fabrica, 1
+instance = comp, \luz_d~0\, luz_d~0, Panel_Fabrica, 1

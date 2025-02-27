@@ -1,0 +1,22 @@
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+
+ENTITY Panel_Fabrica IS
+    PORT (
+        silo_a : IN STD_LOGIC;  -- Estado del silo A (1 = lleno, 0 = 25% o menos)
+        silo_b : IN STD_LOGIC;  -- Estado del silo B (1 = lleno, 0 = 25% o menos)
+        luz_c  : OUT STD_LOGIC; -- Se enciende si al menos un silo está en 25% o menos
+        luz_d  : OUT STD_LOGIC; -- Se enciende si ambos silos están en 25% o menos
+        alarma : OUT STD_LOGIC  -- Suena si ambos silos están en 25% o menos
+    );
+END Panel_Fabrica;
+
+ARCHITECTURE comportamiento OF Panel_Fabrica IS
+BEGIN
+    -- La luz C se enciende si al menos un silo está en 25% o menos
+    luz_c <= NOT (silo_a AND silo_b);
+    
+    -- La luz D y la alarma se activan si ambos silos están en 25% o menos
+    luz_d <= NOT silo_a AND NOT silo_b;
+    alarma <= NOT silo_a AND NOT silo_b;
+END comportamiento;
