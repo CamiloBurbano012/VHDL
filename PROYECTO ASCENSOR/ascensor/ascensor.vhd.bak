@@ -1,0 +1,81 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity ascensor is
+    Port (
+        clk              : in STD_LOGIC;
+        reset            : in STD_LOGIC;
+        llamada_piso     : in STD_LOGIC_VECTOR(4 downto 0);
+        seleccion_piso   : in STD_LOGIC_VECTOR(4 downto 0);
+        personas         : in INTEGER range 0 to 15;
+        falla_energia    : in STD_LOGIC;
+        piso_actual      : out STD_LOGIC_VECTOR(2 downto 0);
+        luz_puerta       : out STD_LOGIC;
+        alarma_sonora    : out STD_LOGIC;
+        destino_piso     : out STD_LOGIC_VECTOR(2 downto 0)
+    );
+end ascensor;
+
+architecture Behavioral of ascensor is
+
+    -- Señales internas
+    signal destino_cabina    : STD_LOGIC_VECTOR(2 downto 0);
+    signal llamada_activada  : STD_LOGIC;
+    signal en_movimiento     : STD_LOGIC;
+    signal luz_puerta_int    : STD_LOGIC;
+    signal alarma_sonora_int : STD_LOGIC;
+    signal alarma_seguridad  : STD_LOGIC;
+
+begin
+
+    -- Instancia de gestion_llamadas
+    gestion_llamadas_inst : entity work.gestionllamadas
+        port map (
+            clk              => clk,
+            reset            => reset,
+            llamada_piso     => llamada_piso,
+            seleccion_piso   => seleccion_piso,
+            piso_actual      => piso_actual,
+            destino_cabina   => destino_cabina,
+            llamada_activada => llamada_activada
+        );
+
+    -- Instancia de control_puertas
+    control_puertas_inst : entity work.controlpuertas
+        port map (
+            clk              => clk,
+            reset            => reset,
+            llamada_activada => llamada_activada,
+            falla_energia    => falla_energia,
+            luz_puerta       => luz_puerta_int,
+            alarma_sonora    => alarma_sonora_int
+        );
+
+    -- Instancia de control_movimiento
+    control_movimiento_inst : entity work.controlmovimiento
+        port map (
+            clk              => clk,
+            reset            => reset,
+            destino_cabina   => destino_cabina,
+            piso_actual      => piso_actual,
+            en_movimiento    => en_movimiento
+        );
+
+    -- Instancia de seguridad (Nuevo Bloque)
+    seguridad_inst : entity work.seguridad
+        port map (
+            personas         => personas,
+            falla_energia    => falla_energia,
+            alarma_sonora    => alarma_seguridad
+        );
+
+    -- Integración de la alarma general
+    alarma_sonora <= alarma_sonora_int or alarma_seguridad;
+
+    -- Salidas finales
+    luz_puerta <= luz_puerta_int;
+    destino_piso <= destino_cabina;
+
+end Behavioral;
