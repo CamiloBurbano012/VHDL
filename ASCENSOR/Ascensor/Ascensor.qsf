@@ -1,0 +1,127 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 1991-2013 Altera Corporation
+# Your use of Altera Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Altera Program License 
+# Subscription Agreement, Altera MegaCore Function License 
+# Agreement, or other applicable license agreement, including, 
+# without limitation, that your use is for the sole purpose of 
+# programming logic devices manufactured by Altera and sold by 
+# Altera or its authorized distributors.  Please refer to the 
+# applicable agreement for further details.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus II 64-Bit
+# Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
+# Date created = 20:32:37  March 31, 2025
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		Ascensor_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus II software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+set_global_assignment -name FAMILY "Cyclone III"
+set_global_assignment -name DEVICE EP3C16F484C6
+set_global_assignment -name TOP_LEVEL_ENTITY Ascensor
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 13.1
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "20:32:37  MARCH 31, 2025"
+set_global_assignment -name LAST_QUARTUS_VERSION 13.1
+set_global_assignment -name VHDL_FILE ../identificador_direccion/identificador_direccion.vhd
+set_global_assignment -name VHDL_FILE ../gestion_externas/gestion_externas.vhd
+set_global_assignment -name VHDL_FILE ../gestion_cabina/gestion_cabina.vhd
+set_global_assignment -name VHDL_FILE ../generic_register/generic_register.vhd
+set_global_assignment -name VHDL_FILE ../divisor/divisor.vhd
+set_global_assignment -name VHDL_FILE ../detectar_piso_actual/detectar_piso_actual.vhd
+set_global_assignment -name VHDL_FILE ../Des2/Des2.vhd
+set_global_assignment -name VHDL_FILE ../Deco7seg/Deco7seg.vhd
+set_global_assignment -name VHDL_FILE ../ControlAscensor/ControlAscensor.vhd
+set_global_assignment -name VHDL_FILE ../controladorpuertas/controladorpuertas.vhd
+set_global_assignment -name VHDL_FILE ../contadorpersonas/contadorpersonas.vhd
+set_global_assignment -name VHDL_FILE ../alarmas/alarmas.vhd
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name DEVICE_FILTER_PIN_COUNT 484
+set_global_assignment -name DEVICE_FILTER_SPEED_GRADE 6
+set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 1
+set_global_assignment -name NOMINAL_CORE_SUPPLY_VOLTAGE 1.2V
+set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (Verilog)"
+set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VERILOG HDL" -section_id eda_simulation
+set_global_assignment -name VHDL_FILE Ascensor.vhd
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
+set_location_assignment PIN_H2 -to BOTON_ABRIR
+set_location_assignment PIN_G3 -to BOTON_CERRAR
+set_location_assignment PIN_F1 -to NOTIFICACION
+set_location_assignment PIN_AA15 -to BOTON_SUBIR[0]
+set_location_assignment PIN_AA14 -to BOTON_BAJAR[0]
+set_location_assignment PIN_AB13 -to BOTON_SUBIR[1]
+set_location_assignment PIN_AB10 -to BOTON_BAJAR[1]
+set_location_assignment PIN_AB8 -to BOTON_SUBIR[2]
+set_location_assignment PIN_AB5 -to BOTON_BAJAR[2]
+set_location_assignment PIN_V14 -to BOTON_SUBIR[3]
+set_location_assignment PIN_Y13 -to BOTON_BAJAR[3]
+set_location_assignment PIN_U13 -to BOTON_PISO_INT[0]
+set_location_assignment PIN_R10 -to BOTON_PISO_INT[1]
+set_location_assignment PIN_Y10 -to BOTON_PISO_INT[2]
+set_location_assignment PIN_T8 -to BOTON_PISO_INT[3]
+set_location_assignment PIN_W7 -to BOTON_PISO_INT[4]
+set_location_assignment PIN_G21 -to CLK_50MHz
+set_location_assignment PIN_F13 -to DISPLAY_INTERNO[6]
+set_location_assignment PIN_F12 -to DISPLAY_INTERNO[5]
+set_location_assignment PIN_G12 -to DISPLAY_INTERNO[4]
+set_location_assignment PIN_H13 -to DISPLAY_INTERNO[3]
+set_location_assignment PIN_H12 -to DISPLAY_INTERNO[2]
+set_location_assignment PIN_F11 -to DISPLAY_INTERNO[1]
+set_location_assignment PIN_E11 -to DISPLAY_INTERNO[0]
+set_location_assignment PIN_A15 -to DISPLAY_EXTERNO[6]
+set_location_assignment PIN_E14 -to DISPLAY_EXTERNO[5]
+set_location_assignment PIN_B14 -to DISPLAY_EXTERNO[4]
+set_location_assignment PIN_A14 -to DISPLAY_EXTERNO[3]
+set_location_assignment PIN_C13 -to DISPLAY_EXTERNO[2]
+set_location_assignment PIN_B13 -to DISPLAY_EXTERNO[1]
+set_location_assignment PIN_A13 -to DISPLAY_EXTERNO[0]
+set_location_assignment PIN_D2 -to FALLO_ENERGIA
+set_location_assignment PIN_B1 -to LED_FALLO_EN
+set_location_assignment PIN_C1 -to LED_PUERTA_ABI
+set_location_assignment PIN_E1 -to LED_PUERTA_CIE
+set_location_assignment PIN_J1 -to LED_SOBRECARGA
+set_location_assignment PIN_J2 -to LLEGADA_PISO
+set_location_assignment PIN_J3 -to MOTOR_BAJAR
+set_location_assignment PIN_H1 -to MOTOR_SUBIR
+set_location_assignment PIN_C2 -to PUERTA
+set_location_assignment PIN_E3 -to RESET
+set_location_assignment PIN_J7 -to SENSOR_ENTRA
+set_location_assignment PIN_G5 -to SENSOR_SALE
+set_location_assignment PIN_F2 -to SOBRECARGA
+set_location_assignment PIN_G15 -to DISPLAY_PERSONAS[6]
+set_location_assignment PIN_D19 -to DISPLAY_PERSONAS[5]
+set_location_assignment PIN_C19 -to DISPLAY_PERSONAS[4]
+set_location_assignment PIN_B19 -to DISPLAY_PERSONAS[3]
+set_location_assignment PIN_A19 -to DISPLAY_PERSONAS[2]
+set_location_assignment PIN_F15 -to DISPLAY_PERSONAS[1]
+set_location_assignment PIN_B18 -to DISPLAY_PERSONAS[0]
+set_global_assignment -name EDA_NETLIST_WRITER_OUTPUT_DIR "C:/altera/13.1/ASCENSOR2/Ascensor/simulation/qsim/" -section_id eda_simulation
+set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST ON -section_id eda_simulation
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform.vwf
+set_location_assignment PIN_B2 -to LED_NOTIFVis
+set_location_assignment PIN_V5 -to led_notifaud
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

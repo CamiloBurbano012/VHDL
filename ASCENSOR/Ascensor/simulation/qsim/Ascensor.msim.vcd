@@ -1,0 +1,1450 @@
+$comment
+	File created using the following command:
+		vcd file Ascensor.msim.vcd -direction
+$end
+$date
+	Thu Apr 03 08:25:01 2025
+$end
+$version
+	ModelSim Version 10.1d
+$end
+$timescale
+	1ps
+$end
+$scope module Ascensor_vlg_vec_tst $end
+$var reg 1 ! BOTON_ABRIR $end
+$var reg 4 " BOTON_BAJAR [3:0] $end
+$var reg 1 # BOTON_CERRAR $end
+$var reg 5 $ BOTON_PISO_INT [4:0] $end
+$var reg 4 % BOTON_SUBIR [3:0] $end
+$var reg 1 & CLK_50MHz $end
+$var reg 1 ' FALLO_ENERGIA $end
+$var reg 1 ( NOTIFICACION $end
+$var reg 1 ) RESET $end
+$var reg 1 * SENSOR_ENTRA $end
+$var reg 1 + SENSOR_SALE $end
+$var wire 1 , DISPLAY_EXTERNO [6] $end
+$var wire 1 - DISPLAY_EXTERNO [5] $end
+$var wire 1 . DISPLAY_EXTERNO [4] $end
+$var wire 1 / DISPLAY_EXTERNO [3] $end
+$var wire 1 0 DISPLAY_EXTERNO [2] $end
+$var wire 1 1 DISPLAY_EXTERNO [1] $end
+$var wire 1 2 DISPLAY_EXTERNO [0] $end
+$var wire 1 3 DISPLAY_INTERNO [6] $end
+$var wire 1 4 DISPLAY_INTERNO [5] $end
+$var wire 1 5 DISPLAY_INTERNO [4] $end
+$var wire 1 6 DISPLAY_INTERNO [3] $end
+$var wire 1 7 DISPLAY_INTERNO [2] $end
+$var wire 1 8 DISPLAY_INTERNO [1] $end
+$var wire 1 9 DISPLAY_INTERNO [0] $end
+$var wire 1 : DISPLAY_PERSONAS [6] $end
+$var wire 1 ; DISPLAY_PERSONAS [5] $end
+$var wire 1 < DISPLAY_PERSONAS [4] $end
+$var wire 1 = DISPLAY_PERSONAS [3] $end
+$var wire 1 > DISPLAY_PERSONAS [2] $end
+$var wire 1 ? DISPLAY_PERSONAS [1] $end
+$var wire 1 @ DISPLAY_PERSONAS [0] $end
+$var wire 1 A LED_FALLO_EN $end
+$var wire 1 B LED_NOTIF $end
+$var wire 1 C LED_PUERTA_ABI $end
+$var wire 1 D LED_PUERTA_CIE $end
+$var wire 1 E LED_SOBRECARGA $end
+$var wire 1 F LLEGADA_PISO $end
+$var wire 1 G MOTOR_BAJAR $end
+$var wire 1 H MOTOR_SUBIR $end
+$var wire 1 I PUERTA $end
+$var wire 1 J SOBRECARGA $end
+$var wire 1 K sampler $end
+$scope module i1 $end
+$var wire 1 L gnd $end
+$var wire 1 M vcc $end
+$var wire 1 N unknown $end
+$var tri1 1 O devclrn $end
+$var tri1 1 P devpor $end
+$var tri1 1 Q devoe $end
+$var wire 1 R DISPLAY_INTERNO[0]~output_o $end
+$var wire 1 S DISPLAY_INTERNO[1]~output_o $end
+$var wire 1 T DISPLAY_INTERNO[2]~output_o $end
+$var wire 1 U DISPLAY_INTERNO[3]~output_o $end
+$var wire 1 V DISPLAY_INTERNO[4]~output_o $end
+$var wire 1 W DISPLAY_INTERNO[5]~output_o $end
+$var wire 1 X DISPLAY_INTERNO[6]~output_o $end
+$var wire 1 Y DISPLAY_EXTERNO[0]~output_o $end
+$var wire 1 Z DISPLAY_EXTERNO[1]~output_o $end
+$var wire 1 [ DISPLAY_EXTERNO[2]~output_o $end
+$var wire 1 \ DISPLAY_EXTERNO[3]~output_o $end
+$var wire 1 ] DISPLAY_EXTERNO[4]~output_o $end
+$var wire 1 ^ DISPLAY_EXTERNO[5]~output_o $end
+$var wire 1 _ DISPLAY_EXTERNO[6]~output_o $end
+$var wire 1 ` DISPLAY_PERSONAS[0]~output_o $end
+$var wire 1 a DISPLAY_PERSONAS[1]~output_o $end
+$var wire 1 b DISPLAY_PERSONAS[2]~output_o $end
+$var wire 1 c DISPLAY_PERSONAS[3]~output_o $end
+$var wire 1 d DISPLAY_PERSONAS[4]~output_o $end
+$var wire 1 e DISPLAY_PERSONAS[5]~output_o $end
+$var wire 1 f DISPLAY_PERSONAS[6]~output_o $end
+$var wire 1 g MOTOR_SUBIR~output_o $end
+$var wire 1 h MOTOR_BAJAR~output_o $end
+$var wire 1 i PUERTA~output_o $end
+$var wire 1 j LLEGADA_PISO~output_o $end
+$var wire 1 k SOBRECARGA~output_o $end
+$var wire 1 l LED_PUERTA_ABI~output_o $end
+$var wire 1 m LED_PUERTA_CIE~output_o $end
+$var wire 1 n LED_FALLO_EN~output_o $end
+$var wire 1 o LED_NOTIF~output_o $end
+$var wire 1 p LED_SOBRECARGA~output_o $end
+$var wire 1 q CLK_50MHz~input_o $end
+$var wire 1 r CLK_50MHz~inputclkctrl_outclk $end
+$var wire 1 s clk_divider|Add0~0_combout $end
+$var wire 1 t clk_divider|Add0~1 $end
+$var wire 1 u clk_divider|Add0~2_combout $end
+$var wire 1 v clk_divider|Add0~3 $end
+$var wire 1 w clk_divider|Add0~4_combout $end
+$var wire 1 x clk_divider|Add0~5 $end
+$var wire 1 y clk_divider|Add0~6_combout $end
+$var wire 1 z clk_divider|Add0~7 $end
+$var wire 1 { clk_divider|Add0~8_combout $end
+$var wire 1 | clk_divider|Add0~9 $end
+$var wire 1 } clk_divider|Add0~10_combout $end
+$var wire 1 ~ clk_divider|Add0~11 $end
+$var wire 1 !! clk_divider|Add0~12_combout $end
+$var wire 1 "! clk_divider|count~4_combout $end
+$var wire 1 #! clk_divider|Add0~13 $end
+$var wire 1 $! clk_divider|Add0~14_combout $end
+$var wire 1 %! clk_divider|Add0~15 $end
+$var wire 1 &! clk_divider|Add0~16_combout $end
+$var wire 1 '! clk_divider|Add0~17 $end
+$var wire 1 (! clk_divider|Add0~18_combout $end
+$var wire 1 )! clk_divider|Add0~19 $end
+$var wire 1 *! clk_divider|Add0~20_combout $end
+$var wire 1 +! clk_divider|Add0~21 $end
+$var wire 1 ,! clk_divider|Add0~22_combout $end
+$var wire 1 -! clk_divider|count~3_combout $end
+$var wire 1 .! clk_divider|Add0~23 $end
+$var wire 1 /! clk_divider|Add0~24_combout $end
+$var wire 1 0! clk_divider|count~2_combout $end
+$var wire 1 1! clk_divider|Add0~25 $end
+$var wire 1 2! clk_divider|Add0~26_combout $end
+$var wire 1 3! clk_divider|count~1_combout $end
+$var wire 1 4! clk_divider|Add0~27 $end
+$var wire 1 5! clk_divider|Add0~28_combout $end
+$var wire 1 6! clk_divider|count~0_combout $end
+$var wire 1 7! clk_divider|Add0~29 $end
+$var wire 1 8! clk_divider|Add0~30_combout $end
+$var wire 1 9! clk_divider|Add0~31 $end
+$var wire 1 :! clk_divider|Add0~32_combout $end
+$var wire 1 ;! clk_divider|count~5_combout $end
+$var wire 1 <! clk_divider|Add0~33 $end
+$var wire 1 =! clk_divider|Add0~34_combout $end
+$var wire 1 >! clk_divider|Add0~35 $end
+$var wire 1 ?! clk_divider|Add0~36_combout $end
+$var wire 1 @! clk_divider|count~6_combout $end
+$var wire 1 A! clk_divider|Add0~37 $end
+$var wire 1 B! clk_divider|Add0~38_combout $end
+$var wire 1 C! clk_divider|count~7_combout $end
+$var wire 1 D! clk_divider|Add0~39 $end
+$var wire 1 E! clk_divider|Add0~40_combout $end
+$var wire 1 F! clk_divider|count~9_combout $end
+$var wire 1 G! clk_divider|Add0~41 $end
+$var wire 1 H! clk_divider|Add0~42_combout $end
+$var wire 1 I! clk_divider|count~10_combout $end
+$var wire 1 J! clk_divider|Add0~43 $end
+$var wire 1 K! clk_divider|Add0~44_combout $end
+$var wire 1 L! clk_divider|count~11_combout $end
+$var wire 1 M! clk_divider|Add0~45 $end
+$var wire 1 N! clk_divider|Add0~46_combout $end
+$var wire 1 O! clk_divider|Add0~47 $end
+$var wire 1 P! clk_divider|Add0~48_combout $end
+$var wire 1 Q! clk_divider|count~8_combout $end
+$var wire 1 R! clk_divider|Equal0~6_combout $end
+$var wire 1 S! clk_divider|Equal0~5_combout $end
+$var wire 1 T! clk_divider|Equal0~2_combout $end
+$var wire 1 U! clk_divider|Equal0~0_combout $end
+$var wire 1 V! clk_divider|Equal0~1_combout $end
+$var wire 1 W! clk_divider|Equal0~3_combout $end
+$var wire 1 X! clk_divider|Equal0~4_combout $end
+$var wire 1 Y! clk_divider|Equal0~7_combout $end
+$var wire 1 Z! clk_divider|out1~feeder_combout $end
+$var wire 1 [! clk_divider|out1~q $end
+$var wire 1 \! clk_divider|out1~clkctrl_outclk $end
+$var wire 1 ]! BOTON_SUBIR[0]~input_o $end
+$var wire 1 ^! BOTON_PISO_INT[0]~input_o $end
+$var wire 1 _! gestion_cabina_inst|solicitudes~4_combout $end
+$var wire 1 `! RESET~input_o $end
+$var wire 1 a! identificador_direccion_inst|destino_int~5_combout $end
+$var wire 1 b! BOTON_BAJAR[0]~input_o $end
+$var wire 1 c! gestion_externas_inst|solicitudes_bajar_int~1_combout $end
+$var wire 1 d! BOTON_PISO_INT[1]~input_o $end
+$var wire 1 e! gestion_cabina_inst|solicitudes~1_combout $end
+$var wire 1 f! BOTON_SUBIR[1]~input_o $end
+$var wire 1 g! gestion_externas_inst|solicitudes_subir_int~1_combout $end
+$var wire 1 h! identificador_direccion_inst|destino_int~1_combout $end
+$var wire 1 i! BOTON_PISO_INT[2]~input_o $end
+$var wire 1 j! gestion_cabina_inst|solicitudes~2_combout $end
+$var wire 1 k! BOTON_BAJAR[1]~input_o $end
+$var wire 1 l! gestion_externas_inst|solicitudes_bajar_int~2_combout $end
+$var wire 1 m! BOTON_SUBIR[2]~input_o $end
+$var wire 1 n! gestion_externas_inst|solicitudes_subir_int~2_combout $end
+$var wire 1 o! identificador_direccion_inst|destino_int~2_combout $end
+$var wire 1 p! BOTON_BAJAR[3]~input_o $end
+$var wire 1 q! gestion_externas_inst|solicitudes_bajar_int~3_combout $end
+$var wire 1 r! BOTON_PISO_INT[4]~input_o $end
+$var wire 1 s! gestion_cabina_inst|solicitudes~3_combout $end
+$var wire 1 t! BOTON_BAJAR[2]~input_o $end
+$var wire 1 u! gestion_externas_inst|solicitudes_bajar_int~0_combout $end
+$var wire 1 v! BOTON_SUBIR[3]~input_o $end
+$var wire 1 w! gestion_externas_inst|solicitudes_subir_int~0_combout $end
+$var wire 1 x! BOTON_PISO_INT[3]~input_o $end
+$var wire 1 y! gestion_cabina_inst|solicitudes~0_combout $end
+$var wire 1 z! identificador_direccion_inst|destino_int~0_combout $end
+$var wire 1 {! identificador_direccion_inst|destino_int~4_combout $end
+$var wire 1 |! identificador_direccion_inst|destino_int~6_combout $end
+$var wire 1 }! identificador_direccion_inst|RegistroDestino|reg_data[0]~0_combout $end
+$var wire 1 ~! identificador_direccion_inst|process_1~2_combout $end
+$var wire 1 !" identificador_direccion_inst|destino_int~3_combout $end
+$var wire 1 "" BOTON_ABRIR~input_o $end
+$var wire 1 #" BOTON_CERRAR~input_o $end
+$var wire 1 $" controlador_puertas|estado_puerta~0_combout $end
+$var wire 1 %" FALLO_ENERGIA~input_o $end
+$var wire 1 &" controlador_puertas|process_0~0_combout $end
+$var wire 1 '" controlador_puertas|estado_puerta~q $end
+$var wire 1 (" control_ascensor_inst|llegada_piso~0_combout $end
+$var wire 1 )" SENSOR_ENTRA~input_o $end
+$var wire 1 *" contador_personas|contador[0]~3_combout $end
+$var wire 1 +" SENSOR_SALE~input_o $end
+$var wire 1 ," contador_personas|contador[0]~4_combout $end
+$var wire 1 -" contador_personas|contador[1]~6_cout $end
+$var wire 1 ." contador_personas|contador[1]~7_combout $end
+$var wire 1 /" contador_personas|contador[0]~9_combout $end
+$var wire 1 0" contador_personas|contador[1]~8 $end
+$var wire 1 1" contador_personas|contador[2]~11 $end
+$var wire 1 2" contador_personas|contador[3]~12_combout $end
+$var wire 1 3" contador_personas|process_0~0_combout $end
+$var wire 1 4" contador_personas|contador[2]~10_combout $end
+$var wire 1 5" contador_personas|LessThan2~0_combout $end
+$var wire 1 6" control_ascensor_inst|process_0~0_combout $end
+$var wire 1 7" gestion_externas_inst|solicitudes_subir_int~3_combout $end
+$var wire 1 8" identificador_direccion_inst|process_1~0_combout $end
+$var wire 1 9" identificador_direccion_inst|process_1~1_combout $end
+$var wire 1 :" identificador_direccion_inst|destino_int~7_combout $end
+$var wire 1 ;" identificador_direccion_inst|destino_int~8_combout $end
+$var wire 1 <" display_externo_inst|Mux6~0_combout $end
+$var wire 1 =" display_externo_inst|Mux5~0_combout $end
+$var wire 1 >" display_externo_inst|Mux4~0_combout $end
+$var wire 1 ?" display_externo_inst|Mux3~0_combout $end
+$var wire 1 @" display_externo_inst|Mux2~0_combout $end
+$var wire 1 A" display_externo_inst|Mux1~0_combout $end
+$var wire 1 B" display_externo_inst|Mux0~0_combout $end
+$var wire 1 C" display_personas_inst|Mux6~0_combout $end
+$var wire 1 D" display_personas_inst|Mux5~0_combout $end
+$var wire 1 E" display_personas_inst|Mux4~0_combout $end
+$var wire 1 F" display_personas_inst|Mux3~0_combout $end
+$var wire 1 G" display_personas_inst|Mux2~0_combout $end
+$var wire 1 H" display_personas_inst|Mux1~0_combout $end
+$var wire 1 I" display_personas_inst|Mux0~0_combout $end
+$var wire 1 J" alarmas_inst|led_puerta_abi~feeder_combout $end
+$var wire 1 K" alarmas_inst|led_puerta_abi~q $end
+$var wire 1 L" alarmas_inst|led_puerta_cie~feeder_combout $end
+$var wire 1 M" alarmas_inst|led_puerta_cie~q $end
+$var wire 1 N" NOTIFICACION~input_o $end
+$var wire 1 O" identificador_direccion_inst|ultimo_piso_atendido [2] $end
+$var wire 1 P" identificador_direccion_inst|ultimo_piso_atendido [1] $end
+$var wire 1 Q" identificador_direccion_inst|ultimo_piso_atendido [0] $end
+$var wire 1 R" identificador_direccion_inst|destino_int [2] $end
+$var wire 1 S" identificador_direccion_inst|destino_int [1] $end
+$var wire 1 T" identificador_direccion_inst|destino_int [0] $end
+$var wire 1 U" contador_personas|contador [3] $end
+$var wire 1 V" contador_personas|contador [2] $end
+$var wire 1 W" contador_personas|contador [1] $end
+$var wire 1 X" contador_personas|contador [0] $end
+$var wire 1 Y" gestion_cabina_inst|solicitudes [4] $end
+$var wire 1 Z" gestion_cabina_inst|solicitudes [3] $end
+$var wire 1 [" gestion_cabina_inst|solicitudes [2] $end
+$var wire 1 \" gestion_cabina_inst|solicitudes [1] $end
+$var wire 1 ]" gestion_cabina_inst|solicitudes [0] $end
+$var wire 1 ^" gestion_externas_inst|solicitudes_subir_int [3] $end
+$var wire 1 _" gestion_externas_inst|solicitudes_subir_int [2] $end
+$var wire 1 `" gestion_externas_inst|solicitudes_subir_int [1] $end
+$var wire 1 a" gestion_externas_inst|solicitudes_subir_int [0] $end
+$var wire 1 b" control_ascensor_inst|clear_request_bajar [3] $end
+$var wire 1 c" control_ascensor_inst|clear_request_bajar [2] $end
+$var wire 1 d" control_ascensor_inst|clear_request_bajar [1] $end
+$var wire 1 e" control_ascensor_inst|clear_request_bajar [0] $end
+$var wire 1 f" identificador_direccion_inst|RegistroDestino|reg_data [2] $end
+$var wire 1 g" identificador_direccion_inst|RegistroDestino|reg_data [1] $end
+$var wire 1 h" identificador_direccion_inst|RegistroDestino|reg_data [0] $end
+$var wire 1 i" clk_divider|count [24] $end
+$var wire 1 j" clk_divider|count [23] $end
+$var wire 1 k" clk_divider|count [22] $end
+$var wire 1 l" clk_divider|count [21] $end
+$var wire 1 m" clk_divider|count [20] $end
+$var wire 1 n" clk_divider|count [19] $end
+$var wire 1 o" clk_divider|count [18] $end
+$var wire 1 p" clk_divider|count [17] $end
+$var wire 1 q" clk_divider|count [16] $end
+$var wire 1 r" clk_divider|count [15] $end
+$var wire 1 s" clk_divider|count [14] $end
+$var wire 1 t" clk_divider|count [13] $end
+$var wire 1 u" clk_divider|count [12] $end
+$var wire 1 v" clk_divider|count [11] $end
+$var wire 1 w" clk_divider|count [10] $end
+$var wire 1 x" clk_divider|count [9] $end
+$var wire 1 y" clk_divider|count [8] $end
+$var wire 1 z" clk_divider|count [7] $end
+$var wire 1 {" clk_divider|count [6] $end
+$var wire 1 |" clk_divider|count [5] $end
+$var wire 1 }" clk_divider|count [4] $end
+$var wire 1 ~" clk_divider|count [3] $end
+$var wire 1 !# clk_divider|count [2] $end
+$var wire 1 "# clk_divider|count [1] $end
+$var wire 1 ## clk_divider|count [0] $end
+$var wire 1 $# gestion_externas_inst|solicitudes_bajar_int [3] $end
+$var wire 1 %# gestion_externas_inst|solicitudes_bajar_int [2] $end
+$var wire 1 &# gestion_externas_inst|solicitudes_bajar_int [1] $end
+$var wire 1 '# gestion_externas_inst|solicitudes_bajar_int [0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0!
+b0 "
+0#
+b0 $
+b0 %
+0&
+0'
+0(
+0)
+0*
+0+
+02
+01
+00
+0/
+0.
+0-
+1,
+19
+08
+07
+16
+15
+14
+13
+0@
+0?
+0>
+0=
+0<
+0;
+1:
+0A
+0B
+0C
+1D
+0E
+0F
+0G
+0H
+0I
+0J
+xK
+0L
+1M
+xN
+1O
+1P
+1Q
+1R
+0S
+0T
+1U
+1V
+1W
+1X
+0Y
+0Z
+0[
+0\
+0]
+0^
+1_
+0`
+0a
+0b
+0c
+0d
+0e
+1f
+0g
+0h
+0i
+0j
+0k
+0l
+1m
+0n
+0o
+0p
+0q
+0r
+1s
+0t
+0u
+1v
+0w
+0x
+0y
+1z
+0{
+0|
+0}
+1~
+0!!
+0"!
+0#!
+0$!
+1%!
+0&!
+0'!
+0(!
+1)!
+0*!
+0+!
+0,!
+0-!
+1.!
+0/!
+00!
+01!
+02!
+03!
+14!
+05!
+06!
+07!
+08!
+19!
+0:!
+0;!
+0<!
+0=!
+1>!
+0?!
+0@!
+0A!
+0B!
+0C!
+1D!
+0E!
+0F!
+0G!
+0H!
+0I!
+1J!
+0K!
+0L!
+0M!
+0N!
+1O!
+0P!
+0Q!
+0R!
+0S!
+0T!
+0U!
+0V!
+0W!
+0X!
+0Y!
+0Z!
+0[!
+0\!
+0]!
+0^!
+0_!
+0`!
+1a!
+0b!
+0c!
+0d!
+0e!
+0f!
+0g!
+1h!
+0i!
+0j!
+0k!
+0l!
+0m!
+0n!
+1o!
+0p!
+0q!
+0r!
+0s!
+0t!
+0u!
+0v!
+0w!
+0x!
+0y!
+1z!
+1{!
+0|!
+1}!
+0~!
+0!"
+0""
+0#"
+0$"
+0%"
+0&"
+0'"
+0("
+0)"
+1*"
+0+"
+0,"
+0-"
+1."
+0/"
+10"
+01"
+12"
+03"
+14"
+05"
+06"
+07"
+08"
+09"
+0:"
+0;"
+0<"
+0="
+0>"
+0?"
+0@"
+0A"
+1B"
+0C"
+0D"
+0E"
+0F"
+0G"
+0H"
+0I"
+0J"
+0K"
+0L"
+0M"
+0N"
+0Q"
+0P"
+0O"
+0T"
+0S"
+0R"
+0X"
+0W"
+0V"
+0U"
+0]"
+0\"
+0["
+0Z"
+0Y"
+0a"
+0`"
+0_"
+0^"
+0e"
+zd"
+zc"
+zb"
+0h"
+0g"
+0f"
+0##
+0"#
+0!#
+0~"
+0}"
+0|"
+0{"
+0z"
+0y"
+0x"
+0w"
+0v"
+0u"
+0t"
+0s"
+0r"
+0q"
+0p"
+0o"
+0n"
+0m"
+0l"
+0k"
+0j"
+0i"
+0'#
+0&#
+0%#
+0$#
+$end
+#15000
+1&
+1q
+1r
+0K
+1##
+1t
+0s
+1u
+#30000
+0&
+0q
+0r
+1K
+#45000
+1&
+1q
+1r
+0K
+1"#
+0##
+0v
+0u
+0t
+1s
+1w
+1v
+1u
+0w
+#60000
+0&
+0q
+0r
+1K
+#75000
+1&
+1q
+1r
+0K
+1##
+1t
+0s
+0v
+0u
+1w
+#90000
+0&
+0q
+0r
+1K
+#105000
+1&
+1q
+1r
+0K
+1!#
+0"#
+0##
+1x
+0w
+1v
+1u
+0t
+1s
+1y
+0x
+1w
+0u
+0y
+#120000
+0&
+0q
+0r
+1K
+#130000
+1!
+1+
+1""
+1+"
+0K
+1$"
+#135000
+1&
+1q
+1r
+1K
+1##
+1t
+0s
+1u
+#150000
+0&
+0q
+0r
+0K
+#165000
+1&
+1q
+1r
+1K
+1"#
+0##
+0v
+0u
+0t
+1s
+1x
+0w
+1v
+1u
+1y
+0x
+1w
+0y
+#170000
+b1 $
+b1 %
+b1 "
+1b!
+1]!
+1^!
+0K
+1c!
+17"
+1_!
+#180000
+0&
+0q
+0r
+1K
+#195000
+1&
+1q
+1r
+0K
+1##
+1t
+0s
+0v
+0u
+1x
+0w
+1y
+#210000
+0&
+0q
+0r
+1K
+#225000
+1&
+1q
+1r
+0K
+1~"
+0!#
+0"#
+0##
+0z
+0y
+0x
+1w
+1v
+1u
+0t
+1s
+1{
+1z
+1y
+0w
+0u
+0{
+#240000
+0&
+0q
+0r
+1K
+#250000
+0!
+0+
+0""
+0+"
+0K
+0$"
+#255000
+1&
+1q
+1r
+1K
+1##
+1t
+0s
+1u
+#260000
+1#
+1#"
+0K
+#270000
+0&
+0q
+0r
+1K
+#285000
+1&
+1q
+1r
+0K
+1"#
+0##
+0v
+0u
+0t
+1s
+1w
+1v
+1u
+0w
+#290000
+1*
+1)"
+1K
+13"
+02"
+04"
+1/"
+0."
+1,"
+#300000
+0&
+0q
+0r
+0K
+#315000
+1&
+1q
+1r
+1K
+1##
+1t
+0s
+0v
+0u
+1w
+#330000
+0&
+0q
+0r
+0K
+#340000
+b11 $
+b11 %
+b11 "
+b10 $
+b10 %
+b10 "
+0b!
+1k!
+0]!
+1f!
+0^!
+1d!
+1K
+0c!
+1l!
+07"
+1g!
+0_!
+1e!
+#345000
+1&
+1q
+1r
+0K
+1!#
+0"#
+0##
+1x
+0w
+1v
+1u
+0t
+1s
+0z
+0y
+0x
+1w
+0u
+1{
+1z
+1y
+0{
+#360000
+0&
+0q
+0r
+1K
+#375000
+1&
+1q
+1r
+0K
+1##
+1t
+0s
+1u
+#390000
+0#
+0&
+0#"
+0q
+0r
+1K
+#405000
+1&
+1q
+1r
+0K
+1"#
+0##
+0v
+0u
+0t
+1s
+1x
+0w
+1v
+1u
+0z
+0y
+0x
+1w
+1{
+1z
+1y
+0{
+#420000
+0&
+0q
+0r
+1K
+#430000
+0*
+0)"
+0K
+03"
+12"
+14"
+0/"
+1."
+0,"
+#435000
+1&
+1q
+1r
+1K
+1##
+1W!
+1t
+0s
+0v
+0u
+1x
+0w
+0z
+0y
+1{
+#450000
+0&
+0q
+0r
+0K
+#460000
+1(
+1K
+1N"
+1o
+1B
+#465000
+1&
+1q
+1r
+0K
+1}"
+0~"
+0!#
+0"#
+0##
+1|
+0{
+0W!
+1z
+1y
+0x
+1w
+1v
+1u
+0t
+1s
+1}
+0|
+1{
+0y
+0w
+0u
+0}
+#480000
+0&
+0q
+0r
+1K
+#495000
+1&
+1q
+1r
+0K
+1##
+1t
+0s
+1u
+#510000
+b11 $
+b11 %
+b11 "
+0&
+1b!
+1]!
+1^!
+0q
+0r
+1K
+1c!
+17"
+1_!
+#525000
+1&
+1q
+1r
+0K
+1"#
+0##
+0v
+0u
+0t
+1s
+1w
+1v
+1u
+0w
+#540000
+0&
+0q
+0r
+1K
+#555000
+1&
+1q
+1r
+0K
+1##
+1t
+0s
+0v
+0u
+1w
+#570000
+0&
+0q
+0r
+1K
+#585000
+1&
+1q
+1r
+0K
+1!#
+0"#
+0##
+1x
+0w
+1v
+1u
+0t
+1s
+1y
+0x
+1w
+0u
+0y
+#590000
+0(
+1K
+0N"
+0o
+0B
+#600000
+0&
+0q
+0r
+0K
+#615000
+1&
+1q
+1r
+1K
+1##
+1t
+0s
+1u
+#630000
+0&
+0q
+0r
+0K
+#645000
+1&
+1q
+1r
+1K
+1"#
+0##
+0v
+0u
+0t
+1s
+1x
+0w
+1v
+1u
+1y
+0x
+1w
+0y
+#660000
+0&
+0q
+0r
+0K
+#675000
+1&
+1q
+1r
+1K
+1##
+1t
+0s
+0v
+0u
+1x
+0w
+1y
+#680000
+b111 $
+b111 %
+b111 "
+b101 $
+b101 %
+b101 "
+b100 $
+b100 %
+b100 "
+0b!
+0k!
+1t!
+0]!
+0f!
+1m!
+0^!
+0d!
+1i!
+0K
+0c!
+0l!
+1u!
+07"
+0g!
+1n!
+0_!
+0e!
+1j!
+#690000
+0&
+0q
+0r
+1K
+#705000
+1&
+1q
+1r
+0K
+1~"
+0!#
+0"#
+0##
+0z
+0y
+0x
+1w
+1v
+1u
+0t
+1s
+1|
+0{
+1z
+1y
+0w
+0u
+1}
+0|
+1{
+0}
+#720000
+0&
+0q
+0r
+1K
+#730000
+1'
+0K
+1%"
+16"
+1&"
+1n
+1A
+#735000
+1&
+1q
+1r
+1K
+1##
+1t
+0s
+1u
+#750000
+0&
+0q
+0r
+0K
+#765000
+1&
+1q
+1r
+1K
+1"#
+0##
+0v
+0u
+0t
+1s
+1w
+1v
+1u
+0w
+#780000
+0&
+0q
+0r
+0K
+#795000
+1&
+1q
+1r
+1K
+1##
+1t
+0s
+0v
+0u
+1w
+#810000
+0&
+0q
+0r
+0K
+#825000
+1&
+1q
+1r
+1K
+1!#
+0"#
+0##
+1x
+0w
+1v
+1u
+0t
+1s
+0z
+0y
+0x
+1w
+0u
+1|
+0{
+1z
+1y
+1}
+0|
+1{
+0}
+#840000
+0&
+0q
+0r
+0K
+#850000
+b101 $
+b101 %
+b101 "
+1b!
+1]!
+1^!
+1K
+1c!
+17"
+1_!
+#855000
+1&
+1q
+1r
+0K
+1##
+1t
+0s
+1u
+#870000
+0'
+0&
+0q
+0r
+1K
+0%"
+06"
+0&"
+0n
+0A
+#885000
+1&
+1q
+1r
+0K
+1"#
+0##
+0v
+0u
+0t
+1s
+1x
+0w
+1v
+1u
+0z
+0y
+0x
+1w
+1|
+0{
+1z
+1y
+1}
+0|
+1{
+0}
+#900000
+0&
+0q
+0r
+1K
+#915000
+1&
+1q
+1r
+0K
+1##
+1W!
+1t
+0s
+0v
+0u
+1x
+0w
+0z
+0y
+1|
+0{
+1}
+#920000
+1)
+1`!
+1K
+16"
+1&"
+#930000
+0&
+0q
+0r
+0K
+#945000
+1&
+1q
+1r
+1K
+1|"
+0}"
+0~"
+0!#
+0"#
+0##
+0~
+0}
+0|
+1{
+0W!
+1z
+1y
+0x
+1w
+1v
+1u
+0t
+1s
+1!!
+1~
+1}
+0{
+0y
+0w
+0u
+1"!
+0!!
+0"!
+#960000
+0&
+0q
+0r
+0K
+#975000
+1&
+1q
+1r
+1K
+1##
+1t
+0s
+1u
+#990000
+0&
+0q
+0r
+0K
+#1000000

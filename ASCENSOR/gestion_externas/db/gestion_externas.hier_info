@@ -1,0 +1,43 @@
+|gestion_externas
+clk_1Hz => solicitudes_bajar_int[0].CLK
+clk_1Hz => solicitudes_bajar_int[1].CLK
+clk_1Hz => solicitudes_bajar_int[2].CLK
+clk_1Hz => solicitudes_bajar_int[3].CLK
+clk_1Hz => solicitudes_subir_int[0].CLK
+clk_1Hz => solicitudes_subir_int[1].CLK
+clk_1Hz => solicitudes_subir_int[2].CLK
+clk_1Hz => solicitudes_subir_int[3].CLK
+reset => solicitudes_bajar_int[0].ACLR
+reset => solicitudes_bajar_int[1].ACLR
+reset => solicitudes_bajar_int[2].ACLR
+reset => solicitudes_bajar_int[3].ACLR
+reset => solicitudes_subir_int[0].ACLR
+reset => solicitudes_subir_int[1].ACLR
+reset => solicitudes_subir_int[2].ACLR
+reset => solicitudes_subir_int[3].ACLR
+BOTON_SUBIR[0] => solicitudes_subir_int.OUTPUTSELECT
+BOTON_SUBIR[1] => solicitudes_subir_int.OUTPUTSELECT
+BOTON_SUBIR[2] => solicitudes_subir_int.OUTPUTSELECT
+BOTON_SUBIR[3] => solicitudes_subir_int.OUTPUTSELECT
+BOTON_BAJAR[0] => solicitudes_bajar_int.OUTPUTSELECT
+BOTON_BAJAR[1] => solicitudes_bajar_int.OUTPUTSELECT
+BOTON_BAJAR[2] => solicitudes_bajar_int.OUTPUTSELECT
+BOTON_BAJAR[3] => solicitudes_bajar_int.OUTPUTSELECT
+clear_request_subir[0] => solicitudes_subir_int.OUTPUTSELECT
+clear_request_subir[1] => solicitudes_subir_int.OUTPUTSELECT
+clear_request_subir[2] => solicitudes_subir_int.OUTPUTSELECT
+clear_request_subir[3] => solicitudes_subir_int.OUTPUTSELECT
+clear_request_bajar[0] => solicitudes_bajar_int.OUTPUTSELECT
+clear_request_bajar[1] => solicitudes_bajar_int.OUTPUTSELECT
+clear_request_bajar[2] => solicitudes_bajar_int.OUTPUTSELECT
+clear_request_bajar[3] => solicitudes_bajar_int.OUTPUTSELECT
+solicitudes_subir[0] <= solicitudes_subir_int[0].DB_MAX_OUTPUT_PORT_TYPE
+solicitudes_subir[1] <= solicitudes_subir_int[1].DB_MAX_OUTPUT_PORT_TYPE
+solicitudes_subir[2] <= solicitudes_subir_int[2].DB_MAX_OUTPUT_PORT_TYPE
+solicitudes_subir[3] <= solicitudes_subir_int[3].DB_MAX_OUTPUT_PORT_TYPE
+solicitudes_bajar[0] <= solicitudes_bajar_int[0].DB_MAX_OUTPUT_PORT_TYPE
+solicitudes_bajar[1] <= solicitudes_bajar_int[1].DB_MAX_OUTPUT_PORT_TYPE
+solicitudes_bajar[2] <= solicitudes_bajar_int[2].DB_MAX_OUTPUT_PORT_TYPE
+solicitudes_bajar[3] <= solicitudes_bajar_int[3].DB_MAX_OUTPUT_PORT_TYPE
+
+

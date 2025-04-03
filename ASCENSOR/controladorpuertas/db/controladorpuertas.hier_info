@@ -1,0 +1,41 @@
+|controladorpuertas
+clk => contador_cierre[0].CLK
+clk => contador_cierre[1].CLK
+clk => contador_cierre[2].CLK
+clk => contador_cierre[3].CLK
+clk => contador_cierre[4].CLK
+clk => contador_cierre[5].CLK
+clk => contador_apertura[0].CLK
+clk => contador_apertura[1].CLK
+clk => contador_apertura[2].CLK
+clk => contador_apertura[3].CLK
+clk => puerta_estado.CLK
+reset => process_0.IN0
+llegada_piso << <GND>
+abrir_manual => puerta_estado.OUTPUTSELECT
+abrir_manual => contador_apertura.OUTPUTSELECT
+abrir_manual => contador_apertura.OUTPUTSELECT
+abrir_manual => contador_apertura.OUTPUTSELECT
+abrir_manual => contador_apertura.OUTPUTSELECT
+abrir_manual => contador_cierre[0].ENA
+abrir_manual => contador_cierre[5].ENA
+abrir_manual => contador_cierre[4].ENA
+abrir_manual => contador_cierre[3].ENA
+abrir_manual => contador_cierre[2].ENA
+abrir_manual => contador_cierre[1].ENA
+cerrar_manual => puerta_estado.OUTPUTSELECT
+cerrar_manual => contador_apertura.OUTPUTSELECT
+cerrar_manual => contador_apertura.OUTPUTSELECT
+cerrar_manual => contador_apertura.OUTPUTSELECT
+cerrar_manual => contador_apertura.OUTPUTSELECT
+cerrar_manual => contador_cierre.OUTPUTSELECT
+cerrar_manual => contador_cierre.OUTPUTSELECT
+cerrar_manual => contador_cierre.OUTPUTSELECT
+cerrar_manual => contador_cierre.OUTPUTSELECT
+cerrar_manual => contador_cierre.OUTPUTSELECT
+cerrar_manual => contador_cierre.OUTPUTSELECT
+fallo_energia => process_0.IN1
+notificacion => ~NO_FANOUT~
+puerta <= puerta_estado.DB_MAX_OUTPUT_PORT_TYPE
+
+

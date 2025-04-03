@@ -1,0 +1,15 @@
+|alarmas
+clk => ~NO_FANOUT~
+reset => ~NO_FANOUT~
+abrir_puerta => led_puerta_abi.DATAIN
+cerrar_puerta => led_puerta_cie.DATAIN
+fallo_energia => led_fallo_en.DATAIN
+notificacion => led_notif.DATAIN
+sobrecarga << <GND>
+led_puerta_abi <= abrir_puerta.DB_MAX_OUTPUT_PORT_TYPE
+led_puerta_cie <= cerrar_puerta.DB_MAX_OUTPUT_PORT_TYPE
+led_fallo_en <= fallo_energia.DB_MAX_OUTPUT_PORT_TYPE
+led_notif <= notificacion.DB_MAX_OUTPUT_PORT_TYPE
+led_sobrecarga <= <GND>
+
+

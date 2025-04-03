@@ -1,0 +1,49 @@
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.STD_LOGIC_ARITH.ALL;
+USE IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+-- Incluir el paquete de componentes
+USE work.componentes.all;
+
+-- Entidad principal del ascensor
+ENTITY Ascensor IS
+    PORT(
+        -- Entradas principales
+        CLK_50MHz      : IN  STD_LOGIC;  -- Reloj de 50 MHz
+        RESET          : IN  STD_LOGIC;  -- Reset global
+        FALLO_ENERGIA  : IN  STD_LOGIC;  -- Señal de fallo de energía
+
+        -- Botones externos (Piso 1 sin BAJAR, Piso 5 sin SUBIR)
+        BOTON_SUBIR    : IN  STD_LOGIC_VECTOR(3 DOWNTO 0); -- SUBIR pisos 1-4 (bits 0-3)
+        BOTON_BAJAR    : IN  STD_LOGIC_VECTOR(3 DOWNTO 0); -- BAJAR pisos 2-5 (bits 1-4)
+
+        -- Botones internos
+        BOTON_PISO_INT : IN  STD_LOGIC_VECTOR(4 DOWNTO 0); -- Botones de piso 1-5
+        BOTON_ABRIR    : IN  STD_LOGIC;  -- Abrir puerta manual
+        BOTON_CERRAR   : IN  STD_LOGIC;  -- Cerrar puerta manual
+        NOTIFICACION   : IN  STD_LOGIC;  -- Botón de notificación
+
+        -- Sensores de personas
+        SENSOR_ENTRA   : IN  STD_LOGIC;  -- Persona entra
+        SENSOR_SALE    : IN  STD_LOGIC;  -- Persona sale
+
+        -- Salidas de display (2 displays: interno y externo)
+        DISPLAY_INT    : OUT STD_LOGIC_VECTOR(6 DOWNTO 0); -- Display interno
+        DISPLAY_EXT    : OUT STD_LOGIC_VECTOR(6 DOWNTO 0); -- Display externo
+        DISPLAY_PER_UNI: OUT STD_LOGIC_VECTOR(6 DOWNTO 0); -- Display de unidades de personas
+        DISPLAY_PER_DEC: OUT STD_LOGIC_VECTOR(6 DOWNTO 0); -- Display de decenas de personas
+
+        -- Sistema de alarmas
+        LED_SOBRECARGA : OUT STD_LOGIC;  -- Alarma >10 personas
+        LED_FALLO_EN   : OUT STD_LOGIC;  -- Fallo energía
+        LED_PUERTA_ABI : OUT STD_LOGIC;  -- Puerta abierta
+        LED_PUERTA_CIE : OUT STD_LOGIC;  -- Puerta cerrada
+        LED_NOTIF      : OUT STD_LOGIC;  -- Notificación activa
+        LUCES          : OUT STD_LOGIC;  -- Control de iluminación
+
+        -- Nuevas salidas para indicar movimiento
+        LED_SUBIR      : OUT STD_LOGIC;  -- LED para indicar subida
+        LED_BAJAR      : OUT STD_LOGIC   -- LED para indicar bajada
+    );
+END Ascensor;

@@ -1,0 +1,28 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity Alarmas is
+    port(
+        clk            : in  STD_LOGIC;
+        reset          : in  STD_LOGIC;
+        abrir_puerta   : in  STD_LOGIC;
+        cerrar_puerta  : in  STD_LOGIC;
+        fallo_energia  : in  STD_LOGIC;
+        notificacion   : in  STD_LOGIC;
+        sobrecarga     : in  STD_LOGIC;
+        led_puerta_abi : out STD_LOGIC;
+        led_puerta_cie : out STD_LOGIC;
+        led_fallo_en   : out STD_LOGIC;
+        led_notif      : out STD_LOGIC;
+        led_sobrecarga : out STD_LOGIC
+    );
+end Alarmas;
+
+architecture Behavioral of Alarmas is
+begin
+    led_puerta_abi <= abrir_puerta;
+    led_puerta_cie <= cerrar_puerta;
+    led_fallo_en   <= fallo_energia;
+    led_notif      <= notificacion;
+    led_sobrecarga <= sobrecarga;
+end Behavioral;

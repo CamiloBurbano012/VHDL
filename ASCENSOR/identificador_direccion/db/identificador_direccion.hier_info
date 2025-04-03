@@ -1,0 +1,51 @@
+|identificador_direccion
+clk_1Hz => generic_register:RegistroDestino.clk
+clk_1Hz => ultimo_piso_atendido[0].CLK
+clk_1Hz => ultimo_piso_atendido[1].CLK
+clk_1Hz => ultimo_piso_atendido[2].CLK
+clk_1Hz => destino_int[0].CLK
+clk_1Hz => destino_int[1].CLK
+clk_1Hz => destino_int[2].CLK
+clk_1Hz => direccion_actual[0].CLK
+clk_1Hz => direccion_actual[1].CLK
+reset => generic_register:RegistroDestino.rst
+reset => direccion_actual[0].ACLR
+reset => direccion_actual[1].ACLR
+motor_subir << <GND>
+motor_bajar << <GND>
+solicitudes_subir[0] => solicitudes_combinadas[0].IN0
+solicitudes_subir[1] => solicitudes_combinadas.IN0
+solicitudes_subir[2] => solicitudes_combinadas.IN0
+solicitudes_subir[3] => solicitudes_combinadas.IN0
+solicitudes_bajar[0] => solicitudes_combinadas[1].IN1
+solicitudes_bajar[1] => solicitudes_combinadas[2].IN1
+solicitudes_bajar[2] => solicitudes_combinadas[3].IN1
+solicitudes_bajar[3] => solicitudes_combinadas[4].IN0
+solicitudes_cabina[0] => solicitudes_combinadas[0].IN1
+solicitudes_cabina[1] => solicitudes_combinadas.IN1
+solicitudes_cabina[2] => solicitudes_combinadas.IN1
+solicitudes_cabina[3] => solicitudes_combinadas.IN1
+solicitudes_cabina[4] => solicitudes_combinadas[4].IN1
+piso_destino[0] <= generic_register:RegistroDestino.dout[0]
+piso_destino[1] <= generic_register:RegistroDestino.dout[1]
+piso_destino[2] <= generic_register:RegistroDestino.dout[2]
+
+
+|identificador_direccion|generic_register:RegistroDestino
+clk => reg_data[0].CLK
+clk => reg_data[1].CLK
+clk => reg_data[2].CLK
+rst => reg_data[0].ACLR
+rst => reg_data[1].ACLR
+rst => reg_data[2].ACLR
+load => reg_data[2].ENA
+load => reg_data[1].ENA
+load => reg_data[0].ENA
+din[0] => reg_data[0].DATAIN
+din[1] => reg_data[1].DATAIN
+din[2] => reg_data[2].DATAIN
+dout[0] <= reg_data[0].DB_MAX_OUTPUT_PORT_TYPE
+dout[1] <= reg_data[1].DB_MAX_OUTPUT_PORT_TYPE
+dout[2] <= reg_data[2].DB_MAX_OUTPUT_PORT_TYPE
+
+

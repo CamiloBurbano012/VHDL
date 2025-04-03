@@ -1,0 +1,15 @@
+vendor_name = ModelSim
+source_file = 1, C:/altera/13.1/ASCENSOR2/detectar_piso_actual/detectar_piso_actual.vhd
+source_file = 1, C:/altera/13.1/ASCENSOR2/detectar_piso_actual/db/detectar_piso_actual.cbx.xml
+source_file = 1, c:/altera/13.1/quartus/libraries/vhdl/ieee/prmtvs_b.vhd
+source_file = 1, c:/altera/13.1/quartus/libraries/vhdl/ieee/prmtvs_p.vhd
+source_file = 1, c:/altera/13.1/quartus/libraries/vhdl/ieee/timing_b.vhd
+source_file = 1, c:/altera/13.1/quartus/libraries/vhdl/ieee/timing_p.vhd
+design_name = detectar_piso_actual
+instance = comp, \motor_subir~output\, motor_subir~output, detectar_piso_actual, 1
+instance = comp, \motor_bajar~output\, motor_bajar~output, detectar_piso_actual, 1
+instance = comp, \piso_actual[0]~output\, piso_actual[0]~output, detectar_piso_actual, 1
+instance = comp, \piso_actual[1]~output\, piso_actual[1]~output, detectar_piso_actual, 1
+instance = comp, \piso_actual[2]~output\, piso_actual[2]~output, detectar_piso_actual, 1
+instance = comp, \clk_1Hz~input\, clk_1Hz~input, detectar_piso_actual, 1
+instance = comp, \reset~input\, reset~input, detectar_piso_actual, 1

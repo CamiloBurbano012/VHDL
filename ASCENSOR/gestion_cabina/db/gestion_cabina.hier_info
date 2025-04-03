@@ -1,0 +1,28 @@
+|gestion_cabina
+clk => solicitudes[0].CLK
+clk => solicitudes[1].CLK
+clk => solicitudes[2].CLK
+clk => solicitudes[3].CLK
+clk => solicitudes[4].CLK
+reset => solicitudes[0].ACLR
+reset => solicitudes[1].ACLR
+reset => solicitudes[2].ACLR
+reset => solicitudes[3].ACLR
+reset => solicitudes[4].ACLR
+botones_cabina[0] => solicitudes.OUTPUTSELECT
+botones_cabina[1] => solicitudes.OUTPUTSELECT
+botones_cabina[2] => solicitudes.OUTPUTSELECT
+botones_cabina[3] => solicitudes.OUTPUTSELECT
+botones_cabina[4] => solicitudes.OUTPUTSELECT
+clear_request[0] => solicitudes.OUTPUTSELECT
+clear_request[1] => solicitudes.OUTPUTSELECT
+clear_request[2] => solicitudes.OUTPUTSELECT
+clear_request[3] => solicitudes.OUTPUTSELECT
+clear_request[4] => solicitudes.OUTPUTSELECT
+solicitudes_internas[0] <= solicitudes[0].DB_MAX_OUTPUT_PORT_TYPE
+solicitudes_internas[1] <= solicitudes[1].DB_MAX_OUTPUT_PORT_TYPE
+solicitudes_internas[2] <= solicitudes[2].DB_MAX_OUTPUT_PORT_TYPE
+solicitudes_internas[3] <= solicitudes[3].DB_MAX_OUTPUT_PORT_TYPE
+solicitudes_internas[4] <= solicitudes[4].DB_MAX_OUTPUT_PORT_TYPE
+
+

@@ -1,0 +1,14 @@
+|detectar_piso_actual
+clk_1Hz => piso[0].CLK
+clk_1Hz => piso[1].CLK
+clk_1Hz => piso[2].CLK
+reset => piso[0].PRESET
+reset => piso[1].ACLR
+reset => piso[2].ACLR
+motor_subir << <GND>
+motor_bajar << <GND>
+piso_actual[0] <= piso[0].DB_MAX_OUTPUT_PORT_TYPE
+piso_actual[1] <= piso[1].DB_MAX_OUTPUT_PORT_TYPE
+piso_actual[2] <= piso[2].DB_MAX_OUTPUT_PORT_TYPE
+
+

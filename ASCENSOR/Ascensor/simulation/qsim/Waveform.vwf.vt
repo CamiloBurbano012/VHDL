@@ -1,0 +1,1049 @@
+// Copyright (C) 1991-2013 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// *****************************************************************************
+// This file contains a Verilog test bench with test vectors .The test vectors  
+// are exported from a vector file in the Quartus Waveform Editor and apply to  
+// the top level entity of the current Quartus project .The user can use this   
+// testbench to simulate his design using a third-party simulation tool .       
+// *****************************************************************************
+// Generated on "04/03/2025 08:24:56"
+                                                                        
+// Verilog Self-Checking Test Bench (with test vectors) for design :    Ascensor
+// 
+// Simulation tool : 3rd Party
+// 
+
+`timescale 1 ps/ 1 ps
+module Ascensor_vlg_sample_tst(
+	BOTON_ABRIR,
+	BOTON_BAJAR,
+	BOTON_CERRAR,
+	BOTON_PISO_INT,
+	BOTON_SUBIR,
+	CLK_50MHz,
+	FALLO_ENERGIA,
+	NOTIFICACION,
+	RESET,
+	SENSOR_ENTRA,
+	SENSOR_SALE,
+	sampler_tx
+);
+input  BOTON_ABRIR;
+input [3:0] BOTON_BAJAR;
+input  BOTON_CERRAR;
+input [4:0] BOTON_PISO_INT;
+input [3:0] BOTON_SUBIR;
+input  CLK_50MHz;
+input  FALLO_ENERGIA;
+input  NOTIFICACION;
+input  RESET;
+input  SENSOR_ENTRA;
+input  SENSOR_SALE;
+output sampler_tx;
+
+reg sample;
+time current_time;
+always @(BOTON_ABRIR or BOTON_BAJAR or BOTON_CERRAR or BOTON_PISO_INT or BOTON_SUBIR or CLK_50MHz or FALLO_ENERGIA or NOTIFICACION or RESET or SENSOR_ENTRA or SENSOR_SALE)
+                                                                                
+begin                                                 
+ if ($realtime > 0)                                   
+ begin                                                
+	if ($realtime == 0 || $realtime != current_time)  
+	begin									          
+		if (sample === 1'bx)                          
+			sample = 0;                               
+		else                                          
+			sample = ~sample;                         
+	end										          
+	current_time = $realtime;					      
+ end                                                  
+end                                                   
+
+assign sampler_tx = sample;
+endmodule
+
+module Ascensor_vlg_check_tst (
+	DISPLAY_EXTERNO,
+	DISPLAY_INTERNO,
+	DISPLAY_PERSONAS,
+	LED_FALLO_EN,
+	LED_NOTIF,
+	LED_PUERTA_ABI,
+	LED_PUERTA_CIE,
+	LED_SOBRECARGA,
+	LLEGADA_PISO,
+	MOTOR_BAJAR,
+	MOTOR_SUBIR,
+	PUERTA,
+	SOBRECARGA,
+	sampler_rx
+);
+input [6:0] DISPLAY_EXTERNO;
+input [6:0] DISPLAY_INTERNO;
+input [6:0] DISPLAY_PERSONAS;
+input  LED_FALLO_EN;
+input  LED_NOTIF;
+input  LED_PUERTA_ABI;
+input  LED_PUERTA_CIE;
+input  LED_SOBRECARGA;
+input  LLEGADA_PISO;
+input  MOTOR_BAJAR;
+input  MOTOR_SUBIR;
+input  PUERTA;
+input  SOBRECARGA;
+input sampler_rx;
+
+reg [6:0] DISPLAY_EXTERNO_expected;
+reg [6:0] DISPLAY_INTERNO_expected;
+reg [6:0] DISPLAY_PERSONAS_expected;
+reg  LED_FALLO_EN_expected;
+reg  LED_NOTIF_expected;
+reg  LED_PUERTA_ABI_expected;
+reg  LED_PUERTA_CIE_expected;
+reg  LED_SOBRECARGA_expected;
+reg  LLEGADA_PISO_expected;
+reg  MOTOR_BAJAR_expected;
+reg  MOTOR_SUBIR_expected;
+reg  PUERTA_expected;
+reg  SOBRECARGA_expected;
+
+reg [6:0] DISPLAY_EXTERNO_prev;
+reg [6:0] DISPLAY_INTERNO_prev;
+reg [6:0] DISPLAY_PERSONAS_prev;
+reg  LED_FALLO_EN_prev;
+reg  LED_NOTIF_prev;
+reg  LED_PUERTA_ABI_prev;
+reg  LED_PUERTA_CIE_prev;
+reg  LED_SOBRECARGA_prev;
+reg  LLEGADA_PISO_prev;
+reg  MOTOR_BAJAR_prev;
+reg  MOTOR_SUBIR_prev;
+reg  PUERTA_prev;
+reg  SOBRECARGA_prev;
+
+reg [6:0] DISPLAY_EXTERNO_expected_prev;
+reg [6:0] DISPLAY_INTERNO_expected_prev;
+reg [6:0] DISPLAY_PERSONAS_expected_prev;
+reg  LED_FALLO_EN_expected_prev;
+reg  LED_NOTIF_expected_prev;
+reg  LED_PUERTA_ABI_expected_prev;
+reg  LED_PUERTA_CIE_expected_prev;
+reg  LED_SOBRECARGA_expected_prev;
+reg  LLEGADA_PISO_expected_prev;
+reg  MOTOR_BAJAR_expected_prev;
+reg  MOTOR_SUBIR_expected_prev;
+reg  PUERTA_expected_prev;
+
+reg [6:0] last_DISPLAY_EXTERNO_exp;
+reg [6:0] last_DISPLAY_INTERNO_exp;
+reg [6:0] last_DISPLAY_PERSONAS_exp;
+reg  last_LED_FALLO_EN_exp;
+reg  last_LED_NOTIF_exp;
+reg  last_LED_PUERTA_ABI_exp;
+reg  last_LED_PUERTA_CIE_exp;
+reg  last_LED_SOBRECARGA_exp;
+reg  last_LLEGADA_PISO_exp;
+reg  last_MOTOR_BAJAR_exp;
+reg  last_MOTOR_SUBIR_exp;
+reg  last_PUERTA_exp;
+
+reg trigger;
+
+integer i;
+integer nummismatches;
+
+reg [1:13] on_first_change ;
+
+
+initial
+begin
+trigger = 0;
+i = 0;
+nummismatches = 0;
+on_first_change = 13'b1;
+end
+
+// update real /o prevs
+
+always @(trigger)
+begin
+	DISPLAY_EXTERNO_prev = DISPLAY_EXTERNO;
+	DISPLAY_INTERNO_prev = DISPLAY_INTERNO;
+	DISPLAY_PERSONAS_prev = DISPLAY_PERSONAS;
+	LED_FALLO_EN_prev = LED_FALLO_EN;
+	LED_NOTIF_prev = LED_NOTIF;
+	LED_PUERTA_ABI_prev = LED_PUERTA_ABI;
+	LED_PUERTA_CIE_prev = LED_PUERTA_CIE;
+	LED_SOBRECARGA_prev = LED_SOBRECARGA;
+	LLEGADA_PISO_prev = LLEGADA_PISO;
+	MOTOR_BAJAR_prev = MOTOR_BAJAR;
+	MOTOR_SUBIR_prev = MOTOR_SUBIR;
+	PUERTA_prev = PUERTA;
+	SOBRECARGA_prev = SOBRECARGA;
+end
+
+// update expected /o prevs
+
+always @(trigger)
+begin
+	DISPLAY_EXTERNO_expected_prev = DISPLAY_EXTERNO_expected;
+	DISPLAY_INTERNO_expected_prev = DISPLAY_INTERNO_expected;
+	DISPLAY_PERSONAS_expected_prev = DISPLAY_PERSONAS_expected;
+	LED_FALLO_EN_expected_prev = LED_FALLO_EN_expected;
+	LED_NOTIF_expected_prev = LED_NOTIF_expected;
+	LED_PUERTA_ABI_expected_prev = LED_PUERTA_ABI_expected;
+	LED_PUERTA_CIE_expected_prev = LED_PUERTA_CIE_expected;
+	LED_SOBRECARGA_expected_prev = LED_SOBRECARGA_expected;
+	LLEGADA_PISO_expected_prev = LLEGADA_PISO_expected;
+	MOTOR_BAJAR_expected_prev = MOTOR_BAJAR_expected;
+	MOTOR_SUBIR_expected_prev = MOTOR_SUBIR_expected;
+	PUERTA_expected_prev = PUERTA_expected;
+end
+
+
+// expected DISPLAY_EXTERNO[ 6 ]
+initial
+begin
+	DISPLAY_EXTERNO_expected[6] = 1'bX;
+end 
+// expected DISPLAY_EXTERNO[ 5 ]
+initial
+begin
+	DISPLAY_EXTERNO_expected[5] = 1'bX;
+end 
+// expected DISPLAY_EXTERNO[ 4 ]
+initial
+begin
+	DISPLAY_EXTERNO_expected[4] = 1'bX;
+end 
+// expected DISPLAY_EXTERNO[ 3 ]
+initial
+begin
+	DISPLAY_EXTERNO_expected[3] = 1'bX;
+end 
+// expected DISPLAY_EXTERNO[ 2 ]
+initial
+begin
+	DISPLAY_EXTERNO_expected[2] = 1'bX;
+end 
+// expected DISPLAY_EXTERNO[ 1 ]
+initial
+begin
+	DISPLAY_EXTERNO_expected[1] = 1'bX;
+end 
+// expected DISPLAY_EXTERNO[ 0 ]
+initial
+begin
+	DISPLAY_EXTERNO_expected[0] = 1'bX;
+end 
+// expected DISPLAY_INTERNO[ 6 ]
+initial
+begin
+	DISPLAY_INTERNO_expected[6] = 1'bX;
+end 
+// expected DISPLAY_INTERNO[ 5 ]
+initial
+begin
+	DISPLAY_INTERNO_expected[5] = 1'bX;
+end 
+// expected DISPLAY_INTERNO[ 4 ]
+initial
+begin
+	DISPLAY_INTERNO_expected[4] = 1'bX;
+end 
+// expected DISPLAY_INTERNO[ 3 ]
+initial
+begin
+	DISPLAY_INTERNO_expected[3] = 1'bX;
+end 
+// expected DISPLAY_INTERNO[ 2 ]
+initial
+begin
+	DISPLAY_INTERNO_expected[2] = 1'bX;
+end 
+// expected DISPLAY_INTERNO[ 1 ]
+initial
+begin
+	DISPLAY_INTERNO_expected[1] = 1'bX;
+end 
+// expected DISPLAY_INTERNO[ 0 ]
+initial
+begin
+	DISPLAY_INTERNO_expected[0] = 1'bX;
+end 
+// expected DISPLAY_PERSONAS[ 6 ]
+initial
+begin
+	DISPLAY_PERSONAS_expected[6] = 1'bX;
+end 
+// expected DISPLAY_PERSONAS[ 5 ]
+initial
+begin
+	DISPLAY_PERSONAS_expected[5] = 1'bX;
+end 
+// expected DISPLAY_PERSONAS[ 4 ]
+initial
+begin
+	DISPLAY_PERSONAS_expected[4] = 1'bX;
+end 
+// expected DISPLAY_PERSONAS[ 3 ]
+initial
+begin
+	DISPLAY_PERSONAS_expected[3] = 1'bX;
+end 
+// expected DISPLAY_PERSONAS[ 2 ]
+initial
+begin
+	DISPLAY_PERSONAS_expected[2] = 1'bX;
+end 
+// expected DISPLAY_PERSONAS[ 1 ]
+initial
+begin
+	DISPLAY_PERSONAS_expected[1] = 1'bX;
+end 
+// expected DISPLAY_PERSONAS[ 0 ]
+initial
+begin
+	DISPLAY_PERSONAS_expected[0] = 1'bX;
+end 
+
+// expected LED_FALLO_EN
+initial
+begin
+	LED_FALLO_EN_expected = 1'bX;
+end 
+
+// expected LED_NOTIF
+initial
+begin
+	LED_NOTIF_expected = 1'bX;
+end 
+
+// expected LED_PUERTA_ABI
+initial
+begin
+	LED_PUERTA_ABI_expected = 1'bX;
+end 
+
+// expected LED_PUERTA_CIE
+initial
+begin
+	LED_PUERTA_CIE_expected = 1'bX;
+end 
+
+// expected LED_SOBRECARGA
+initial
+begin
+	LED_SOBRECARGA_expected = 1'bX;
+end 
+
+// expected LLEGADA_PISO
+initial
+begin
+	LLEGADA_PISO_expected = 1'bX;
+end 
+
+// expected MOTOR_BAJAR
+initial
+begin
+	MOTOR_BAJAR_expected = 1'bX;
+end 
+
+// expected MOTOR_SUBIR
+initial
+begin
+	MOTOR_SUBIR_expected = 1'bX;
+end 
+
+// expected PUERTA
+initial
+begin
+	PUERTA_expected = 1'bX;
+end 
+// generate trigger
+always @(DISPLAY_EXTERNO_expected or DISPLAY_EXTERNO or DISPLAY_INTERNO_expected or DISPLAY_INTERNO or DISPLAY_PERSONAS_expected or DISPLAY_PERSONAS or LED_FALLO_EN_expected or LED_FALLO_EN or LED_NOTIF_expected or LED_NOTIF or LED_PUERTA_ABI_expected or LED_PUERTA_ABI or LED_PUERTA_CIE_expected or LED_PUERTA_CIE or LED_SOBRECARGA_expected or LED_SOBRECARGA or LLEGADA_PISO_expected or LLEGADA_PISO or MOTOR_BAJAR_expected or MOTOR_BAJAR or MOTOR_SUBIR_expected or MOTOR_SUBIR or PUERTA_expected or PUERTA or SOBRECARGA_expected or SOBRECARGA)
+begin
+	trigger <= ~trigger;
+end
+
+always @(posedge sampler_rx or negedge sampler_rx)
+begin
+`ifdef debug_tbench
+	$display("Scanning pattern %d @time = %t",i,$realtime );
+	i = i + 1;
+	$display("| expected DISPLAY_EXTERNO = %b | expected DISPLAY_INTERNO = %b | expected DISPLAY_PERSONAS = %b | expected LED_FALLO_EN = %b | expected LED_NOTIF = %b | expected LED_PUERTA_ABI = %b | expected LED_PUERTA_CIE = %b | expected LED_SOBRECARGA = %b | expected LLEGADA_PISO = %b | expected MOTOR_BAJAR = %b | expected MOTOR_SUBIR = %b | expected PUERTA = %b | expected SOBRECARGA = %b | ",DISPLAY_EXTERNO_expected_prev,DISPLAY_INTERNO_expected_prev,DISPLAY_PERSONAS_expected_prev,LED_FALLO_EN_expected_prev,LED_NOTIF_expected_prev,LED_PUERTA_ABI_expected_prev,LED_PUERTA_CIE_expected_prev,LED_SOBRECARGA_expected_prev,LLEGADA_PISO_expected_prev,MOTOR_BAJAR_expected_prev,MOTOR_SUBIR_expected_prev,PUERTA_expected_prev,SOBRECARGA_expected_prev);
+	$display("| real DISPLAY_EXTERNO = %b | real DISPLAY_INTERNO = %b | real DISPLAY_PERSONAS = %b | real LED_FALLO_EN = %b | real LED_NOTIF = %b | real LED_PUERTA_ABI = %b | real LED_PUERTA_CIE = %b | real LED_SOBRECARGA = %b | real LLEGADA_PISO = %b | real MOTOR_BAJAR = %b | real MOTOR_SUBIR = %b | real PUERTA = %b | real SOBRECARGA = %b | ",DISPLAY_EXTERNO_prev,DISPLAY_INTERNO_prev,DISPLAY_PERSONAS_prev,LED_FALLO_EN_prev,LED_NOTIF_prev,LED_PUERTA_ABI_prev,LED_PUERTA_CIE_prev,LED_SOBRECARGA_prev,LLEGADA_PISO_prev,MOTOR_BAJAR_prev,MOTOR_SUBIR_prev,PUERTA_prev,SOBRECARGA_prev);
+`endif
+	if (
+		( DISPLAY_EXTERNO_expected_prev[0] !== 1'bx ) && ( DISPLAY_EXTERNO_prev[0] !== DISPLAY_EXTERNO_expected_prev[0] )
+		&& ((DISPLAY_EXTERNO_expected_prev[0] !== last_DISPLAY_EXTERNO_exp[0]) ||
+			on_first_change[1])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port DISPLAY_EXTERNO[0] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", DISPLAY_EXTERNO_expected_prev);
+		$display ("     Real value = %b", DISPLAY_EXTERNO_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[1] = 1'b0;
+		last_DISPLAY_EXTERNO_exp[0] = DISPLAY_EXTERNO_expected_prev[0];
+	end
+	if (
+		( DISPLAY_EXTERNO_expected_prev[1] !== 1'bx ) && ( DISPLAY_EXTERNO_prev[1] !== DISPLAY_EXTERNO_expected_prev[1] )
+		&& ((DISPLAY_EXTERNO_expected_prev[1] !== last_DISPLAY_EXTERNO_exp[1]) ||
+			on_first_change[1])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port DISPLAY_EXTERNO[1] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", DISPLAY_EXTERNO_expected_prev);
+		$display ("     Real value = %b", DISPLAY_EXTERNO_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[1] = 1'b0;
+		last_DISPLAY_EXTERNO_exp[1] = DISPLAY_EXTERNO_expected_prev[1];
+	end
+	if (
+		( DISPLAY_EXTERNO_expected_prev[2] !== 1'bx ) && ( DISPLAY_EXTERNO_prev[2] !== DISPLAY_EXTERNO_expected_prev[2] )
+		&& ((DISPLAY_EXTERNO_expected_prev[2] !== last_DISPLAY_EXTERNO_exp[2]) ||
+			on_first_change[1])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port DISPLAY_EXTERNO[2] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", DISPLAY_EXTERNO_expected_prev);
+		$display ("     Real value = %b", DISPLAY_EXTERNO_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[1] = 1'b0;
+		last_DISPLAY_EXTERNO_exp[2] = DISPLAY_EXTERNO_expected_prev[2];
+	end
+	if (
+		( DISPLAY_EXTERNO_expected_prev[3] !== 1'bx ) && ( DISPLAY_EXTERNO_prev[3] !== DISPLAY_EXTERNO_expected_prev[3] )
+		&& ((DISPLAY_EXTERNO_expected_prev[3] !== last_DISPLAY_EXTERNO_exp[3]) ||
+			on_first_change[1])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port DISPLAY_EXTERNO[3] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", DISPLAY_EXTERNO_expected_prev);
+		$display ("     Real value = %b", DISPLAY_EXTERNO_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[1] = 1'b0;
+		last_DISPLAY_EXTERNO_exp[3] = DISPLAY_EXTERNO_expected_prev[3];
+	end
+	if (
+		( DISPLAY_EXTERNO_expected_prev[4] !== 1'bx ) && ( DISPLAY_EXTERNO_prev[4] !== DISPLAY_EXTERNO_expected_prev[4] )
+		&& ((DISPLAY_EXTERNO_expected_prev[4] !== last_DISPLAY_EXTERNO_exp[4]) ||
+			on_first_change[1])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port DISPLAY_EXTERNO[4] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", DISPLAY_EXTERNO_expected_prev);
+		$display ("     Real value = %b", DISPLAY_EXTERNO_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[1] = 1'b0;
+		last_DISPLAY_EXTERNO_exp[4] = DISPLAY_EXTERNO_expected_prev[4];
+	end
+	if (
+		( DISPLAY_EXTERNO_expected_prev[5] !== 1'bx ) && ( DISPLAY_EXTERNO_prev[5] !== DISPLAY_EXTERNO_expected_prev[5] )
+		&& ((DISPLAY_EXTERNO_expected_prev[5] !== last_DISPLAY_EXTERNO_exp[5]) ||
+			on_first_change[1])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port DISPLAY_EXTERNO[5] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", DISPLAY_EXTERNO_expected_prev);
+		$display ("     Real value = %b", DISPLAY_EXTERNO_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[1] = 1'b0;
+		last_DISPLAY_EXTERNO_exp[5] = DISPLAY_EXTERNO_expected_prev[5];
+	end
+	if (
+		( DISPLAY_EXTERNO_expected_prev[6] !== 1'bx ) && ( DISPLAY_EXTERNO_prev[6] !== DISPLAY_EXTERNO_expected_prev[6] )
+		&& ((DISPLAY_EXTERNO_expected_prev[6] !== last_DISPLAY_EXTERNO_exp[6]) ||
+			on_first_change[1])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port DISPLAY_EXTERNO[6] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", DISPLAY_EXTERNO_expected_prev);
+		$display ("     Real value = %b", DISPLAY_EXTERNO_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[1] = 1'b0;
+		last_DISPLAY_EXTERNO_exp[6] = DISPLAY_EXTERNO_expected_prev[6];
+	end
+	if (
+		( DISPLAY_INTERNO_expected_prev[0] !== 1'bx ) && ( DISPLAY_INTERNO_prev[0] !== DISPLAY_INTERNO_expected_prev[0] )
+		&& ((DISPLAY_INTERNO_expected_prev[0] !== last_DISPLAY_INTERNO_exp[0]) ||
+			on_first_change[2])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port DISPLAY_INTERNO[0] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", DISPLAY_INTERNO_expected_prev);
+		$display ("     Real value = %b", DISPLAY_INTERNO_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[2] = 1'b0;
+		last_DISPLAY_INTERNO_exp[0] = DISPLAY_INTERNO_expected_prev[0];
+	end
+	if (
+		( DISPLAY_INTERNO_expected_prev[1] !== 1'bx ) && ( DISPLAY_INTERNO_prev[1] !== DISPLAY_INTERNO_expected_prev[1] )
+		&& ((DISPLAY_INTERNO_expected_prev[1] !== last_DISPLAY_INTERNO_exp[1]) ||
+			on_first_change[2])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port DISPLAY_INTERNO[1] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", DISPLAY_INTERNO_expected_prev);
+		$display ("     Real value = %b", DISPLAY_INTERNO_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[2] = 1'b0;
+		last_DISPLAY_INTERNO_exp[1] = DISPLAY_INTERNO_expected_prev[1];
+	end
+	if (
+		( DISPLAY_INTERNO_expected_prev[2] !== 1'bx ) && ( DISPLAY_INTERNO_prev[2] !== DISPLAY_INTERNO_expected_prev[2] )
+		&& ((DISPLAY_INTERNO_expected_prev[2] !== last_DISPLAY_INTERNO_exp[2]) ||
+			on_first_change[2])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port DISPLAY_INTERNO[2] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", DISPLAY_INTERNO_expected_prev);
+		$display ("     Real value = %b", DISPLAY_INTERNO_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[2] = 1'b0;
+		last_DISPLAY_INTERNO_exp[2] = DISPLAY_INTERNO_expected_prev[2];
+	end
+	if (
+		( DISPLAY_INTERNO_expected_prev[3] !== 1'bx ) && ( DISPLAY_INTERNO_prev[3] !== DISPLAY_INTERNO_expected_prev[3] )
+		&& ((DISPLAY_INTERNO_expected_prev[3] !== last_DISPLAY_INTERNO_exp[3]) ||
+			on_first_change[2])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port DISPLAY_INTERNO[3] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", DISPLAY_INTERNO_expected_prev);
+		$display ("     Real value = %b", DISPLAY_INTERNO_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[2] = 1'b0;
+		last_DISPLAY_INTERNO_exp[3] = DISPLAY_INTERNO_expected_prev[3];
+	end
+	if (
+		( DISPLAY_INTERNO_expected_prev[4] !== 1'bx ) && ( DISPLAY_INTERNO_prev[4] !== DISPLAY_INTERNO_expected_prev[4] )
+		&& ((DISPLAY_INTERNO_expected_prev[4] !== last_DISPLAY_INTERNO_exp[4]) ||
+			on_first_change[2])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port DISPLAY_INTERNO[4] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", DISPLAY_INTERNO_expected_prev);
+		$display ("     Real value = %b", DISPLAY_INTERNO_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[2] = 1'b0;
+		last_DISPLAY_INTERNO_exp[4] = DISPLAY_INTERNO_expected_prev[4];
+	end
+	if (
+		( DISPLAY_INTERNO_expected_prev[5] !== 1'bx ) && ( DISPLAY_INTERNO_prev[5] !== DISPLAY_INTERNO_expected_prev[5] )
+		&& ((DISPLAY_INTERNO_expected_prev[5] !== last_DISPLAY_INTERNO_exp[5]) ||
+			on_first_change[2])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port DISPLAY_INTERNO[5] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", DISPLAY_INTERNO_expected_prev);
+		$display ("     Real value = %b", DISPLAY_INTERNO_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[2] = 1'b0;
+		last_DISPLAY_INTERNO_exp[5] = DISPLAY_INTERNO_expected_prev[5];
+	end
+	if (
+		( DISPLAY_INTERNO_expected_prev[6] !== 1'bx ) && ( DISPLAY_INTERNO_prev[6] !== DISPLAY_INTERNO_expected_prev[6] )
+		&& ((DISPLAY_INTERNO_expected_prev[6] !== last_DISPLAY_INTERNO_exp[6]) ||
+			on_first_change[2])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port DISPLAY_INTERNO[6] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", DISPLAY_INTERNO_expected_prev);
+		$display ("     Real value = %b", DISPLAY_INTERNO_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[2] = 1'b0;
+		last_DISPLAY_INTERNO_exp[6] = DISPLAY_INTERNO_expected_prev[6];
+	end
+	if (
+		( DISPLAY_PERSONAS_expected_prev[0] !== 1'bx ) && ( DISPLAY_PERSONAS_prev[0] !== DISPLAY_PERSONAS_expected_prev[0] )
+		&& ((DISPLAY_PERSONAS_expected_prev[0] !== last_DISPLAY_PERSONAS_exp[0]) ||
+			on_first_change[3])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port DISPLAY_PERSONAS[0] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", DISPLAY_PERSONAS_expected_prev);
+		$display ("     Real value = %b", DISPLAY_PERSONAS_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[3] = 1'b0;
+		last_DISPLAY_PERSONAS_exp[0] = DISPLAY_PERSONAS_expected_prev[0];
+	end
+	if (
+		( DISPLAY_PERSONAS_expected_prev[1] !== 1'bx ) && ( DISPLAY_PERSONAS_prev[1] !== DISPLAY_PERSONAS_expected_prev[1] )
+		&& ((DISPLAY_PERSONAS_expected_prev[1] !== last_DISPLAY_PERSONAS_exp[1]) ||
+			on_first_change[3])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port DISPLAY_PERSONAS[1] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", DISPLAY_PERSONAS_expected_prev);
+		$display ("     Real value = %b", DISPLAY_PERSONAS_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[3] = 1'b0;
+		last_DISPLAY_PERSONAS_exp[1] = DISPLAY_PERSONAS_expected_prev[1];
+	end
+	if (
+		( DISPLAY_PERSONAS_expected_prev[2] !== 1'bx ) && ( DISPLAY_PERSONAS_prev[2] !== DISPLAY_PERSONAS_expected_prev[2] )
+		&& ((DISPLAY_PERSONAS_expected_prev[2] !== last_DISPLAY_PERSONAS_exp[2]) ||
+			on_first_change[3])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port DISPLAY_PERSONAS[2] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", DISPLAY_PERSONAS_expected_prev);
+		$display ("     Real value = %b", DISPLAY_PERSONAS_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[3] = 1'b0;
+		last_DISPLAY_PERSONAS_exp[2] = DISPLAY_PERSONAS_expected_prev[2];
+	end
+	if (
+		( DISPLAY_PERSONAS_expected_prev[3] !== 1'bx ) && ( DISPLAY_PERSONAS_prev[3] !== DISPLAY_PERSONAS_expected_prev[3] )
+		&& ((DISPLAY_PERSONAS_expected_prev[3] !== last_DISPLAY_PERSONAS_exp[3]) ||
+			on_first_change[3])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port DISPLAY_PERSONAS[3] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", DISPLAY_PERSONAS_expected_prev);
+		$display ("     Real value = %b", DISPLAY_PERSONAS_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[3] = 1'b0;
+		last_DISPLAY_PERSONAS_exp[3] = DISPLAY_PERSONAS_expected_prev[3];
+	end
+	if (
+		( DISPLAY_PERSONAS_expected_prev[4] !== 1'bx ) && ( DISPLAY_PERSONAS_prev[4] !== DISPLAY_PERSONAS_expected_prev[4] )
+		&& ((DISPLAY_PERSONAS_expected_prev[4] !== last_DISPLAY_PERSONAS_exp[4]) ||
+			on_first_change[3])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port DISPLAY_PERSONAS[4] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", DISPLAY_PERSONAS_expected_prev);
+		$display ("     Real value = %b", DISPLAY_PERSONAS_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[3] = 1'b0;
+		last_DISPLAY_PERSONAS_exp[4] = DISPLAY_PERSONAS_expected_prev[4];
+	end
+	if (
+		( DISPLAY_PERSONAS_expected_prev[5] !== 1'bx ) && ( DISPLAY_PERSONAS_prev[5] !== DISPLAY_PERSONAS_expected_prev[5] )
+		&& ((DISPLAY_PERSONAS_expected_prev[5] !== last_DISPLAY_PERSONAS_exp[5]) ||
+			on_first_change[3])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port DISPLAY_PERSONAS[5] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", DISPLAY_PERSONAS_expected_prev);
+		$display ("     Real value = %b", DISPLAY_PERSONAS_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[3] = 1'b0;
+		last_DISPLAY_PERSONAS_exp[5] = DISPLAY_PERSONAS_expected_prev[5];
+	end
+	if (
+		( DISPLAY_PERSONAS_expected_prev[6] !== 1'bx ) && ( DISPLAY_PERSONAS_prev[6] !== DISPLAY_PERSONAS_expected_prev[6] )
+		&& ((DISPLAY_PERSONAS_expected_prev[6] !== last_DISPLAY_PERSONAS_exp[6]) ||
+			on_first_change[3])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port DISPLAY_PERSONAS[6] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", DISPLAY_PERSONAS_expected_prev);
+		$display ("     Real value = %b", DISPLAY_PERSONAS_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[3] = 1'b0;
+		last_DISPLAY_PERSONAS_exp[6] = DISPLAY_PERSONAS_expected_prev[6];
+	end
+	if (
+		( LED_FALLO_EN_expected_prev !== 1'bx ) && ( LED_FALLO_EN_prev !== LED_FALLO_EN_expected_prev )
+		&& ((LED_FALLO_EN_expected_prev !== last_LED_FALLO_EN_exp) ||
+			on_first_change[4])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port LED_FALLO_EN :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", LED_FALLO_EN_expected_prev);
+		$display ("     Real value = %b", LED_FALLO_EN_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[4] = 1'b0;
+		last_LED_FALLO_EN_exp = LED_FALLO_EN_expected_prev;
+	end
+	if (
+		( LED_NOTIF_expected_prev !== 1'bx ) && ( LED_NOTIF_prev !== LED_NOTIF_expected_prev )
+		&& ((LED_NOTIF_expected_prev !== last_LED_NOTIF_exp) ||
+			on_first_change[5])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port LED_NOTIF :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", LED_NOTIF_expected_prev);
+		$display ("     Real value = %b", LED_NOTIF_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[5] = 1'b0;
+		last_LED_NOTIF_exp = LED_NOTIF_expected_prev;
+	end
+	if (
+		( LED_PUERTA_ABI_expected_prev !== 1'bx ) && ( LED_PUERTA_ABI_prev !== LED_PUERTA_ABI_expected_prev )
+		&& ((LED_PUERTA_ABI_expected_prev !== last_LED_PUERTA_ABI_exp) ||
+			on_first_change[6])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port LED_PUERTA_ABI :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", LED_PUERTA_ABI_expected_prev);
+		$display ("     Real value = %b", LED_PUERTA_ABI_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[6] = 1'b0;
+		last_LED_PUERTA_ABI_exp = LED_PUERTA_ABI_expected_prev;
+	end
+	if (
+		( LED_PUERTA_CIE_expected_prev !== 1'bx ) && ( LED_PUERTA_CIE_prev !== LED_PUERTA_CIE_expected_prev )
+		&& ((LED_PUERTA_CIE_expected_prev !== last_LED_PUERTA_CIE_exp) ||
+			on_first_change[7])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port LED_PUERTA_CIE :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", LED_PUERTA_CIE_expected_prev);
+		$display ("     Real value = %b", LED_PUERTA_CIE_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[7] = 1'b0;
+		last_LED_PUERTA_CIE_exp = LED_PUERTA_CIE_expected_prev;
+	end
+	if (
+		( LED_SOBRECARGA_expected_prev !== 1'bx ) && ( LED_SOBRECARGA_prev !== LED_SOBRECARGA_expected_prev )
+		&& ((LED_SOBRECARGA_expected_prev !== last_LED_SOBRECARGA_exp) ||
+			on_first_change[8])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port LED_SOBRECARGA :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", LED_SOBRECARGA_expected_prev);
+		$display ("     Real value = %b", LED_SOBRECARGA_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[8] = 1'b0;
+		last_LED_SOBRECARGA_exp = LED_SOBRECARGA_expected_prev;
+	end
+	if (
+		( LLEGADA_PISO_expected_prev !== 1'bx ) && ( LLEGADA_PISO_prev !== LLEGADA_PISO_expected_prev )
+		&& ((LLEGADA_PISO_expected_prev !== last_LLEGADA_PISO_exp) ||
+			on_first_change[9])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port LLEGADA_PISO :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", LLEGADA_PISO_expected_prev);
+		$display ("     Real value = %b", LLEGADA_PISO_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[9] = 1'b0;
+		last_LLEGADA_PISO_exp = LLEGADA_PISO_expected_prev;
+	end
+	if (
+		( MOTOR_BAJAR_expected_prev !== 1'bx ) && ( MOTOR_BAJAR_prev !== MOTOR_BAJAR_expected_prev )
+		&& ((MOTOR_BAJAR_expected_prev !== last_MOTOR_BAJAR_exp) ||
+			on_first_change[10])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port MOTOR_BAJAR :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", MOTOR_BAJAR_expected_prev);
+		$display ("     Real value = %b", MOTOR_BAJAR_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[10] = 1'b0;
+		last_MOTOR_BAJAR_exp = MOTOR_BAJAR_expected_prev;
+	end
+	if (
+		( MOTOR_SUBIR_expected_prev !== 1'bx ) && ( MOTOR_SUBIR_prev !== MOTOR_SUBIR_expected_prev )
+		&& ((MOTOR_SUBIR_expected_prev !== last_MOTOR_SUBIR_exp) ||
+			on_first_change[11])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port MOTOR_SUBIR :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", MOTOR_SUBIR_expected_prev);
+		$display ("     Real value = %b", MOTOR_SUBIR_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[11] = 1'b0;
+		last_MOTOR_SUBIR_exp = MOTOR_SUBIR_expected_prev;
+	end
+	if (
+		( PUERTA_expected_prev !== 1'bx ) && ( PUERTA_prev !== PUERTA_expected_prev )
+		&& ((PUERTA_expected_prev !== last_PUERTA_exp) ||
+			on_first_change[12])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port PUERTA :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", PUERTA_expected_prev);
+		$display ("     Real value = %b", PUERTA_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[12] = 1'b0;
+		last_PUERTA_exp = PUERTA_expected_prev;
+	end
+
+	trigger <= ~trigger;
+end
+initial 
+
+begin 
+$timeformat(-12,3," ps",6);
+#1000000;
+if (nummismatches > 0)
+	$display ("%d mismatched vectors : Simulation failed !",nummismatches);
+else
+	$display ("Simulation passed !");
+$finish;
+end 
+endmodule
+
+module Ascensor_vlg_vec_tst();
+// constants                                           
+// general purpose registers
+reg BOTON_ABRIR;
+reg [3:0] BOTON_BAJAR;
+reg BOTON_CERRAR;
+reg [4:0] BOTON_PISO_INT;
+reg [3:0] BOTON_SUBIR;
+reg CLK_50MHz;
+reg FALLO_ENERGIA;
+reg NOTIFICACION;
+reg RESET;
+reg SENSOR_ENTRA;
+reg SENSOR_SALE;
+// wires                                               
+wire [6:0] DISPLAY_EXTERNO;
+wire [6:0] DISPLAY_INTERNO;
+wire [6:0] DISPLAY_PERSONAS;
+wire LED_FALLO_EN;
+wire LED_NOTIF;
+wire LED_PUERTA_ABI;
+wire LED_PUERTA_CIE;
+wire LED_SOBRECARGA;
+wire LLEGADA_PISO;
+wire MOTOR_BAJAR;
+wire MOTOR_SUBIR;
+wire PUERTA;
+wire SOBRECARGA;
+
+wire sampler;                             
+
+// assign statements (if any)                          
+Ascensor i1 (
+// port map - connection between master ports and signals/registers   
+	.BOTON_ABRIR(BOTON_ABRIR),
+	.BOTON_BAJAR(BOTON_BAJAR),
+	.BOTON_CERRAR(BOTON_CERRAR),
+	.BOTON_PISO_INT(BOTON_PISO_INT),
+	.BOTON_SUBIR(BOTON_SUBIR),
+	.CLK_50MHz(CLK_50MHz),
+	.DISPLAY_EXTERNO(DISPLAY_EXTERNO),
+	.DISPLAY_INTERNO(DISPLAY_INTERNO),
+	.DISPLAY_PERSONAS(DISPLAY_PERSONAS),
+	.FALLO_ENERGIA(FALLO_ENERGIA),
+	.LED_FALLO_EN(LED_FALLO_EN),
+	.LED_NOTIF(LED_NOTIF),
+	.LED_PUERTA_ABI(LED_PUERTA_ABI),
+	.LED_PUERTA_CIE(LED_PUERTA_CIE),
+	.LED_SOBRECARGA(LED_SOBRECARGA),
+	.LLEGADA_PISO(LLEGADA_PISO),
+	.MOTOR_BAJAR(MOTOR_BAJAR),
+	.MOTOR_SUBIR(MOTOR_SUBIR),
+	.NOTIFICACION(NOTIFICACION),
+	.PUERTA(PUERTA),
+	.RESET(RESET),
+	.SENSOR_ENTRA(SENSOR_ENTRA),
+	.SENSOR_SALE(SENSOR_SALE),
+	.SOBRECARGA(SOBRECARGA)
+);
+
+// BOTON_ABRIR
+initial
+begin
+	BOTON_ABRIR = 1'b0;
+	BOTON_ABRIR = #130000 1'b1;
+	BOTON_ABRIR = #120000 1'b0;
+end 
+
+// BOTON_CERRAR
+initial
+begin
+	BOTON_CERRAR = 1'b0;
+	BOTON_CERRAR = #260000 1'b1;
+	BOTON_CERRAR = #130000 1'b0;
+end 
+// BOTON_PISO_INT[ 4 ]
+initial
+begin
+	BOTON_PISO_INT[4] = 1'b0;
+end 
+// BOTON_PISO_INT[ 3 ]
+initial
+begin
+	BOTON_PISO_INT[3] = 1'b0;
+end 
+// BOTON_PISO_INT[ 2 ]
+initial
+begin
+	BOTON_PISO_INT[2] = 1'b0;
+	BOTON_PISO_INT[2] = #680000 1'b1;
+end 
+// BOTON_PISO_INT[ 1 ]
+initial
+begin
+	BOTON_PISO_INT[1] = 1'b0;
+	BOTON_PISO_INT[1] = #340000 1'b1;
+	BOTON_PISO_INT[1] = #340000 1'b0;
+end 
+// BOTON_PISO_INT[ 0 ]
+initial
+begin
+	repeat(2)
+	begin
+		BOTON_PISO_INT[0] = 1'b0;
+		BOTON_PISO_INT[0] = #170000 1'b1;
+		# 170000;
+	end
+	BOTON_PISO_INT[0] = 1'b0;
+	BOTON_PISO_INT[0] = #170000 1'b1;
+end 
+// BOTON_SUBIR[ 3 ]
+initial
+begin
+	BOTON_SUBIR[3] = 1'b0;
+end 
+// BOTON_SUBIR[ 2 ]
+initial
+begin
+	BOTON_SUBIR[2] = 1'b0;
+	BOTON_SUBIR[2] = #680000 1'b1;
+end 
+// BOTON_SUBIR[ 1 ]
+initial
+begin
+	BOTON_SUBIR[1] = 1'b0;
+	BOTON_SUBIR[1] = #340000 1'b1;
+	BOTON_SUBIR[1] = #340000 1'b0;
+end 
+// BOTON_SUBIR[ 0 ]
+initial
+begin
+	repeat(2)
+	begin
+		BOTON_SUBIR[0] = 1'b0;
+		BOTON_SUBIR[0] = #170000 1'b1;
+		# 170000;
+	end
+	BOTON_SUBIR[0] = 1'b0;
+	BOTON_SUBIR[0] = #170000 1'b1;
+end 
+// BOTON_BAJAR[ 3 ]
+initial
+begin
+	BOTON_BAJAR[3] = 1'b0;
+end 
+// BOTON_BAJAR[ 2 ]
+initial
+begin
+	BOTON_BAJAR[2] = 1'b0;
+	BOTON_BAJAR[2] = #680000 1'b1;
+end 
+// BOTON_BAJAR[ 1 ]
+initial
+begin
+	BOTON_BAJAR[1] = 1'b0;
+	BOTON_BAJAR[1] = #340000 1'b1;
+	BOTON_BAJAR[1] = #340000 1'b0;
+end 
+// BOTON_BAJAR[ 0 ]
+initial
+begin
+	repeat(2)
+	begin
+		BOTON_BAJAR[0] = 1'b0;
+		BOTON_BAJAR[0] = #170000 1'b1;
+		# 170000;
+	end
+	BOTON_BAJAR[0] = 1'b0;
+	BOTON_BAJAR[0] = #170000 1'b1;
+end 
+
+// CLK_50MHz
+initial
+begin
+	repeat(33)
+	begin
+		CLK_50MHz = 1'b0;
+		CLK_50MHz = #15000 1'b1;
+		# 15000;
+	end
+	CLK_50MHz = 1'b0;
+end 
+
+// FALLO_ENERGIA
+initial
+begin
+	FALLO_ENERGIA = 1'b0;
+	FALLO_ENERGIA = #730000 1'b1;
+	FALLO_ENERGIA = #140000 1'b0;
+end 
+
+// NOTIFICACION
+initial
+begin
+	NOTIFICACION = 1'b0;
+	NOTIFICACION = #460000 1'b1;
+	NOTIFICACION = #130000 1'b0;
+end 
+
+// RESET
+initial
+begin
+	RESET = 1'b0;
+	RESET = #920000 1'b1;
+end 
+
+// SENSOR_ENTRA
+initial
+begin
+	SENSOR_ENTRA = 1'b0;
+	SENSOR_ENTRA = #290000 1'b1;
+	SENSOR_ENTRA = #140000 1'b0;
+end 
+
+// SENSOR_SALE
+initial
+begin
+	SENSOR_SALE = 1'b0;
+	SENSOR_SALE = #130000 1'b1;
+	SENSOR_SALE = #120000 1'b0;
+end 
+
+Ascensor_vlg_sample_tst tb_sample (
+	.BOTON_ABRIR(BOTON_ABRIR),
+	.BOTON_BAJAR(BOTON_BAJAR),
+	.BOTON_CERRAR(BOTON_CERRAR),
+	.BOTON_PISO_INT(BOTON_PISO_INT),
+	.BOTON_SUBIR(BOTON_SUBIR),
+	.CLK_50MHz(CLK_50MHz),
+	.FALLO_ENERGIA(FALLO_ENERGIA),
+	.NOTIFICACION(NOTIFICACION),
+	.RESET(RESET),
+	.SENSOR_ENTRA(SENSOR_ENTRA),
+	.SENSOR_SALE(SENSOR_SALE),
+	.sampler_tx(sampler)
+);
+
+Ascensor_vlg_check_tst tb_out(
+	.DISPLAY_EXTERNO(DISPLAY_EXTERNO),
+	.DISPLAY_INTERNO(DISPLAY_INTERNO),
+	.DISPLAY_PERSONAS(DISPLAY_PERSONAS),
+	.LED_FALLO_EN(LED_FALLO_EN),
+	.LED_NOTIF(LED_NOTIF),
+	.LED_PUERTA_ABI(LED_PUERTA_ABI),
+	.LED_PUERTA_CIE(LED_PUERTA_CIE),
+	.LED_SOBRECARGA(LED_SOBRECARGA),
+	.LLEGADA_PISO(LLEGADA_PISO),
+	.MOTOR_BAJAR(MOTOR_BAJAR),
+	.MOTOR_SUBIR(MOTOR_SUBIR),
+	.PUERTA(PUERTA),
+	.SOBRECARGA(SOBRECARGA),
+	.sampler_rx(sampler)
+);
+endmodule
+

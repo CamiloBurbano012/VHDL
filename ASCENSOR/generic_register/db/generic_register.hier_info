@@ -1,0 +1,43 @@
+|generic_register
+clk => reg_data[0].CLK
+clk => reg_data[1].CLK
+clk => reg_data[2].CLK
+clk => reg_data[3].CLK
+clk => reg_data[4].CLK
+clk => reg_data[5].CLK
+clk => reg_data[6].CLK
+clk => reg_data[7].CLK
+rst => reg_data[0].ACLR
+rst => reg_data[1].ACLR
+rst => reg_data[2].ACLR
+rst => reg_data[3].ACLR
+rst => reg_data[4].ACLR
+rst => reg_data[5].ACLR
+rst => reg_data[6].ACLR
+rst => reg_data[7].ACLR
+load => reg_data[7].ENA
+load => reg_data[6].ENA
+load => reg_data[5].ENA
+load => reg_data[4].ENA
+load => reg_data[3].ENA
+load => reg_data[2].ENA
+load => reg_data[1].ENA
+load => reg_data[0].ENA
+din[0] => reg_data[0].DATAIN
+din[1] => reg_data[1].DATAIN
+din[2] => reg_data[2].DATAIN
+din[3] => reg_data[3].DATAIN
+din[4] => reg_data[4].DATAIN
+din[5] => reg_data[5].DATAIN
+din[6] => reg_data[6].DATAIN
+din[7] => reg_data[7].DATAIN
+dout[0] <= reg_data[0].DB_MAX_OUTPUT_PORT_TYPE
+dout[1] <= reg_data[1].DB_MAX_OUTPUT_PORT_TYPE
+dout[2] <= reg_data[2].DB_MAX_OUTPUT_PORT_TYPE
+dout[3] <= reg_data[3].DB_MAX_OUTPUT_PORT_TYPE
+dout[4] <= reg_data[4].DB_MAX_OUTPUT_PORT_TYPE
+dout[5] <= reg_data[5].DB_MAX_OUTPUT_PORT_TYPE
+dout[6] <= reg_data[6].DB_MAX_OUTPUT_PORT_TYPE
+dout[7] <= reg_data[7].DB_MAX_OUTPUT_PORT_TYPE
+
+

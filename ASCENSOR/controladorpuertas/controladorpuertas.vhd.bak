@@ -1,0 +1,60 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+
+entity ControladorPuertas is
+    port(
+        clk           : in  STD_LOGIC;
+        reset         : in  STD_LOGIC;
+        llegada_piso  : in  STD_LOGIC;
+        abrir_manual  : in  STD_LOGIC;
+        cerrar_manual : in  STD_LOGIC;
+        fallo_energia : in  STD_LOGIC;
+        notificacion  : in  STD_LOGIC;
+        puerta        : out STD_LOGIC
+    );
+end ControladorPuertas;
+
+architecture Behavioral of ControladorPuertas is
+    signal contador_apertura : integer range 0 to 9 := 0;
+    signal contador_cierre   : integer range 0 to 44 := 0;
+    signal abrir_puerta_temporizado : std_logic := '0';
+    signal cerrar_puerta_temporizado : std_logic := '0';
+    signal puerta_estado : std_logic := '0';  -- 0 = cerrada, 1 = abierta
+begin
+    process(clk, reset, llegada_piso, abrir_manual, cerrar_manual, fallo_energia)
+    begin
+        if reset = '1' or fallo_energia = '1' then
+            puerta_estado <= '0';
+            contador_apertura <= 0;
+            contador_cierre <= 0;
+        elsif rising_edge(clk) then
+            if llegada_piso = '1' or abrir_manual = '1' then
+                if puerta_estado = '0' then
+                    if contador_apertura = 9 then
+                        puerta_estado <= '1';
+                        contador_apertura <= 0;
+                    else
+                        contador_apertura <= contador_apertura + 1;
+                    end if;
+                end if;
+            elsif cerrar_manual = '1' then
+                puerta_estado <= '0';
+                contador_apertura <= 0;
+                contador_cierre <= 0;
+            elsif puerta_estado = '1' then
+                if contador_cierre = 44 then
+                    puerta_estado <= '0';
+                    contador_cierre <= 0;
+                else
+                    contador_cierre <= contador_cierre + 1;
+                end if;
+            else
+                contador_apertura <= 0;
+                contador_cierre <= 0;
+            end if;
+        end if;
+    end process;
+
+    puerta <= puerta_estado;
+end Behavioral;
