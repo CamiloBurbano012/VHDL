@@ -1,0 +1,699 @@
+// Copyright (C) 1991-2013 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// *****************************************************************************
+// This file contains a Verilog test bench with test vectors .The test vectors  
+// are exported from a vector file in the Quartus Waveform Editor and apply to  
+// the top level entity of the current Quartus project .The user can use this   
+// testbench to simulate his design using a third-party simulation tool .       
+// *****************************************************************************
+// Generated on "05/08/2025 15:15:14"
+                                                                        
+// Verilog Self-Checking Test Bench (with test vectors) for design :    botones
+// 
+// Simulation tool : 3rd Party
+// 
+
+`timescale 1 ps/ 1 ps
+module botones_vlg_sample_tst(
+	boton_abrir,
+	boton_cerrar,
+	boton_notificar,
+	botones_bajar,
+	botones_cabina,
+	botones_subir,
+	clk,
+	reset,
+	sampler_tx
+);
+input  boton_abrir;
+input  boton_cerrar;
+input  boton_notificar;
+input [4:0] botones_bajar;
+input [4:0] botones_cabina;
+input [4:0] botones_subir;
+input  clk;
+input  reset;
+output sampler_tx;
+
+reg sample;
+time current_time;
+always @(boton_abrir or boton_cerrar or boton_notificar or botones_bajar or botones_cabina or botones_subir or clk or reset)
+                                                                                
+begin                                                 
+ if ($realtime > 0)                                   
+ begin                                                
+	if ($realtime == 0 || $realtime != current_time)  
+	begin									          
+		if (sample === 1'bx)                          
+			sample = 0;                               
+		else                                          
+			sample = ~sample;                         
+	end										          
+	current_time = $realtime;					      
+ end                                                  
+end                                                   
+
+assign sampler_tx = sample;
+endmodule
+
+module botones_vlg_check_tst (
+	boton_abrir_filtrado,
+	boton_cerrar_filtrado,
+	boton_notificar_filtrado,
+	botones_bajar_filtrados,
+	botones_cabina_filtrados,
+	botones_subir_filtrados,
+	sampler_rx
+);
+input  boton_abrir_filtrado;
+input  boton_cerrar_filtrado;
+input  boton_notificar_filtrado;
+input [4:0] botones_bajar_filtrados;
+input [4:0] botones_cabina_filtrados;
+input [4:0] botones_subir_filtrados;
+input sampler_rx;
+
+reg  boton_abrir_filtrado_expected;
+reg  boton_cerrar_filtrado_expected;
+reg  boton_notificar_filtrado_expected;
+reg [4:0] botones_bajar_filtrados_expected;
+reg [4:0] botones_cabina_filtrados_expected;
+reg [4:0] botones_subir_filtrados_expected;
+
+reg  boton_abrir_filtrado_prev;
+reg  boton_cerrar_filtrado_prev;
+reg  boton_notificar_filtrado_prev;
+reg [4:0] botones_bajar_filtrados_prev;
+reg [4:0] botones_cabina_filtrados_prev;
+reg [4:0] botones_subir_filtrados_prev;
+
+reg  boton_abrir_filtrado_expected_prev;
+reg  boton_cerrar_filtrado_expected_prev;
+reg  boton_notificar_filtrado_expected_prev;
+reg [4:0] botones_bajar_filtrados_expected_prev;
+reg [4:0] botones_cabina_filtrados_expected_prev;
+reg [4:0] botones_subir_filtrados_expected_prev;
+
+reg  last_boton_abrir_filtrado_exp;
+reg  last_boton_cerrar_filtrado_exp;
+reg  last_boton_notificar_filtrado_exp;
+reg [4:0] last_botones_bajar_filtrados_exp;
+reg [4:0] last_botones_cabina_filtrados_exp;
+reg [4:0] last_botones_subir_filtrados_exp;
+
+reg trigger;
+
+integer i;
+integer nummismatches;
+
+reg [1:6] on_first_change ;
+
+
+initial
+begin
+trigger = 0;
+i = 0;
+nummismatches = 0;
+on_first_change = 6'b1;
+end
+
+// update real /o prevs
+
+always @(trigger)
+begin
+	boton_abrir_filtrado_prev = boton_abrir_filtrado;
+	boton_cerrar_filtrado_prev = boton_cerrar_filtrado;
+	boton_notificar_filtrado_prev = boton_notificar_filtrado;
+	botones_bajar_filtrados_prev = botones_bajar_filtrados;
+	botones_cabina_filtrados_prev = botones_cabina_filtrados;
+	botones_subir_filtrados_prev = botones_subir_filtrados;
+end
+
+// update expected /o prevs
+
+always @(trigger)
+begin
+	boton_abrir_filtrado_expected_prev = boton_abrir_filtrado_expected;
+	boton_cerrar_filtrado_expected_prev = boton_cerrar_filtrado_expected;
+	boton_notificar_filtrado_expected_prev = boton_notificar_filtrado_expected;
+	botones_bajar_filtrados_expected_prev = botones_bajar_filtrados_expected;
+	botones_cabina_filtrados_expected_prev = botones_cabina_filtrados_expected;
+	botones_subir_filtrados_expected_prev = botones_subir_filtrados_expected;
+end
+
+
+
+// expected boton_abrir_filtrado
+initial
+begin
+	boton_abrir_filtrado_expected = 1'bX;
+end 
+
+// expected boton_cerrar_filtrado
+initial
+begin
+	boton_cerrar_filtrado_expected = 1'bX;
+end 
+
+// expected boton_notificar_filtrado
+initial
+begin
+	boton_notificar_filtrado_expected = 1'bX;
+end 
+// expected botones_bajar_filtrados[ 4 ]
+initial
+begin
+	botones_bajar_filtrados_expected[4] = 1'bX;
+end 
+// expected botones_bajar_filtrados[ 3 ]
+initial
+begin
+	botones_bajar_filtrados_expected[3] = 1'bX;
+end 
+// expected botones_bajar_filtrados[ 2 ]
+initial
+begin
+	botones_bajar_filtrados_expected[2] = 1'bX;
+end 
+// expected botones_bajar_filtrados[ 1 ]
+initial
+begin
+	botones_bajar_filtrados_expected[1] = 1'bX;
+end 
+// expected botones_bajar_filtrados[ 0 ]
+initial
+begin
+	botones_bajar_filtrados_expected[0] = 1'bX;
+end 
+// expected botones_cabina_filtrados[ 4 ]
+initial
+begin
+	botones_cabina_filtrados_expected[4] = 1'bX;
+end 
+// expected botones_cabina_filtrados[ 3 ]
+initial
+begin
+	botones_cabina_filtrados_expected[3] = 1'bX;
+end 
+// expected botones_cabina_filtrados[ 2 ]
+initial
+begin
+	botones_cabina_filtrados_expected[2] = 1'bX;
+end 
+// expected botones_cabina_filtrados[ 1 ]
+initial
+begin
+	botones_cabina_filtrados_expected[1] = 1'bX;
+end 
+// expected botones_cabina_filtrados[ 0 ]
+initial
+begin
+	botones_cabina_filtrados_expected[0] = 1'bX;
+end 
+// expected botones_subir_filtrados[ 4 ]
+initial
+begin
+	botones_subir_filtrados_expected[4] = 1'bX;
+end 
+// expected botones_subir_filtrados[ 3 ]
+initial
+begin
+	botones_subir_filtrados_expected[3] = 1'bX;
+end 
+// expected botones_subir_filtrados[ 2 ]
+initial
+begin
+	botones_subir_filtrados_expected[2] = 1'bX;
+end 
+// expected botones_subir_filtrados[ 1 ]
+initial
+begin
+	botones_subir_filtrados_expected[1] = 1'bX;
+end 
+// expected botones_subir_filtrados[ 0 ]
+initial
+begin
+	botones_subir_filtrados_expected[0] = 1'bX;
+end 
+// generate trigger
+always @(boton_abrir_filtrado_expected or boton_abrir_filtrado or boton_cerrar_filtrado_expected or boton_cerrar_filtrado or boton_notificar_filtrado_expected or boton_notificar_filtrado or botones_bajar_filtrados_expected or botones_bajar_filtrados or botones_cabina_filtrados_expected or botones_cabina_filtrados or botones_subir_filtrados_expected or botones_subir_filtrados)
+begin
+	trigger <= ~trigger;
+end
+
+always @(posedge sampler_rx or negedge sampler_rx)
+begin
+`ifdef debug_tbench
+	$display("Scanning pattern %d @time = %t",i,$realtime );
+	i = i + 1;
+	$display("| expected boton_abrir_filtrado = %b | expected boton_cerrar_filtrado = %b | expected boton_notificar_filtrado = %b | expected botones_bajar_filtrados = %b | expected botones_cabina_filtrados = %b | expected botones_subir_filtrados = %b | ",boton_abrir_filtrado_expected_prev,boton_cerrar_filtrado_expected_prev,boton_notificar_filtrado_expected_prev,botones_bajar_filtrados_expected_prev,botones_cabina_filtrados_expected_prev,botones_subir_filtrados_expected_prev);
+	$display("| real boton_abrir_filtrado = %b | real boton_cerrar_filtrado = %b | real boton_notificar_filtrado = %b | real botones_bajar_filtrados = %b | real botones_cabina_filtrados = %b | real botones_subir_filtrados = %b | ",boton_abrir_filtrado_prev,boton_cerrar_filtrado_prev,boton_notificar_filtrado_prev,botones_bajar_filtrados_prev,botones_cabina_filtrados_prev,botones_subir_filtrados_prev);
+`endif
+	if (
+		( boton_abrir_filtrado_expected_prev !== 1'bx ) && ( boton_abrir_filtrado_prev !== boton_abrir_filtrado_expected_prev )
+		&& ((boton_abrir_filtrado_expected_prev !== last_boton_abrir_filtrado_exp) ||
+			on_first_change[1])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port boton_abrir_filtrado :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", boton_abrir_filtrado_expected_prev);
+		$display ("     Real value = %b", boton_abrir_filtrado_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[1] = 1'b0;
+		last_boton_abrir_filtrado_exp = boton_abrir_filtrado_expected_prev;
+	end
+	if (
+		( boton_cerrar_filtrado_expected_prev !== 1'bx ) && ( boton_cerrar_filtrado_prev !== boton_cerrar_filtrado_expected_prev )
+		&& ((boton_cerrar_filtrado_expected_prev !== last_boton_cerrar_filtrado_exp) ||
+			on_first_change[2])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port boton_cerrar_filtrado :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", boton_cerrar_filtrado_expected_prev);
+		$display ("     Real value = %b", boton_cerrar_filtrado_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[2] = 1'b0;
+		last_boton_cerrar_filtrado_exp = boton_cerrar_filtrado_expected_prev;
+	end
+	if (
+		( boton_notificar_filtrado_expected_prev !== 1'bx ) && ( boton_notificar_filtrado_prev !== boton_notificar_filtrado_expected_prev )
+		&& ((boton_notificar_filtrado_expected_prev !== last_boton_notificar_filtrado_exp) ||
+			on_first_change[3])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port boton_notificar_filtrado :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", boton_notificar_filtrado_expected_prev);
+		$display ("     Real value = %b", boton_notificar_filtrado_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[3] = 1'b0;
+		last_boton_notificar_filtrado_exp = boton_notificar_filtrado_expected_prev;
+	end
+	if (
+		( botones_bajar_filtrados_expected_prev[0] !== 1'bx ) && ( botones_bajar_filtrados_prev[0] !== botones_bajar_filtrados_expected_prev[0] )
+		&& ((botones_bajar_filtrados_expected_prev[0] !== last_botones_bajar_filtrados_exp[0]) ||
+			on_first_change[4])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port botones_bajar_filtrados[0] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", botones_bajar_filtrados_expected_prev);
+		$display ("     Real value = %b", botones_bajar_filtrados_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[4] = 1'b0;
+		last_botones_bajar_filtrados_exp[0] = botones_bajar_filtrados_expected_prev[0];
+	end
+	if (
+		( botones_bajar_filtrados_expected_prev[1] !== 1'bx ) && ( botones_bajar_filtrados_prev[1] !== botones_bajar_filtrados_expected_prev[1] )
+		&& ((botones_bajar_filtrados_expected_prev[1] !== last_botones_bajar_filtrados_exp[1]) ||
+			on_first_change[4])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port botones_bajar_filtrados[1] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", botones_bajar_filtrados_expected_prev);
+		$display ("     Real value = %b", botones_bajar_filtrados_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[4] = 1'b0;
+		last_botones_bajar_filtrados_exp[1] = botones_bajar_filtrados_expected_prev[1];
+	end
+	if (
+		( botones_bajar_filtrados_expected_prev[2] !== 1'bx ) && ( botones_bajar_filtrados_prev[2] !== botones_bajar_filtrados_expected_prev[2] )
+		&& ((botones_bajar_filtrados_expected_prev[2] !== last_botones_bajar_filtrados_exp[2]) ||
+			on_first_change[4])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port botones_bajar_filtrados[2] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", botones_bajar_filtrados_expected_prev);
+		$display ("     Real value = %b", botones_bajar_filtrados_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[4] = 1'b0;
+		last_botones_bajar_filtrados_exp[2] = botones_bajar_filtrados_expected_prev[2];
+	end
+	if (
+		( botones_bajar_filtrados_expected_prev[3] !== 1'bx ) && ( botones_bajar_filtrados_prev[3] !== botones_bajar_filtrados_expected_prev[3] )
+		&& ((botones_bajar_filtrados_expected_prev[3] !== last_botones_bajar_filtrados_exp[3]) ||
+			on_first_change[4])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port botones_bajar_filtrados[3] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", botones_bajar_filtrados_expected_prev);
+		$display ("     Real value = %b", botones_bajar_filtrados_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[4] = 1'b0;
+		last_botones_bajar_filtrados_exp[3] = botones_bajar_filtrados_expected_prev[3];
+	end
+	if (
+		( botones_bajar_filtrados_expected_prev[4] !== 1'bx ) && ( botones_bajar_filtrados_prev[4] !== botones_bajar_filtrados_expected_prev[4] )
+		&& ((botones_bajar_filtrados_expected_prev[4] !== last_botones_bajar_filtrados_exp[4]) ||
+			on_first_change[4])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port botones_bajar_filtrados[4] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", botones_bajar_filtrados_expected_prev);
+		$display ("     Real value = %b", botones_bajar_filtrados_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[4] = 1'b0;
+		last_botones_bajar_filtrados_exp[4] = botones_bajar_filtrados_expected_prev[4];
+	end
+	if (
+		( botones_cabina_filtrados_expected_prev[0] !== 1'bx ) && ( botones_cabina_filtrados_prev[0] !== botones_cabina_filtrados_expected_prev[0] )
+		&& ((botones_cabina_filtrados_expected_prev[0] !== last_botones_cabina_filtrados_exp[0]) ||
+			on_first_change[5])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port botones_cabina_filtrados[0] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", botones_cabina_filtrados_expected_prev);
+		$display ("     Real value = %b", botones_cabina_filtrados_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[5] = 1'b0;
+		last_botones_cabina_filtrados_exp[0] = botones_cabina_filtrados_expected_prev[0];
+	end
+	if (
+		( botones_cabina_filtrados_expected_prev[1] !== 1'bx ) && ( botones_cabina_filtrados_prev[1] !== botones_cabina_filtrados_expected_prev[1] )
+		&& ((botones_cabina_filtrados_expected_prev[1] !== last_botones_cabina_filtrados_exp[1]) ||
+			on_first_change[5])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port botones_cabina_filtrados[1] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", botones_cabina_filtrados_expected_prev);
+		$display ("     Real value = %b", botones_cabina_filtrados_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[5] = 1'b0;
+		last_botones_cabina_filtrados_exp[1] = botones_cabina_filtrados_expected_prev[1];
+	end
+	if (
+		( botones_cabina_filtrados_expected_prev[2] !== 1'bx ) && ( botones_cabina_filtrados_prev[2] !== botones_cabina_filtrados_expected_prev[2] )
+		&& ((botones_cabina_filtrados_expected_prev[2] !== last_botones_cabina_filtrados_exp[2]) ||
+			on_first_change[5])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port botones_cabina_filtrados[2] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", botones_cabina_filtrados_expected_prev);
+		$display ("     Real value = %b", botones_cabina_filtrados_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[5] = 1'b0;
+		last_botones_cabina_filtrados_exp[2] = botones_cabina_filtrados_expected_prev[2];
+	end
+	if (
+		( botones_cabina_filtrados_expected_prev[3] !== 1'bx ) && ( botones_cabina_filtrados_prev[3] !== botones_cabina_filtrados_expected_prev[3] )
+		&& ((botones_cabina_filtrados_expected_prev[3] !== last_botones_cabina_filtrados_exp[3]) ||
+			on_first_change[5])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port botones_cabina_filtrados[3] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", botones_cabina_filtrados_expected_prev);
+		$display ("     Real value = %b", botones_cabina_filtrados_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[5] = 1'b0;
+		last_botones_cabina_filtrados_exp[3] = botones_cabina_filtrados_expected_prev[3];
+	end
+	if (
+		( botones_cabina_filtrados_expected_prev[4] !== 1'bx ) && ( botones_cabina_filtrados_prev[4] !== botones_cabina_filtrados_expected_prev[4] )
+		&& ((botones_cabina_filtrados_expected_prev[4] !== last_botones_cabina_filtrados_exp[4]) ||
+			on_first_change[5])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port botones_cabina_filtrados[4] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", botones_cabina_filtrados_expected_prev);
+		$display ("     Real value = %b", botones_cabina_filtrados_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[5] = 1'b0;
+		last_botones_cabina_filtrados_exp[4] = botones_cabina_filtrados_expected_prev[4];
+	end
+	if (
+		( botones_subir_filtrados_expected_prev[0] !== 1'bx ) && ( botones_subir_filtrados_prev[0] !== botones_subir_filtrados_expected_prev[0] )
+		&& ((botones_subir_filtrados_expected_prev[0] !== last_botones_subir_filtrados_exp[0]) ||
+			on_first_change[6])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port botones_subir_filtrados[0] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", botones_subir_filtrados_expected_prev);
+		$display ("     Real value = %b", botones_subir_filtrados_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[6] = 1'b0;
+		last_botones_subir_filtrados_exp[0] = botones_subir_filtrados_expected_prev[0];
+	end
+	if (
+		( botones_subir_filtrados_expected_prev[1] !== 1'bx ) && ( botones_subir_filtrados_prev[1] !== botones_subir_filtrados_expected_prev[1] )
+		&& ((botones_subir_filtrados_expected_prev[1] !== last_botones_subir_filtrados_exp[1]) ||
+			on_first_change[6])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port botones_subir_filtrados[1] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", botones_subir_filtrados_expected_prev);
+		$display ("     Real value = %b", botones_subir_filtrados_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[6] = 1'b0;
+		last_botones_subir_filtrados_exp[1] = botones_subir_filtrados_expected_prev[1];
+	end
+	if (
+		( botones_subir_filtrados_expected_prev[2] !== 1'bx ) && ( botones_subir_filtrados_prev[2] !== botones_subir_filtrados_expected_prev[2] )
+		&& ((botones_subir_filtrados_expected_prev[2] !== last_botones_subir_filtrados_exp[2]) ||
+			on_first_change[6])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port botones_subir_filtrados[2] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", botones_subir_filtrados_expected_prev);
+		$display ("     Real value = %b", botones_subir_filtrados_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[6] = 1'b0;
+		last_botones_subir_filtrados_exp[2] = botones_subir_filtrados_expected_prev[2];
+	end
+	if (
+		( botones_subir_filtrados_expected_prev[3] !== 1'bx ) && ( botones_subir_filtrados_prev[3] !== botones_subir_filtrados_expected_prev[3] )
+		&& ((botones_subir_filtrados_expected_prev[3] !== last_botones_subir_filtrados_exp[3]) ||
+			on_first_change[6])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port botones_subir_filtrados[3] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", botones_subir_filtrados_expected_prev);
+		$display ("     Real value = %b", botones_subir_filtrados_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[6] = 1'b0;
+		last_botones_subir_filtrados_exp[3] = botones_subir_filtrados_expected_prev[3];
+	end
+	if (
+		( botones_subir_filtrados_expected_prev[4] !== 1'bx ) && ( botones_subir_filtrados_prev[4] !== botones_subir_filtrados_expected_prev[4] )
+		&& ((botones_subir_filtrados_expected_prev[4] !== last_botones_subir_filtrados_exp[4]) ||
+			on_first_change[6])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port botones_subir_filtrados[4] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", botones_subir_filtrados_expected_prev);
+		$display ("     Real value = %b", botones_subir_filtrados_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[6] = 1'b0;
+		last_botones_subir_filtrados_exp[4] = botones_subir_filtrados_expected_prev[4];
+	end
+
+	trigger <= ~trigger;
+end
+initial 
+
+begin 
+$timeformat(-12,3," ps",6);
+#1000000;
+if (nummismatches > 0)
+	$display ("%d mismatched vectors : Simulation failed !",nummismatches);
+else
+	$display ("Simulation passed !");
+$finish;
+end 
+endmodule
+
+module botones_vlg_vec_tst();
+// constants                                           
+// general purpose registers
+reg boton_abrir;
+reg boton_cerrar;
+reg boton_notificar;
+reg [4:0] botones_bajar;
+reg [4:0] botones_cabina;
+reg [4:0] botones_subir;
+reg clk;
+reg reset;
+// wires                                               
+wire boton_abrir_filtrado;
+wire boton_cerrar_filtrado;
+wire boton_notificar_filtrado;
+wire [4:0] botones_bajar_filtrados;
+wire [4:0] botones_cabina_filtrados;
+wire [4:0] botones_subir_filtrados;
+
+wire sampler;                             
+
+// assign statements (if any)                          
+botones i1 (
+// port map - connection between master ports and signals/registers   
+	.boton_abrir(boton_abrir),
+	.boton_abrir_filtrado(boton_abrir_filtrado),
+	.boton_cerrar(boton_cerrar),
+	.boton_cerrar_filtrado(boton_cerrar_filtrado),
+	.boton_notificar(boton_notificar),
+	.boton_notificar_filtrado(boton_notificar_filtrado),
+	.botones_bajar(botones_bajar),
+	.botones_bajar_filtrados(botones_bajar_filtrados),
+	.botones_cabina(botones_cabina),
+	.botones_cabina_filtrados(botones_cabina_filtrados),
+	.botones_subir(botones_subir),
+	.botones_subir_filtrados(botones_subir_filtrados),
+	.clk(clk),
+	.reset(reset)
+);
+
+// boton_abrir
+initial
+begin
+	boton_abrir = 1'b0;
+	boton_abrir = #160000 1'b1;
+	boton_abrir = #60000 1'b0;
+end 
+
+// boton_cerrar
+initial
+begin
+	boton_cerrar = 1'b0;
+	boton_cerrar = #260000 1'b1;
+	boton_cerrar = #50000 1'b0;
+end 
+
+// boton_notificar
+initial
+begin
+	boton_notificar = 1'b0;
+	boton_notificar = #50000 1'b1;
+	boton_notificar = #80000 1'b0;
+end 
+// botones_bajar[ 4 ]
+initial
+begin
+	botones_bajar[4] = 1'b0;
+	botones_bajar[4] = #370000 1'b1;
+	botones_bajar[4] = #40000 1'b0;
+end 
+// botones_bajar[ 3 ]
+initial
+begin
+	botones_bajar[3] = 1'b0;
+	botones_bajar[3] = #480000 1'b1;
+	botones_bajar[3] = #40000 1'b0;
+end 
+// botones_bajar[ 2 ]
+initial
+begin
+	botones_bajar[2] = 1'b0;
+	botones_bajar[2] = #560000 1'b1;
+	botones_bajar[2] = #50000 1'b0;
+end 
+// botones_bajar[ 1 ]
+initial
+begin
+	botones_bajar[1] = 1'b0;
+	botones_bajar[1] = #680000 1'b1;
+	botones_bajar[1] = #50000 1'b0;
+end 
+// botones_bajar[ 0 ]
+initial
+begin
+	botones_bajar[0] = 1'b0;
+	botones_bajar[0] = #810000 1'b1;
+	botones_bajar[0] = #100000 1'b0;
+end 
+// botones_cabina[ 4 ]
+initial
+begin
+	botones_cabina[4] = 1'b0;
+end 
+// botones_cabina[ 3 ]
+initial
+begin
+	botones_cabina[3] = 1'b0;
+end 
+// botones_cabina[ 2 ]
+initial
+begin
+	botones_cabina[2] = 1'b0;
+end 
+// botones_cabina[ 1 ]
+initial
+begin
+	botones_cabina[1] = 1'b0;
+end 
+// botones_cabina[ 0 ]
+initial
+begin
+	botones_cabina[0] = 1'b0;
+end 
+// botones_subir[ 4 ]
+initial
+begin
+	botones_subir[4] = 1'b0;
+end 
+// botones_subir[ 3 ]
+initial
+begin
+	botones_subir[3] = 1'b0;
+end 
+// botones_subir[ 2 ]
+initial
+begin
+	botones_subir[2] = 1'b0;
+end 
+// botones_subir[ 1 ]
+initial
+begin
+	botones_subir[1] = 1'b0;
+end 
+// botones_subir[ 0 ]
+initial
+begin
+	botones_subir[0] = 1'b0;
+end 
+
+// clk
+always
+begin
+	clk = 1'b0;
+	clk = #10000 1'b1;
+	#10000;
+end 
+
+// reset
+initial
+begin
+	reset = 1'b0;
+end 
+
+botones_vlg_sample_tst tb_sample (
+	.boton_abrir(boton_abrir),
+	.boton_cerrar(boton_cerrar),
+	.boton_notificar(boton_notificar),
+	.botones_bajar(botones_bajar),
+	.botones_cabina(botones_cabina),
+	.botones_subir(botones_subir),
+	.clk(clk),
+	.reset(reset),
+	.sampler_tx(sampler)
+);
+
+botones_vlg_check_tst tb_out(
+	.boton_abrir_filtrado(boton_abrir_filtrado),
+	.boton_cerrar_filtrado(boton_cerrar_filtrado),
+	.boton_notificar_filtrado(boton_notificar_filtrado),
+	.botones_bajar_filtrados(botones_bajar_filtrados),
+	.botones_cabina_filtrados(botones_cabina_filtrados),
+	.botones_subir_filtrados(botones_subir_filtrados),
+	.sampler_rx(sampler)
+);
+endmodule
+

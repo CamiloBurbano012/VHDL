@@ -1,0 +1,824 @@
+$comment
+	File created using the following command:
+		vcd file control.msim.vcd -direction
+$end
+$date
+	Thu May 08 15:36:01 2025
+$end
+$version
+	ModelSim Version 10.1d
+$end
+$timescale
+	1ps
+$end
+$scope module control_vlg_vec_tst $end
+$var reg 1 ! boton_abrir $end
+$var reg 1 " boton_cerrar $end
+$var reg 1 # boton_notificar $end
+$var reg 5 $ botones_bajar [4:0] $end
+$var reg 5 % botones_cabina [4:0] $end
+$var reg 5 & botones_subir [4:0] $end
+$var reg 1 ' clk $end
+$var reg 1 ( fin_timer $end
+$var reg 5 ) people_count [4:0] $end
+$var reg 1 * power_fail $end
+$var reg 1 + reset $end
+$var wire 1 , abrir_puerta $end
+$var wire 1 - alarma_sonora $end
+$var wire 1 . alarma_visual $end
+$var wire 1 / cerrar_puerta $end
+$var wire 1 0 luz_interior $end
+$var wire 1 1 mover_bajar $end
+$var wire 1 2 mover_subir $end
+$var wire 1 3 piso_actual [2] $end
+$var wire 1 4 piso_actual [1] $end
+$var wire 1 5 piso_actual [0] $end
+$var wire 1 6 sampler $end
+$scope module i1 $end
+$var wire 1 7 gnd $end
+$var wire 1 8 vcc $end
+$var wire 1 9 unknown $end
+$var tri1 1 : devclrn $end
+$var tri1 1 ; devpor $end
+$var tri1 1 < devoe $end
+$var wire 1 = boton_abrir~input_o $end
+$var wire 1 > boton_cerrar~input_o $end
+$var wire 1 ? boton_notificar~input_o $end
+$var wire 1 @ abrir_puerta~output_o $end
+$var wire 1 A cerrar_puerta~output_o $end
+$var wire 1 B alarma_sonora~output_o $end
+$var wire 1 C alarma_visual~output_o $end
+$var wire 1 D luz_interior~output_o $end
+$var wire 1 E mover_subir~output_o $end
+$var wire 1 F mover_bajar~output_o $end
+$var wire 1 G piso_actual[0]~output_o $end
+$var wire 1 H piso_actual[1]~output_o $end
+$var wire 1 I piso_actual[2]~output_o $end
+$var wire 1 J power_fail~input_o $end
+$var wire 1 K people_count[3]~input_o $end
+$var wire 1 L people_count[2]~input_o $end
+$var wire 1 M people_count[1]~input_o $end
+$var wire 1 N people_count[0]~input_o $end
+$var wire 1 O people_count[4]~input_o $end
+$var wire 1 P LessThan10~0_combout $end
+$var wire 1 Q Selector1~0_combout $end
+$var wire 1 R clk~input_o $end
+$var wire 1 S clk~inputclkctrl_outclk $end
+$var wire 1 T botones_subir[4]~input_o $end
+$var wire 1 U botones_bajar[4]~input_o $end
+$var wire 1 V botones_cabina[4]~input_o $end
+$var wire 1 W fin_timer~input_o $end
+$var wire 1 X botones_subir[3]~input_o $end
+$var wire 1 Y hay_solicitud_subir~0_combout $end
+$var wire 1 Z botones_cabina[3]~input_o $end
+$var wire 1 [ botones_cabina[2]~input_o $end
+$var wire 1 \ botones_cabina[0]~input_o $end
+$var wire 1 ] botones_cabina[1]~input_o $end
+$var wire 1 ^ Mux2~0_combout $end
+$var wire 1 _ Mux2~1_combout $end
+$var wire 1 ` botones_bajar[3]~input_o $end
+$var wire 1 a botones_bajar[1]~input_o $end
+$var wire 1 b botones_bajar[2]~input_o $end
+$var wire 1 c botones_bajar[0]~input_o $end
+$var wire 1 d Mux1~0_combout $end
+$var wire 1 e Mux1~1_combout $end
+$var wire 1 f botones_subir[2]~input_o $end
+$var wire 1 g botones_subir[1]~input_o $end
+$var wire 1 h botones_subir[0]~input_o $end
+$var wire 1 i Mux0~0_combout $end
+$var wire 1 j Mux0~1_combout $end
+$var wire 1 k process_2~1_combout $end
+$var wire 1 l Selector11~0_combout $end
+$var wire 1 m Selector7~0_combout $end
+$var wire 1 n Selector7~1_combout $end
+$var wire 1 o reset~input_o $end
+$var wire 1 p reset~inputclkctrl_outclk $end
+$var wire 1 q estado_actual.ALARMA_SOBRECARGA~q $end
+$var wire 1 r Selector2~5_combout $end
+$var wire 1 s LessThan1~0_combout $end
+$var wire 1 t hay_solicitud_bajar~0_combout $end
+$var wire 1 u hay_solicitud_bajar~1_combout $end
+$var wire 1 v hay_solicitud_bajar~2_combout $end
+$var wire 1 w hay_solicitud_bajar~3_combout $end
+$var wire 1 x Selector0~0_combout $end
+$var wire 1 y LessThan10~1_combout $end
+$var wire 1 z Selector10~3_combout $end
+$var wire 1 { Selector2~0_combout $end
+$var wire 1 | Selector2~1_combout $end
+$var wire 1 } Selector2~2_combout $end
+$var wire 1 ~ process_2~2_combout $end
+$var wire 1 !! process_2~3_combout $end
+$var wire 1 "! Selector8~0_combout $end
+$var wire 1 #! Selector8~1_combout $end
+$var wire 1 $! estado_actual.ALARMA_FALLA_ENERGIA~q $end
+$var wire 1 %! Selector0~1_combout $end
+$var wire 1 &! Selector0~2_combout $end
+$var wire 1 '! estado_actual.INACTIVO~q $end
+$var wire 1 (! Selector2~3_combout $end
+$var wire 1 )! Selector5~0_combout $end
+$var wire 1 *! estado_actual.MOVIENDO_SUBIENDO~q $end
+$var wire 1 +! process_1~2_combout $end
+$var wire 1 ,! nuevo_piso[1]~3_combout $end
+$var wire 1 -! hay_solicitud_subir~1_combout $end
+$var wire 1 .! hay_solicitud_subir~2_combout $end
+$var wire 1 /! s_mover_bajar~0_combout $end
+$var wire 1 0! Selector6~0_combout $end
+$var wire 1 1! Selector6~1_combout $end
+$var wire 1 2! estado_actual.MOVIENDO_BAJANDO~q $end
+$var wire 1 3! nuevo_piso[2]~2_combout $end
+$var wire 1 4! nuevo_piso[0]~4_combout $end
+$var wire 1 5! nuevo_piso[2]~0_combout $end
+$var wire 1 6! nuevo_piso[2]~1_combout $end
+$var wire 1 7! process_2~0_combout $end
+$var wire 1 8! Selector10~5_combout $end
+$var wire 1 9! Selector2~4_combout $end
+$var wire 1 :! estado_actual.ABRIENDO_PUERTA~q $end
+$var wire 1 ;! estado_actual.PUERTA_ABIERTA_ESPERA~q $end
+$var wire 1 <! estado_actual.CERRANDO_PUERTA~q $end
+$var wire 1 =! Selector1~2_combout $end
+$var wire 1 >! Selector1~1_combout $end
+$var wire 1 ?! Selector1~3_combout $end
+$var wire 1 @! estado_actual.VERIFICANDO_SOLICITUDES~q $end
+$var wire 1 A! Selector10~2_combout $end
+$var wire 1 B! Selector10~4_combout $end
+$var wire 1 C! s_alarma_sonora~0_combout $end
+$var wire 1 D! Selector13~0_combout $end
+$var wire 1 E! Selector11~1_combout $end
+$var wire 1 F! Selector12~0_combout $end
+$var wire 1 G! nuevo_piso [2] $end
+$var wire 1 H! nuevo_piso [1] $end
+$var wire 1 I! nuevo_piso [0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0!
+0"
+0#
+b0 $
+b0 %
+b0 &
+0'
+0(
+b0 )
+0*
+0+
+0,
+0-
+0.
+0/
+00
+01
+02
+05
+04
+03
+x6
+07
+18
+x9
+1:
+1;
+1<
+0=
+0>
+0?
+0@
+0A
+0B
+0C
+0D
+0E
+0F
+0G
+0H
+0I
+0J
+0K
+0L
+0M
+0N
+0O
+0P
+1Q
+0R
+0S
+0T
+0U
+0V
+0W
+0X
+0Y
+0Z
+0[
+0\
+0]
+0^
+0_
+0`
+0a
+0b
+0c
+0d
+0e
+0f
+0g
+0h
+0i
+0j
+0k
+0l
+1m
+0n
+0o
+0p
+0q
+0r
+0s
+0t
+0u
+0v
+0w
+0x
+0y
+1z
+0{
+0|
+0}
+0~
+0!!
+0"!
+0#!
+0$!
+1%!
+0&!
+0'!
+0(!
+0)!
+0*!
+0+!
+0,!
+0-!
+0.!
+0/!
+00!
+01!
+02!
+03!
+04!
+05!
+06!
+07!
+08!
+09!
+0:!
+0;!
+0<!
+1=!
+0>!
+0?!
+0@!
+0A!
+0B!
+1C!
+0D!
+0E!
+0F!
+0I!
+0H!
+0G!
+$end
+#15000
+1'
+1R
+1S
+06
+#30000
+0'
+0R
+0S
+16
+#40000
+1!
+1=
+06
+#45000
+1'
+1R
+1S
+16
+#60000
+0!
+0'
+0=
+0R
+0S
+06
+#75000
+1'
+1R
+1S
+16
+#80000
+1"
+1>
+06
+#90000
+0'
+0R
+0S
+16
+#100000
+0"
+0>
+06
+#105000
+1'
+1R
+1S
+16
+#120000
+1#
+0'
+1?
+0R
+0S
+06
+#135000
+1'
+1R
+1S
+16
+#140000
+0#
+0?
+06
+#150000
+0'
+0R
+0S
+16
+#165000
+1'
+1R
+1S
+06
+#180000
+b10000 $
+0'
+1U
+0R
+0S
+16
+#195000
+1'
+1R
+1S
+06
+#210000
+b0 $
+0'
+0U
+0R
+0S
+16
+#225000
+1'
+1R
+1S
+06
+#240000
+0'
+0R
+0S
+16
+#255000
+1'
+1R
+1S
+06
+#260000
+b1000 $
+1`
+16
+#270000
+0'
+0R
+0S
+06
+#285000
+1'
+1R
+1S
+16
+#300000
+b0 $
+0'
+0`
+0R
+0S
+06
+#315000
+1'
+1R
+1S
+16
+#320000
+b100 $
+1b
+06
+#330000
+0'
+0R
+0S
+16
+#345000
+1'
+1R
+1S
+06
+#350000
+b0 $
+0b
+16
+#360000
+0'
+0R
+0S
+06
+#370000
+b10 $
+1a
+16
+1u
+#375000
+1'
+1R
+1S
+06
+#390000
+0'
+0R
+0S
+16
+#400000
+b0 $
+0a
+06
+0u
+#405000
+1'
+1R
+1S
+16
+#420000
+0'
+0R
+0S
+06
+#435000
+1'
+1R
+1S
+16
+#440000
+b1 $
+1c
+06
+1d
+1e
+1k
+1/!
+#450000
+0'
+0R
+0S
+16
+#465000
+1'
+1R
+1S
+06
+#470000
+b0 $
+0c
+16
+0d
+0e
+0k
+0/!
+#480000
+0'
+0R
+0S
+06
+#490000
+b1 %
+1\
+16
+1~
+1^
+1!!
+1_
+1>!
+1(!
+0%!
+1k
+1?!
+1&!
+1/!
+#495000
+1'
+1R
+1S
+06
+1@!
+1'!
+1A!
+18!
+0(!
+0>!
+1D
+10
+19!
+0?!
+1B!
+1@
+1,
+#510000
+0'
+0R
+0S
+16
+#525000
+1'
+1R
+1S
+06
+0@!
+1:!
+0A!
+08!
+0m
+0z
+#530000
+b0 %
+0\
+16
+0~
+0^
+0!!
+0_
+0k
+0/!
+#540000
+0'
+0R
+0S
+06
+#555000
+1'
+1R
+1S
+16
+#560000
+b10 %
+1]
+06
+1~
+1!!
+#570000
+0'
+0R
+0S
+16
+#585000
+1'
+1R
+1S
+06
+#590000
+b0 %
+0]
+16
+0~
+0!!
+#600000
+0'
+0R
+0S
+06
+#610000
+b100 %
+1[
+16
+1~
+1!!
+#615000
+1'
+1R
+1S
+06
+#630000
+0'
+0R
+0S
+16
+#640000
+b0 %
+0[
+06
+0~
+0!!
+#645000
+1'
+1R
+1S
+16
+#660000
+b1000 %
+0'
+1Z
+0R
+0S
+06
+1~
+1!!
+#675000
+1'
+1R
+1S
+16
+#680000
+b0 %
+0Z
+06
+0~
+0!!
+#690000
+0'
+0R
+0S
+16
+#705000
+1'
+1R
+1S
+06
+#710000
+b10000 %
+1V
+16
+1!!
+#720000
+0'
+0R
+0S
+06
+#735000
+1'
+1R
+1S
+16
+#750000
+0'
+0R
+0S
+06
+#760000
+b0 %
+0V
+16
+0!!
+#765000
+1'
+1R
+1S
+06
+#780000
+0'
+0R
+0S
+16
+#790000
+b10000 &
+1T
+06
+1Y
+1.!
+1/!
+1!!
+#795000
+1'
+1R
+1S
+16
+#810000
+0'
+0R
+0S
+06
+#825000
+1'
+1R
+1S
+16
+#830000
+b0 &
+0T
+06
+0Y
+0.!
+0/!
+0!!
+#840000
+b1000 &
+0'
+1X
+0R
+0S
+16
+1-!
+1Y
+1.!
+1/!
+1!!
+#855000
+1'
+1R
+1S
+06
+#870000
+0'
+0R
+0S
+16
+#880000
+b1100 &
+b100 &
+1f
+0X
+06
+0Y
+#885000
+1'
+1R
+1S
+16
+#900000
+0'
+0R
+0S
+06
+#915000
+1'
+1R
+1S
+16
+#930000
+b110 &
+b10 &
+0'
+1g
+0f
+0R
+0S
+06
+#945000
+1'
+1R
+1S
+16
+#960000
+0'
+0R
+0S
+06
+#970000
+b0 &
+0g
+16
+0-!
+0.!
+0/!
+0!!
+#975000
+1'
+1R
+1S
+06
+#980000
+b1 &
+1h
+16
+1i
+1j
+1k
+1/!
+#990000
+0'
+0R
+0S
+06
+#1000000

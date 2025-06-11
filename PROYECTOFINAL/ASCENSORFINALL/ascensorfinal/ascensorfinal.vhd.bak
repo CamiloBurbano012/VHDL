@@ -1,0 +1,417 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+
+entity ascensor is
+    Port (
+        clk          : in  STD_LOGIC;
+        reset        : in  STD_LOGIC;
+
+        -- Entradas botones piso y cabina
+        btn_subir    : in  STD_LOGIC_VECTOR(4 downto 0);
+        btn_bajar    : in  STD_LOGIC_VECTOR(4 downto 0);
+        btn_interno  : in  STD_LOGIC_VECTOR(4 downto 0);
+
+        -- Entradas sensores
+        ir_sensors    : in  STD_LOGIC_VECTOR(4 downto 0);  -- Sensores IR
+        energia_ok    : in  STD_LOGIC;  -- '1' energía ok, '0' falla
+
+        -- Botones de abrir y cerrar puerta dentro del ascensor
+        abrir_puerta  : in  STD_LOGIC;
+        cerrar_puerta : in  STD_LOGIC;
+
+        -- Salidas
+        alarma_son    : out STD_LOGIC;
+        alarma_vis    : out STD_LOGIC;
+        luces         : out STD_LOGIC;
+        piso_muestra  : out STD_LOGIC_VECTOR(2 downto 0);
+
+        pwm_ascensor  : out STD_LOGIC;
+        pwm_puerta    : out STD_LOGIC
+    );
+end ascensor;
+
+architecture Behavioral of ascensor is
+
+    -- Definición de estados
+    type state_type is (INACTIVO, LLAMADO, ABRIENDO, PUERTA_ABIERTA, CERRANDO, MOVIENDO, ALARMA);
+    signal estado, estado_sig : state_type;
+
+    -- Variables internas
+    signal piso_actual  : integer range 0 to 4 := 0;
+    signal piso_destino : integer range 0 to 4 := 0;
+    signal puerta_cmd   : STD_LOGIC := '0';
+
+    -- Señales para interconectar módulos
+    signal llamadas_piso: STD_LOGIC_VECTOR(4 downto 0);
+    signal llamadas_interno: STD_LOGIC_VECTOR(4 downto 0);
+    signal personas_ok : STD_LOGIC;
+
+    -- Temporizadores
+    signal timer_puerta   : STD_LOGIC;
+    signal timer_espera   : STD_LOGIC;
+
+    signal pwm_asc : STD_LOGIC;
+    signal pwm_pu  : STD_LOGIC;
+
+    signal piso_disp : STD_LOGIC_VECTOR(2 downto 0);
+
+    -- Memoria señales
+    signal mem_we   : STD_LOGIC := '0';
+    signal mem_addr : STD_LOGIC_VECTOR(2 downto 0);
+    signal mem_din  : STD_LOGIC;
+    signal mem_dout : STD_LOGIC;
+
+    -- Componentes
+    component sensor is
+        Port (
+            clk         : in STD_LOGIC;      
+            reset       : in STD_LOGIC;      
+            ir_sensors  : in STD_LOGIC_VECTOR(4 downto 0);  
+            piso_actual : out STD_LOGIC_VECTOR(2 downto 0); 
+            error       : out STD_LOGIC      
+        );
+    end component;
+
+    component alarmas is
+        Port(
+            clk             : in std_logic;
+            reset           : in std_logic;
+            puerta_abriendo : in std_logic;
+            puerta_cerrando : in std_logic;
+            sobrecarga      : in std_logic;  
+            fallo_energia   : in std_logic; 
+            alarma_sonora   : out std_logic;
+            alarma_visual   : out std_logic
+        );
+    end component;
+
+    component botones is
+        Port (
+            clk             : in  std_logic;
+            reset           : in  std_logic;
+            botones_subir   : in  std_logic_vector(4 downto 0);
+            botones_bajar   : in  std_logic_vector(4 downto 0);
+            botones_cabina  : in  std_logic_vector(4 downto 0);
+            subir_filtrado  : out std_logic_vector(4 downto 0);
+            bajar_filtrado  : out std_logic_vector(4 downto 0);
+            cabina_filtrado : out std_logic_vector(4 downto 0)
+        );
+    end component;
+
+    component control is
+        Port (
+            clk              : in  std_logic;
+            reset            : in  std_logic;
+            botones_subir    : in  std_logic_vector(4 downto 0);
+            botones_bajar    : in  std_logic_vector(4 downto 0);
+            botones_cabina   : in  std_logic_vector(4 downto 0);
+            boton_abrir      : in  std_logic;
+            boton_cerrar     : in  std_logic;
+            personas_actuales: in  integer range 0 to 10;  
+            fallo_energia    : in  std_logic;
+            timer_puerta     : in  std_logic;  
+            timer_piso       : in  std_logic;  
+            cmd_abrir_puerta : out std_logic;
+            cmd_cerrar_puerta: out std_logic;
+            alarma_sonora    : out std_logic;
+            alarma_visual    : out std_logic;
+            luces_cabina     : out std_logic;
+            motor_subir      : out std_logic;
+            motor_bajar      : out std_logic;
+            piso_actual      : out integer range 0 to 4
+        );
+    end component;
+
+    component Display is
+        Port (
+            piso    : in  INTEGER range 0 to 4;
+            display : out STD_LOGIC_VECTOR(6 downto 0)  -- a to g
+        );
+    end component;
+
+    component luces is
+        Port (
+            clk             : in  STD_LOGIC;
+            reset           : in  STD_LOGIC;  
+            estado_ascensor : in  STD_LOGIC_VECTOR(2 downto 0);  
+            modo_ahorro     : in  STD_LOGIC;  
+            luz_cabina      : out STD_LOGIC;  
+            luz_emergencia  : out STD_LOGIC   
+        );
+    end component;
+
+    component memoria is
+        Port (
+            clk      : in  STD_LOGIC;
+            reset    : in  STD_LOGIC;  
+            we       : in  STD_LOGIC;  
+            addr     : in  STD_LOGIC_VECTOR(2 downto 0);  
+            data_in  : in  STD_LOGIC_VECTOR(0 downto 0);  
+            data_out : out STD_LOGIC_VECTOR(0 downto 0)   
+        );
+    end component;
+
+    component motores is
+        Port (
+            clk          : in  STD_LOGIC;
+            reset        : in  STD_LOGIC;
+            piso_actual  : in  STD_LOGIC_VECTOR(2 downto 0);  
+            piso_destino : in  STD_LOGIC_VECTOR(2 downto 0);  
+            puerta_cmd   : in  STD_LOGIC;  
+            mover        : in  STD_LOGIC;  
+            pwm_ascensor : out STD_LOGIC;
+            pwm_puerta   : out STD_LOGIC;
+            motor_arriba : out STD_LOGIC;  
+            motor_abajo  : out STD_LOGIC   
+        );
+    end component;
+
+    component personas is
+        Port (
+            clk                : in  STD_LOGIC;
+            rst                : in  STD_LOGIC;
+            personas_entraron  : in  INTEGER range 0 to 10;
+            personas_salieron  : in  INTEGER range 0 to 10;
+            sobrepeso          : out STD_LOGIC;
+            personas_actuales  : out INTEGER range 0 to 10  
+        );
+    end component;
+
+    component puerta is
+        Port (
+            clk           : in  std_logic;
+            reset         : in  std_logic;
+            abrir         : in  std_logic;
+            cerrar        : in  std_logic;
+            fallo_energia : in  std_logic;
+            sobrecarga    : in  std_logic;
+            sensor_obst   : in  std_logic;
+            puerta_abierta: out std_logic;
+            alarma_sonora : out std_logic;
+            alarma_visual : out std_logic
+        );
+    end component;
+
+    component Timer is
+        Port (
+            clk      : in  STD_LOGIC;
+            rst      : in  STD_LOGIC;
+            start    : in  STD_LOGIC;
+            duracion : in  INTEGER range 0 to 500000000; 
+            done     : out STD_LOGIC
+        );
+    end component;
+
+begin
+
+    -- Instancias de componentes
+    sensor_inst : sensor
+        Port map (
+            clk => clk,
+            reset => reset,
+            ir_sensors => ir_sensors,
+            piso_actual => piso_disp,
+            error => open  -- Conectar según necesidad
+        );
+
+    alarmas_inst : alarmas
+        Port map (
+            clk => clk,
+            reset => reset,
+            puerta_abriendo => (estado = ABRIENDO),
+            puerta_cerrando => (estado = CERRANDO),
+            sobrecarga => personas_ok,  -- Conectar según necesidad
+            fallo_energia => energia_ok,
+            alarma_sonora => alarma_son,
+            alarma_visual => alarma_vis
+        );
+
+    botones_inst : botones
+        Port map (
+            clk => clk,
+            reset => reset,
+            botones_subir => btn_subir,
+            botones_bajar => btn_bajar,
+            botones_cabina => btn_interno,
+            subir_filtrado => llamadas_piso,
+            bajar_filtrado => open,  -- Conectar según necesidad
+            cabina_filtrado => open   -- Conectar según necesidad
+        );
+
+    control_inst : control
+        Port map (
+            clk => clk,
+            reset => reset,
+            botones_subir => llamadas_piso,
+            botones_bajar => open,  -- Conectar según necesidad
+            botones_cabina => open,  -- Conectar según necesidad
+            boton_abrir => abrir_puerta,
+            boton_cerrar => cerrar_puerta,
+            personas_actuales => personas_ok,  -- Conectar según necesidad
+            fallo_energia => energia_ok,
+            timer_puerta => timer_puerta,
+            timer_piso => timer_espera,
+            cmd_abrir_puerta => open,  -- Conectar según necesidad
+            cmd_cerrar_puerta => open,  -- Conectar según necesidad
+            alarma_sonora => alarma_son,
+            alarma_visual => alarma_vis,
+            luces_cabina => open,  -- Conectar según necesidad
+            motor_subir => open,  -- Conectar según necesidad
+            motor_bajar => open,  -- Conectar según necesidad
+            piso_actual => piso_actual
+        );
+
+    display_inst : Display
+        Port map (
+            piso => piso_actual,
+            display => piso_muestra
+        );
+
+    luces_inst : luces
+        Port map (
+            clk => clk,
+            reset => reset,
+            estado_ascensor => std_logic_vector(to_unsigned(estado, 3)),  -- Convertir estado a vector
+            modo_ahorro => '0',  -- Conectar según necesidad
+            luz_cabina => luces,
+            luz_emergencia => open  -- Conectar según necesidad
+        );
+
+    memoria_inst : memoria
+        Port map (
+            clk => clk,
+            reset => reset,
+            we => mem_we,
+            addr => mem_addr,
+            data_in => mem_din,
+            data_out => mem_dout
+        );
+
+    motores_inst : motores
+        Port map (
+            clk => clk,
+            reset => reset,
+            piso_actual => std_logic_vector(to_unsigned(piso_actual, 3)),
+            piso_destino => std_logic_vector(to_unsigned(piso_destino, 3)),
+            puerta_cmd => puerta_cmd,
+            mover => '1',  -- Conectar según necesidad
+            pwm_ascensor => pwm_asc,
+            pwm_puerta => pwm_pu,
+            motor_arriba => open,  -- Conectar según necesidad
+            motor_abajo => open  -- Conectar según necesidad
+        );
+
+    personas_inst : personas
+        Port map (
+            clk => clk,
+            rst => reset,
+            personas_entraron => open,  -- Conectar según necesidad
+            personas_salieron => open,  -- Conectar según necesidad
+            sobrepeso => personas_ok,
+            personas_actuales => open  -- Conectar según necesidad
+        );
+
+    puerta_inst : puerta
+        Port map (
+            clk => clk,
+            reset => reset,
+            abrir => abrir_puerta,
+            cerrar => cerrar_puerta,
+            fallo_energia => energia_ok,
+            sobrecarga => personas_ok,
+            sensor_obst => open,  -- Conectar según necesidad
+            puerta_abierta => open,  -- Conectar según necesidad
+            alarma_sonora => alarma_son,
+            alarma_visual => alarma_vis
+        );
+
+    timer_inst : Timer
+        Port map (
+            clk => clk,
+            rst => reset,
+            start => '0',  -- Conectar según necesidad
+            duracion => 500000000,  -- Duración máxima
+            done => timer_espera
+        );
+
+    -- Máquina de estados principal
+    process(clk, reset)
+    begin
+        if reset = '1' then
+            estado <= INACTIVO;
+            piso_actual <= 0;
+            piso_destino <= 0;
+            puerta_cmd <= '0';
+        elsif rising_edge(clk) then
+            estado <= estado_sig;
+
+            case estado is
+                when INACTIVO =>
+                    puerta_cmd <= '0';
+                    if energia_ok = '0' or personas_ok = '0' then
+                        estado_sig <= ALARMA;
+                    elsif (llamadas_piso /= "00000") or (llamadas_interno /= "00000") then
+                        for i in 0 to 4 loop
+                            if llamadas_piso(i) = '1' or llamadas_interno(i) = '1' then
+                                piso_destino <= i;
+                                exit;
+                            end if;
+                        end loop;
+                        estado_sig <= LLAMADO;
+                    else
+                        estado_sig <= INACTIVO;
+                    end if;
+
+                when LLAMADO =>
+                    if piso_actual = piso_destino then
+                        estado_sig <= ABRIENDO;
+                    else
+                        estado_sig <= MOVIENDO;
+                    end if;
+
+                when MOVIENDO =>
+                    piso_actual <= piso_destino; -- Aquí ideal controlar que llegue realmente
+                    estado_sig <= ABRIENDO;
+
+                when ABRIENDO =>
+                    puerta_cmd <= '1';
+                    if timer_puerta = '1' then
+                        estado_sig <= PUERTA_ABIERTA;
+                    else
+                        estado_sig <= ABRIENDO;
+                    end if;
+
+                when PUERTA_ABIERTA =>
+                    puerta_cmd <= '1';
+                    if timer_espera = '1' or cerrar_puerta = '1' then
+                        estado_sig <= CERRANDO;
+                    else
+                        estado_sig <= PUERTA_ABIERTA;
+                    end if;
+
+                when CERRANDO =>
+                    puerta_cmd <= '0';
+                    if timer_puerta = '1' then
+                        estado_sig <= INACTIVO;
+                    else
+                        estado_sig <= CERRANDO;
+                    end if;
+
+                when ALARMA =>
+                    puerta_cmd <= '0';
+                    if energia_ok = '1' and personas_ok = '1' then
+                        estado_sig <= INACTIVO;
+                    else
+                        estado_sig <= ALARMA;
+                    end if;
+
+                when others =>
+                    estado_sig <= INACTIVO;
+            end case;
+        end if;
+    end process;
+
+    piso_muestra <= piso_disp;
+
+end Behavioral;

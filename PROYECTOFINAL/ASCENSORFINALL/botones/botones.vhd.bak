@@ -1,0 +1,34 @@
+-- Simplificado: cada botón activa una solicitud hasta ser atendida
+
+entity botones is
+    Port (
+        clk          : in  STD_LOGIC;
+        rst          : in  STD_LOGIC;
+        boton_piso   : in  STD_LOGIC_VECTOR(4 downto 0);
+        piso_actual  : in  INTEGER range 0 to 4;
+
+        solicitudes  : out STD_LOGIC_VECTOR(4 downto 0)
+    );
+end botones;
+
+architecture Behavioral of botones is
+    signal buffer : STD_LOGIC_VECTOR(4 downto 0) := (others => '0');
+begin
+    process(clk, rst)
+    begin
+        if rst = '1' then
+            buffer <= (others => '0');
+        elsif rising_edge(clk) then
+            for i in 0 to 4 loop
+                if boton_piso(i) = '1' then
+                    buffer(i) <= '1';
+                end if;
+            end loop;
+
+            -- Se limpia si el ascensor llega al piso
+            buffer(piso_actual) <= '0';
+        end if;
+    end process;
+
+    solicitudes <= buffer;
+end Behavioral;

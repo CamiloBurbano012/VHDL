@@ -1,0 +1,275 @@
+// Copyright (C) 1991-2013 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// VENDOR "Altera"
+// PROGRAM "Quartus II 64-Bit"
+// VERSION "Version 13.1.0 Build 162 10/23/2013 SJ Web Edition"
+
+// DATE "06/08/2025 17:41:53"
+
+// 
+// Device: Altera EP3C16F484C6 Package FBGA484
+// 
+
+// 
+// This Verilog file should be used for ModelSim-Altera (Verilog) only
+// 
+
+`timescale 1 ps/ 1 ps
+
+module alarmas (
+	clk,
+	reset,
+	puerta_abriendo,
+	puerta_cerrando,
+	sobrecarga,
+	fallo_energia,
+	alarma_sonora,
+	alarma_visual);
+input 	clk;
+input 	reset;
+input 	puerta_abriendo;
+input 	puerta_cerrando;
+input 	sobrecarga;
+input 	fallo_energia;
+output 	alarma_sonora;
+output 	alarma_visual;
+
+// Design Ports Information
+// alarma_sonora	=>  Location: PIN_R12,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// alarma_visual	=>  Location: PIN_P7,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// puerta_abriendo	=>  Location: PIN_T5,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// puerta_cerrando	=>  Location: PIN_P8,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// sobrecarga	=>  Location: PIN_U8,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// fallo_energia	=>  Location: PIN_R11,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// clk	=>  Location: PIN_G2,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// reset	=>  Location: PIN_G1,	 I/O Standard: 2.5 V,	 Current Strength: Default
+
+
+wire gnd;
+wire vcc;
+wire unknown;
+
+assign gnd = 1'b0;
+assign vcc = 1'b1;
+assign unknown = 1'bx;
+
+tri1 devclrn;
+tri1 devpor;
+tri1 devoe;
+wire \alarma_sonora~output_o ;
+wire \alarma_visual~output_o ;
+wire \clk~input_o ;
+wire \clk~inputclkctrl_outclk ;
+wire \sobrecarga~input_o ;
+wire \puerta_cerrando~input_o ;
+wire \puerta_abriendo~input_o ;
+wire \fallo_energia~input_o ;
+wire \alarma_sonora~0_combout ;
+wire \reset~input_o ;
+wire \reset~inputclkctrl_outclk ;
+wire \alarma_sonora~reg0_q ;
+wire \alarma_visual~0_combout ;
+wire \alarma_visual~reg0_q ;
+
+
+// Location: IOOBUF_X5_Y0_N30
+cycloneiii_io_obuf \alarma_sonora~output (
+	.i(\alarma_sonora~reg0_q ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\alarma_sonora~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \alarma_sonora~output .bus_hold = "false";
+defparam \alarma_sonora~output .open_drain_output = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X0_Y5_N2
+cycloneiii_io_obuf \alarma_visual~output (
+	.i(\alarma_visual~reg0_q ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\alarma_visual~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \alarma_visual~output .bus_hold = "false";
+defparam \alarma_visual~output .open_drain_output = "false";
+// synopsys translate_on
+
+// Location: IOIBUF_X0_Y14_N1
+cycloneiii_io_ibuf \clk~input (
+	.i(clk),
+	.ibar(gnd),
+	.o(\clk~input_o ));
+// synopsys translate_off
+defparam \clk~input .bus_hold = "false";
+defparam \clk~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: CLKCTRL_G4
+cycloneiii_clkctrl \clk~inputclkctrl (
+	.ena(vcc),
+	.inclk({vcc,vcc,vcc,\clk~input_o }),
+	.clkselect(2'b00),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.outclk(\clk~inputclkctrl_outclk ));
+// synopsys translate_off
+defparam \clk~inputclkctrl .clock_type = "global clock";
+defparam \clk~inputclkctrl .ena_register_mode = "none";
+// synopsys translate_on
+
+// Location: IOIBUF_X3_Y0_N15
+cycloneiii_io_ibuf \sobrecarga~input (
+	.i(sobrecarga),
+	.ibar(gnd),
+	.o(\sobrecarga~input_o ));
+// synopsys translate_off
+defparam \sobrecarga~input .bus_hold = "false";
+defparam \sobrecarga~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X0_Y2_N15
+cycloneiii_io_ibuf \puerta_cerrando~input (
+	.i(puerta_cerrando),
+	.ibar(gnd),
+	.o(\puerta_cerrando~input_o ));
+// synopsys translate_off
+defparam \puerta_cerrando~input .bus_hold = "false";
+defparam \puerta_cerrando~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X0_Y3_N1
+cycloneiii_io_ibuf \puerta_abriendo~input (
+	.i(puerta_abriendo),
+	.ibar(gnd),
+	.o(\puerta_abriendo~input_o ));
+// synopsys translate_off
+defparam \puerta_abriendo~input .bus_hold = "false";
+defparam \puerta_abriendo~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X3_Y0_N1
+cycloneiii_io_ibuf \fallo_energia~input (
+	.i(fallo_energia),
+	.ibar(gnd),
+	.o(\fallo_energia~input_o ));
+// synopsys translate_off
+defparam \fallo_energia~input .bus_hold = "false";
+defparam \fallo_energia~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: LCCOMB_X3_Y2_N0
+cycloneiii_lcell_comb \alarma_sonora~0 (
+// Equation(s):
+// \alarma_sonora~0_combout  = (\sobrecarga~input_o ) # ((\puerta_cerrando~input_o ) # ((\puerta_abriendo~input_o ) # (\fallo_energia~input_o )))
+
+	.dataa(\sobrecarga~input_o ),
+	.datab(\puerta_cerrando~input_o ),
+	.datac(\puerta_abriendo~input_o ),
+	.datad(\fallo_energia~input_o ),
+	.cin(gnd),
+	.combout(\alarma_sonora~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \alarma_sonora~0 .lut_mask = 16'hFFFE;
+defparam \alarma_sonora~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: IOIBUF_X0_Y14_N8
+cycloneiii_io_ibuf \reset~input (
+	.i(reset),
+	.ibar(gnd),
+	.o(\reset~input_o ));
+// synopsys translate_off
+defparam \reset~input .bus_hold = "false";
+defparam \reset~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: CLKCTRL_G2
+cycloneiii_clkctrl \reset~inputclkctrl (
+	.ena(vcc),
+	.inclk({vcc,vcc,vcc,\reset~input_o }),
+	.clkselect(2'b00),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.outclk(\reset~inputclkctrl_outclk ));
+// synopsys translate_off
+defparam \reset~inputclkctrl .clock_type = "global clock";
+defparam \reset~inputclkctrl .ena_register_mode = "none";
+// synopsys translate_on
+
+// Location: FF_X3_Y2_N1
+dffeas \alarma_sonora~reg0 (
+	.clk(\clk~inputclkctrl_outclk ),
+	.d(\alarma_sonora~0_combout ),
+	.asdata(vcc),
+	.clrn(!\reset~inputclkctrl_outclk ),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\alarma_sonora~reg0_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \alarma_sonora~reg0 .is_wysiwyg = "true";
+defparam \alarma_sonora~reg0 .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X3_Y2_N26
+cycloneiii_lcell_comb \alarma_visual~0 (
+// Equation(s):
+// \alarma_visual~0_combout  = (\fallo_energia~input_o ) # ((!\sobrecarga~input_o  & ((\puerta_cerrando~input_o ) # (\puerta_abriendo~input_o ))))
+
+	.dataa(\sobrecarga~input_o ),
+	.datab(\puerta_cerrando~input_o ),
+	.datac(\puerta_abriendo~input_o ),
+	.datad(\fallo_energia~input_o ),
+	.cin(gnd),
+	.combout(\alarma_visual~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \alarma_visual~0 .lut_mask = 16'hFF54;
+defparam \alarma_visual~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X3_Y2_N27
+dffeas \alarma_visual~reg0 (
+	.clk(\clk~inputclkctrl_outclk ),
+	.d(\alarma_visual~0_combout ),
+	.asdata(vcc),
+	.clrn(!\reset~inputclkctrl_outclk ),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\alarma_visual~reg0_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \alarma_visual~reg0 .is_wysiwyg = "true";
+defparam \alarma_visual~reg0 .power_up = "low";
+// synopsys translate_on
+
+assign alarma_sonora = \alarma_sonora~output_o ;
+
+assign alarma_visual = \alarma_visual~output_o ;
+
+endmodule

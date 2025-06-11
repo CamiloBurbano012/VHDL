@@ -1,0 +1,15 @@
+|alarmas
+clk => alarma_visual~reg0.CLK
+clk => alarma_sonora~reg0.CLK
+reset => alarma_visual~reg0.ACLR
+reset => alarma_sonora~reg0.ACLR
+puerta_abriendo => process_0.IN0
+puerta_cerrando => process_0.IN1
+sobrecarga => alarma_sonora.OUTPUTSELECT
+sobrecarga => alarma_visual.OUTPUTSELECT
+fallo_energia => alarma_sonora.OUTPUTSELECT
+fallo_energia => alarma_visual.OUTPUTSELECT
+alarma_sonora <= alarma_sonora~reg0.DB_MAX_OUTPUT_PORT_TYPE
+alarma_visual <= alarma_visual~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+

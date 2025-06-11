@@ -1,0 +1,656 @@
+// Copyright (C) 1991-2013 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// *****************************************************************************
+// This file contains a Verilog test bench with test vectors .The test vectors  
+// are exported from a vector file in the Quartus Waveform Editor and apply to  
+// the top level entity of the current Quartus project .The user can use this   
+// testbench to simulate his design using a third-party simulation tool .       
+// *****************************************************************************
+// Generated on "05/08/2025 15:35:56"
+                                                                        
+// Verilog Self-Checking Test Bench (with test vectors) for design :    control
+// 
+// Simulation tool : 3rd Party
+// 
+
+`timescale 1 ps/ 1 ps
+module control_vlg_sample_tst(
+	boton_abrir,
+	boton_cerrar,
+	boton_notificar,
+	botones_bajar,
+	botones_cabina,
+	botones_subir,
+	clk,
+	fin_timer,
+	people_count,
+	power_fail,
+	reset,
+	sampler_tx
+);
+input  boton_abrir;
+input  boton_cerrar;
+input  boton_notificar;
+input [4:0] botones_bajar;
+input [4:0] botones_cabina;
+input [4:0] botones_subir;
+input  clk;
+input  fin_timer;
+input [4:0] people_count;
+input  power_fail;
+input  reset;
+output sampler_tx;
+
+reg sample;
+time current_time;
+always @(boton_abrir or boton_cerrar or boton_notificar or botones_bajar or botones_cabina or botones_subir or clk or fin_timer or people_count or power_fail or reset)
+                                                                                
+begin                                                 
+ if ($realtime > 0)                                   
+ begin                                                
+	if ($realtime == 0 || $realtime != current_time)  
+	begin									          
+		if (sample === 1'bx)                          
+			sample = 0;                               
+		else                                          
+			sample = ~sample;                         
+	end										          
+	current_time = $realtime;					      
+ end                                                  
+end                                                   
+
+assign sampler_tx = sample;
+endmodule
+
+module control_vlg_check_tst (
+	abrir_puerta,
+	alarma_sonora,
+	alarma_visual,
+	cerrar_puerta,
+	luz_interior,
+	mover_bajar,
+	mover_subir,
+	piso_actual,
+	sampler_rx
+);
+input  abrir_puerta;
+input  alarma_sonora;
+input  alarma_visual;
+input  cerrar_puerta;
+input  luz_interior;
+input  mover_bajar;
+input  mover_subir;
+input [2:0] piso_actual;
+input sampler_rx;
+
+reg  abrir_puerta_expected;
+reg  alarma_sonora_expected;
+reg  alarma_visual_expected;
+reg  cerrar_puerta_expected;
+reg  luz_interior_expected;
+reg  mover_bajar_expected;
+reg  mover_subir_expected;
+reg [2:0] piso_actual_expected;
+
+reg  abrir_puerta_prev;
+reg  alarma_sonora_prev;
+reg  alarma_visual_prev;
+reg  cerrar_puerta_prev;
+reg  luz_interior_prev;
+reg  mover_bajar_prev;
+reg  mover_subir_prev;
+reg [2:0] piso_actual_prev;
+
+reg  abrir_puerta_expected_prev;
+reg  alarma_sonora_expected_prev;
+reg  alarma_visual_expected_prev;
+reg  cerrar_puerta_expected_prev;
+reg  luz_interior_expected_prev;
+reg  mover_bajar_expected_prev;
+reg  mover_subir_expected_prev;
+reg [2:0] piso_actual_expected_prev;
+
+reg  last_abrir_puerta_exp;
+reg  last_alarma_sonora_exp;
+reg  last_alarma_visual_exp;
+reg  last_cerrar_puerta_exp;
+reg  last_luz_interior_exp;
+reg  last_mover_bajar_exp;
+reg  last_mover_subir_exp;
+reg [2:0] last_piso_actual_exp;
+
+reg trigger;
+
+integer i;
+integer nummismatches;
+
+reg [1:8] on_first_change ;
+
+
+initial
+begin
+trigger = 0;
+i = 0;
+nummismatches = 0;
+on_first_change = 8'b1;
+end
+
+// update real /o prevs
+
+always @(trigger)
+begin
+	abrir_puerta_prev = abrir_puerta;
+	alarma_sonora_prev = alarma_sonora;
+	alarma_visual_prev = alarma_visual;
+	cerrar_puerta_prev = cerrar_puerta;
+	luz_interior_prev = luz_interior;
+	mover_bajar_prev = mover_bajar;
+	mover_subir_prev = mover_subir;
+	piso_actual_prev = piso_actual;
+end
+
+// update expected /o prevs
+
+always @(trigger)
+begin
+	abrir_puerta_expected_prev = abrir_puerta_expected;
+	alarma_sonora_expected_prev = alarma_sonora_expected;
+	alarma_visual_expected_prev = alarma_visual_expected;
+	cerrar_puerta_expected_prev = cerrar_puerta_expected;
+	luz_interior_expected_prev = luz_interior_expected;
+	mover_bajar_expected_prev = mover_bajar_expected;
+	mover_subir_expected_prev = mover_subir_expected;
+	piso_actual_expected_prev = piso_actual_expected;
+end
+
+
+
+// expected abrir_puerta
+initial
+begin
+	abrir_puerta_expected = 1'bX;
+end 
+
+// expected alarma_sonora
+initial
+begin
+	alarma_sonora_expected = 1'bX;
+end 
+
+// expected alarma_visual
+initial
+begin
+	alarma_visual_expected = 1'bX;
+end 
+
+// expected cerrar_puerta
+initial
+begin
+	cerrar_puerta_expected = 1'bX;
+end 
+
+// expected luz_interior
+initial
+begin
+	luz_interior_expected = 1'bX;
+end 
+
+// expected mover_bajar
+initial
+begin
+	mover_bajar_expected = 1'bX;
+end 
+
+// expected mover_subir
+initial
+begin
+	mover_subir_expected = 1'bX;
+end 
+// expected piso_actual[ 2 ]
+initial
+begin
+	piso_actual_expected[2] = 1'bX;
+end 
+// expected piso_actual[ 1 ]
+initial
+begin
+	piso_actual_expected[1] = 1'bX;
+end 
+// expected piso_actual[ 0 ]
+initial
+begin
+	piso_actual_expected[0] = 1'bX;
+end 
+// generate trigger
+always @(abrir_puerta_expected or abrir_puerta or alarma_sonora_expected or alarma_sonora or alarma_visual_expected or alarma_visual or cerrar_puerta_expected or cerrar_puerta or luz_interior_expected or luz_interior or mover_bajar_expected or mover_bajar or mover_subir_expected or mover_subir or piso_actual_expected or piso_actual)
+begin
+	trigger <= ~trigger;
+end
+
+always @(posedge sampler_rx or negedge sampler_rx)
+begin
+`ifdef debug_tbench
+	$display("Scanning pattern %d @time = %t",i,$realtime );
+	i = i + 1;
+	$display("| expected abrir_puerta = %b | expected alarma_sonora = %b | expected alarma_visual = %b | expected cerrar_puerta = %b | expected luz_interior = %b | expected mover_bajar = %b | expected mover_subir = %b | expected piso_actual = %b | ",abrir_puerta_expected_prev,alarma_sonora_expected_prev,alarma_visual_expected_prev,cerrar_puerta_expected_prev,luz_interior_expected_prev,mover_bajar_expected_prev,mover_subir_expected_prev,piso_actual_expected_prev);
+	$display("| real abrir_puerta = %b | real alarma_sonora = %b | real alarma_visual = %b | real cerrar_puerta = %b | real luz_interior = %b | real mover_bajar = %b | real mover_subir = %b | real piso_actual = %b | ",abrir_puerta_prev,alarma_sonora_prev,alarma_visual_prev,cerrar_puerta_prev,luz_interior_prev,mover_bajar_prev,mover_subir_prev,piso_actual_prev);
+`endif
+	if (
+		( abrir_puerta_expected_prev !== 1'bx ) && ( abrir_puerta_prev !== abrir_puerta_expected_prev )
+		&& ((abrir_puerta_expected_prev !== last_abrir_puerta_exp) ||
+			on_first_change[1])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port abrir_puerta :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", abrir_puerta_expected_prev);
+		$display ("     Real value = %b", abrir_puerta_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[1] = 1'b0;
+		last_abrir_puerta_exp = abrir_puerta_expected_prev;
+	end
+	if (
+		( alarma_sonora_expected_prev !== 1'bx ) && ( alarma_sonora_prev !== alarma_sonora_expected_prev )
+		&& ((alarma_sonora_expected_prev !== last_alarma_sonora_exp) ||
+			on_first_change[2])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port alarma_sonora :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", alarma_sonora_expected_prev);
+		$display ("     Real value = %b", alarma_sonora_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[2] = 1'b0;
+		last_alarma_sonora_exp = alarma_sonora_expected_prev;
+	end
+	if (
+		( alarma_visual_expected_prev !== 1'bx ) && ( alarma_visual_prev !== alarma_visual_expected_prev )
+		&& ((alarma_visual_expected_prev !== last_alarma_visual_exp) ||
+			on_first_change[3])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port alarma_visual :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", alarma_visual_expected_prev);
+		$display ("     Real value = %b", alarma_visual_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[3] = 1'b0;
+		last_alarma_visual_exp = alarma_visual_expected_prev;
+	end
+	if (
+		( cerrar_puerta_expected_prev !== 1'bx ) && ( cerrar_puerta_prev !== cerrar_puerta_expected_prev )
+		&& ((cerrar_puerta_expected_prev !== last_cerrar_puerta_exp) ||
+			on_first_change[4])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port cerrar_puerta :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", cerrar_puerta_expected_prev);
+		$display ("     Real value = %b", cerrar_puerta_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[4] = 1'b0;
+		last_cerrar_puerta_exp = cerrar_puerta_expected_prev;
+	end
+	if (
+		( luz_interior_expected_prev !== 1'bx ) && ( luz_interior_prev !== luz_interior_expected_prev )
+		&& ((luz_interior_expected_prev !== last_luz_interior_exp) ||
+			on_first_change[5])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port luz_interior :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", luz_interior_expected_prev);
+		$display ("     Real value = %b", luz_interior_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[5] = 1'b0;
+		last_luz_interior_exp = luz_interior_expected_prev;
+	end
+	if (
+		( mover_bajar_expected_prev !== 1'bx ) && ( mover_bajar_prev !== mover_bajar_expected_prev )
+		&& ((mover_bajar_expected_prev !== last_mover_bajar_exp) ||
+			on_first_change[6])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port mover_bajar :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", mover_bajar_expected_prev);
+		$display ("     Real value = %b", mover_bajar_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[6] = 1'b0;
+		last_mover_bajar_exp = mover_bajar_expected_prev;
+	end
+	if (
+		( mover_subir_expected_prev !== 1'bx ) && ( mover_subir_prev !== mover_subir_expected_prev )
+		&& ((mover_subir_expected_prev !== last_mover_subir_exp) ||
+			on_first_change[7])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port mover_subir :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", mover_subir_expected_prev);
+		$display ("     Real value = %b", mover_subir_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[7] = 1'b0;
+		last_mover_subir_exp = mover_subir_expected_prev;
+	end
+	if (
+		( piso_actual_expected_prev[0] !== 1'bx ) && ( piso_actual_prev[0] !== piso_actual_expected_prev[0] )
+		&& ((piso_actual_expected_prev[0] !== last_piso_actual_exp[0]) ||
+			on_first_change[8])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port piso_actual[0] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", piso_actual_expected_prev);
+		$display ("     Real value = %b", piso_actual_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[8] = 1'b0;
+		last_piso_actual_exp[0] = piso_actual_expected_prev[0];
+	end
+	if (
+		( piso_actual_expected_prev[1] !== 1'bx ) && ( piso_actual_prev[1] !== piso_actual_expected_prev[1] )
+		&& ((piso_actual_expected_prev[1] !== last_piso_actual_exp[1]) ||
+			on_first_change[8])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port piso_actual[1] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", piso_actual_expected_prev);
+		$display ("     Real value = %b", piso_actual_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[8] = 1'b0;
+		last_piso_actual_exp[1] = piso_actual_expected_prev[1];
+	end
+	if (
+		( piso_actual_expected_prev[2] !== 1'bx ) && ( piso_actual_prev[2] !== piso_actual_expected_prev[2] )
+		&& ((piso_actual_expected_prev[2] !== last_piso_actual_exp[2]) ||
+			on_first_change[8])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port piso_actual[2] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", piso_actual_expected_prev);
+		$display ("     Real value = %b", piso_actual_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[8] = 1'b0;
+		last_piso_actual_exp[2] = piso_actual_expected_prev[2];
+	end
+
+	trigger <= ~trigger;
+end
+initial 
+
+begin 
+$timeformat(-12,3," ps",6);
+#1000000;
+if (nummismatches > 0)
+	$display ("%d mismatched vectors : Simulation failed !",nummismatches);
+else
+	$display ("Simulation passed !");
+$finish;
+end 
+endmodule
+
+module control_vlg_vec_tst();
+// constants                                           
+// general purpose registers
+reg boton_abrir;
+reg boton_cerrar;
+reg boton_notificar;
+reg [4:0] botones_bajar;
+reg [4:0] botones_cabina;
+reg [4:0] botones_subir;
+reg clk;
+reg fin_timer;
+reg [4:0] people_count;
+reg power_fail;
+reg reset;
+// wires                                               
+wire abrir_puerta;
+wire alarma_sonora;
+wire alarma_visual;
+wire cerrar_puerta;
+wire luz_interior;
+wire mover_bajar;
+wire mover_subir;
+wire [2:0] piso_actual;
+
+wire sampler;                             
+
+// assign statements (if any)                          
+control i1 (
+// port map - connection between master ports and signals/registers   
+	.abrir_puerta(abrir_puerta),
+	.alarma_sonora(alarma_sonora),
+	.alarma_visual(alarma_visual),
+	.boton_abrir(boton_abrir),
+	.boton_cerrar(boton_cerrar),
+	.boton_notificar(boton_notificar),
+	.botones_bajar(botones_bajar),
+	.botones_cabina(botones_cabina),
+	.botones_subir(botones_subir),
+	.cerrar_puerta(cerrar_puerta),
+	.clk(clk),
+	.fin_timer(fin_timer),
+	.luz_interior(luz_interior),
+	.mover_bajar(mover_bajar),
+	.mover_subir(mover_subir),
+	.people_count(people_count),
+	.piso_actual(piso_actual),
+	.power_fail(power_fail),
+	.reset(reset)
+);
+
+// boton_abrir
+initial
+begin
+	boton_abrir = 1'b0;
+	boton_abrir = #40000 1'b1;
+	boton_abrir = #20000 1'b0;
+end 
+
+// boton_cerrar
+initial
+begin
+	boton_cerrar = 1'b0;
+	boton_cerrar = #80000 1'b1;
+	boton_cerrar = #20000 1'b0;
+end 
+
+// boton_notificar
+initial
+begin
+	boton_notificar = 1'b0;
+	boton_notificar = #120000 1'b1;
+	boton_notificar = #20000 1'b0;
+end 
+// botones_bajar[ 4 ]
+initial
+begin
+	botones_bajar[4] = 1'b0;
+	botones_bajar[4] = #180000 1'b1;
+	botones_bajar[4] = #30000 1'b0;
+end 
+// botones_bajar[ 3 ]
+initial
+begin
+	botones_bajar[3] = 1'b0;
+	botones_bajar[3] = #260000 1'b1;
+	botones_bajar[3] = #40000 1'b0;
+end 
+// botones_bajar[ 2 ]
+initial
+begin
+	botones_bajar[2] = 1'b0;
+	botones_bajar[2] = #320000 1'b1;
+	botones_bajar[2] = #30000 1'b0;
+end 
+// botones_bajar[ 1 ]
+initial
+begin
+	botones_bajar[1] = 1'b0;
+	botones_bajar[1] = #370000 1'b1;
+	botones_bajar[1] = #30000 1'b0;
+end 
+// botones_bajar[ 0 ]
+initial
+begin
+	botones_bajar[0] = 1'b0;
+	botones_bajar[0] = #440000 1'b1;
+	botones_bajar[0] = #30000 1'b0;
+end 
+// botones_cabina[ 4 ]
+initial
+begin
+	botones_cabina[4] = 1'b0;
+	botones_cabina[4] = #710000 1'b1;
+	botones_cabina[4] = #50000 1'b0;
+end 
+// botones_cabina[ 3 ]
+initial
+begin
+	botones_cabina[3] = 1'b0;
+	botones_cabina[3] = #660000 1'b1;
+	botones_cabina[3] = #20000 1'b0;
+end 
+// botones_cabina[ 2 ]
+initial
+begin
+	botones_cabina[2] = 1'b0;
+	botones_cabina[2] = #610000 1'b1;
+	botones_cabina[2] = #30000 1'b0;
+end 
+// botones_cabina[ 1 ]
+initial
+begin
+	botones_cabina[1] = 1'b0;
+	botones_cabina[1] = #560000 1'b1;
+	botones_cabina[1] = #30000 1'b0;
+end 
+// botones_cabina[ 0 ]
+initial
+begin
+	botones_cabina[0] = 1'b0;
+	botones_cabina[0] = #490000 1'b1;
+	botones_cabina[0] = #40000 1'b0;
+end 
+// botones_subir[ 4 ]
+initial
+begin
+	botones_subir[4] = 1'b0;
+	botones_subir[4] = #790000 1'b1;
+	botones_subir[4] = #40000 1'b0;
+end 
+// botones_subir[ 3 ]
+initial
+begin
+	botones_subir[3] = 1'b0;
+	botones_subir[3] = #840000 1'b1;
+	botones_subir[3] = #40000 1'b0;
+end 
+// botones_subir[ 2 ]
+initial
+begin
+	botones_subir[2] = 1'b0;
+	botones_subir[2] = #880000 1'b1;
+	botones_subir[2] = #50000 1'b0;
+end 
+// botones_subir[ 1 ]
+initial
+begin
+	botones_subir[1] = 1'b0;
+	botones_subir[1] = #930000 1'b1;
+	botones_subir[1] = #40000 1'b0;
+end 
+// botones_subir[ 0 ]
+initial
+begin
+	botones_subir[0] = 1'b0;
+	botones_subir[0] = #980000 1'b1;
+end 
+
+// clk
+initial
+begin
+	repeat(33)
+	begin
+		clk = 1'b0;
+		clk = #15000 1'b1;
+		# 15000;
+	end
+	clk = 1'b0;
+end 
+
+// fin_timer
+initial
+begin
+	fin_timer = 1'b0;
+end 
+// people_count[ 4 ]
+initial
+begin
+	people_count[4] = 1'b0;
+end 
+// people_count[ 3 ]
+initial
+begin
+	people_count[3] = 1'b0;
+end 
+// people_count[ 2 ]
+initial
+begin
+	people_count[2] = 1'b0;
+end 
+// people_count[ 1 ]
+initial
+begin
+	people_count[1] = 1'b0;
+end 
+// people_count[ 0 ]
+initial
+begin
+	people_count[0] = 1'b0;
+end 
+
+// power_fail
+initial
+begin
+	power_fail = 1'b0;
+end 
+
+// reset
+initial
+begin
+	reset = 1'b0;
+end 
+
+control_vlg_sample_tst tb_sample (
+	.boton_abrir(boton_abrir),
+	.boton_cerrar(boton_cerrar),
+	.boton_notificar(boton_notificar),
+	.botones_bajar(botones_bajar),
+	.botones_cabina(botones_cabina),
+	.botones_subir(botones_subir),
+	.clk(clk),
+	.fin_timer(fin_timer),
+	.people_count(people_count),
+	.power_fail(power_fail),
+	.reset(reset),
+	.sampler_tx(sampler)
+);
+
+control_vlg_check_tst tb_out(
+	.abrir_puerta(abrir_puerta),
+	.alarma_sonora(alarma_sonora),
+	.alarma_visual(alarma_visual),
+	.cerrar_puerta(cerrar_puerta),
+	.luz_interior(luz_interior),
+	.mover_bajar(mover_bajar),
+	.mover_subir(mover_subir),
+	.piso_actual(piso_actual),
+	.sampler_rx(sampler)
+);
+endmodule
+

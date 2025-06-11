@@ -1,0 +1,35 @@
+-- FSM para el control de las luces de la cabina
+entity FSM_Luces is
+    Port (
+        inactivo    : in STD_LOGIC;  -- Indica si el ascensor está inactivo
+        luz_cabina  : out STD_LOGIC  -- Señal para controlar las luces
+    );
+end FSM_Luces;
+
+architecture Behavioral of FSM_Luces is
+    type state_type is (ACTIVO, INACTIVO);  -- Definición de los estados (activo o inactivo)
+    signal state, next_state : state_type;
+begin
+    -- Lógica de transición de estados
+    process(clk)
+    begin
+        if rising_edge(clk) then
+            if inactivo = '1' then
+                state <= INACTIVO;  -- Si está inactivo, las luces están apagadas
+            else
+                state <= ACTIVO;    -- Si está activo, las luces están encendidas
+            end if;
+        end if;
+    end process;
+
+    -- Lógica de salida
+    process(state)
+    begin
+        case state is
+            when ACTIVO =>
+                luz_cabina <= '1';  -- Luces encendidas cuando el ascensor está en movimiento
+            when INACTIVO =>
+                luz_cabina <= '0';  -- Luces apagadas cuando el ascensor está detenido
+        end case;
+    end process;
+end Behavioral;

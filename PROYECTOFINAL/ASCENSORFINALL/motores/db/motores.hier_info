@@ -1,0 +1,24 @@
+|motores
+clk => in2_int.CLK
+clk => in1_int.CLK
+clk => pwm_int.CLK
+reset => in2_int.ACLR
+reset => in1_int.ACLR
+reset => pwm_int.ACLR
+piso_actual[0] => LessThan0.IN3
+piso_actual[0] => LessThan1.IN3
+piso_actual[1] => LessThan0.IN2
+piso_actual[1] => LessThan1.IN2
+piso_actual[2] => LessThan0.IN1
+piso_actual[2] => LessThan1.IN1
+piso_destino[0] => LessThan0.IN6
+piso_destino[0] => LessThan1.IN6
+piso_destino[1] => LessThan0.IN5
+piso_destino[1] => LessThan1.IN5
+piso_destino[2] => LessThan0.IN4
+piso_destino[2] => LessThan1.IN4
+pwm_motor <= pwm_int.DB_MAX_OUTPUT_PORT_TYPE
+in1_motor <= in1_int.DB_MAX_OUTPUT_PORT_TYPE
+in2_motor <= in2_int.DB_MAX_OUTPUT_PORT_TYPE
+
+

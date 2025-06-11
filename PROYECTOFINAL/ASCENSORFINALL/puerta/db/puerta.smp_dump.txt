@@ -1,0 +1,10 @@
+
+State Machine - |puerta|estado_actual
+Name estado_actual.EMERGENCIA estado_actual.CERRANDO estado_actual.ESPERA_CERRAR estado_actual.ABIERTA estado_actual.ABRIENDO estado_actual.ESPERA_ABRIR estado_actual.CERRADA 
+estado_actual.CERRADA 0 0 0 0 0 0 0 
+estado_actual.ESPERA_ABRIR 0 0 0 0 0 1 1 
+estado_actual.ABRIENDO 0 0 0 0 1 0 1 
+estado_actual.ABIERTA 0 0 0 1 0 0 1 
+estado_actual.ESPERA_CERRAR 0 0 1 0 0 0 1 
+estado_actual.CERRANDO 0 1 0 0 0 0 1 
+estado_actual.EMERGENCIA 1 0 0 0 0 0 1 

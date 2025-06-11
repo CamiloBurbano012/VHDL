@@ -1,0 +1,34 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+
+entity sensor is
+    Port (
+        ir1 : in STD_LOGIC;
+        ir2 : in STD_LOGIC;
+        ir3 : in STD_LOGIC;
+        ir4 : in STD_LOGIC;
+        ir5 : in STD_LOGIC;
+        piso_actual : out STD_LOGIC_VECTOR(2 downto 0)
+    );
+end sensor;
+
+architecture Behavioral of sensor is
+begin
+    process(ir1, ir2, ir3, ir4, ir5)
+    begin
+        if ir1 = '1' then
+            piso_actual <= "001";  -- Piso 1
+        elsif ir2 = '1' then
+            piso_actual <= "010";  -- Piso 2
+        elsif ir3 = '1' then
+            piso_actual <= "011";  -- Piso 3
+        elsif ir4 = '1' then
+            piso_actual <= "100";  -- Piso 4
+        elsif ir5 = '1' then
+            piso_actual <= "101";  -- Piso 5
+        else
+            piso_actual <= "000";  -- Sin detección
+        end if;
+    end process;
+end Behavioral;

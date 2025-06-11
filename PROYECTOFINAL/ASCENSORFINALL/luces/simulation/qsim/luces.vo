@@ -1,0 +1,275 @@
+// Copyright (C) 1991-2013 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// VENDOR "Altera"
+// PROGRAM "Quartus II 64-Bit"
+// VERSION "Version 13.1.0 Build 162 10/23/2013 SJ Web Edition"
+
+// DATE "05/29/2025 10:34:56"
+
+// 
+// Device: Altera EP3C16F484C6 Package FBGA484
+// 
+
+// 
+// This Verilog file should be used for ModelSim-Altera (Verilog) only
+// 
+
+`timescale 1 ps/ 1 ps
+
+module luces (
+	clk,
+	reset,
+	estado_ascensor,
+	luz_cabina,
+	luz_emergencia);
+input 	clk;
+input 	reset;
+input 	[2:0] estado_ascensor;
+output 	luz_cabina;
+output 	luz_emergencia;
+
+// Design Ports Information
+// luz_cabina	=>  Location: PIN_H14,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// luz_emergencia	=>  Location: PIN_B1,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// estado_ascensor[2]	=>  Location: PIN_H5,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// estado_ascensor[0]	=>  Location: PIN_G5,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// estado_ascensor[1]	=>  Location: PIN_B2,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// clk	=>  Location: PIN_G2,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// reset	=>  Location: PIN_G1,	 I/O Standard: 2.5 V,	 Current Strength: Default
+
+
+wire gnd;
+wire vcc;
+wire unknown;
+
+assign gnd = 1'b0;
+assign vcc = 1'b1;
+assign unknown = 1'bx;
+
+tri1 devclrn;
+tri1 devpor;
+tri1 devoe;
+wire \luz_cabina~output_o ;
+wire \luz_emergencia~output_o ;
+wire \clk~input_o ;
+wire \clk~inputclkctrl_outclk ;
+wire \estado_ascensor[2]~input_o ;
+wire \estado_ascensor[1]~input_o ;
+wire \estado_ascensor[0]~input_o ;
+wire \Equal1~0_combout ;
+wire \Selector0~0_combout ;
+wire \reset~input_o ;
+wire \reset~inputclkctrl_outclk ;
+wire \state_reg.ACTIVO~q ;
+wire \Selector2~0_combout ;
+wire \state_reg.EMERGENCIA~q ;
+
+
+// Location: IOOBUF_X35_Y29_N30
+cycloneiii_io_obuf \luz_cabina~output (
+	.i(vcc),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\luz_cabina~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \luz_cabina~output .bus_hold = "false";
+defparam \luz_cabina~output .open_drain_output = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X0_Y27_N16
+cycloneiii_io_obuf \luz_emergencia~output (
+	.i(\state_reg.EMERGENCIA~q ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\luz_emergencia~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \luz_emergencia~output .bus_hold = "false";
+defparam \luz_emergencia~output .open_drain_output = "false";
+// synopsys translate_on
+
+// Location: IOIBUF_X0_Y14_N1
+cycloneiii_io_ibuf \clk~input (
+	.i(clk),
+	.ibar(gnd),
+	.o(\clk~input_o ));
+// synopsys translate_off
+defparam \clk~input .bus_hold = "false";
+defparam \clk~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: CLKCTRL_G4
+cycloneiii_clkctrl \clk~inputclkctrl (
+	.ena(vcc),
+	.inclk({vcc,vcc,vcc,\clk~input_o }),
+	.clkselect(2'b00),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.outclk(\clk~inputclkctrl_outclk ));
+// synopsys translate_off
+defparam \clk~inputclkctrl .clock_type = "global clock";
+defparam \clk~inputclkctrl .ena_register_mode = "none";
+// synopsys translate_on
+
+// Location: IOIBUF_X0_Y27_N1
+cycloneiii_io_ibuf \estado_ascensor[2]~input (
+	.i(estado_ascensor[2]),
+	.ibar(gnd),
+	.o(\estado_ascensor[2]~input_o ));
+// synopsys translate_off
+defparam \estado_ascensor[2]~input .bus_hold = "false";
+defparam \estado_ascensor[2]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X0_Y27_N8
+cycloneiii_io_ibuf \estado_ascensor[1]~input (
+	.i(estado_ascensor[1]),
+	.ibar(gnd),
+	.o(\estado_ascensor[1]~input_o ));
+// synopsys translate_off
+defparam \estado_ascensor[1]~input .bus_hold = "false";
+defparam \estado_ascensor[1]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X0_Y27_N22
+cycloneiii_io_ibuf \estado_ascensor[0]~input (
+	.i(estado_ascensor[0]),
+	.ibar(gnd),
+	.o(\estado_ascensor[0]~input_o ));
+// synopsys translate_off
+defparam \estado_ascensor[0]~input .bus_hold = "false";
+defparam \estado_ascensor[0]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: LCCOMB_X1_Y27_N0
+cycloneiii_lcell_comb \Equal1~0 (
+// Equation(s):
+// \Equal1~0_combout  = (!\estado_ascensor[1]~input_o  & !\estado_ascensor[0]~input_o )
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(\estado_ascensor[1]~input_o ),
+	.datad(\estado_ascensor[0]~input_o ),
+	.cin(gnd),
+	.combout(\Equal1~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \Equal1~0 .lut_mask = 16'h000F;
+defparam \Equal1~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X1_Y27_N2
+cycloneiii_lcell_comb \Selector0~0 (
+// Equation(s):
+// \Selector0~0_combout  = ((!\state_reg.ACTIVO~q  & (\estado_ascensor[2]~input_o  $ (\state_reg.EMERGENCIA~q )))) # (!\Equal1~0_combout )
+
+	.dataa(\estado_ascensor[2]~input_o ),
+	.datab(\Equal1~0_combout ),
+	.datac(\state_reg.ACTIVO~q ),
+	.datad(\state_reg.EMERGENCIA~q ),
+	.cin(gnd),
+	.combout(\Selector0~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \Selector0~0 .lut_mask = 16'h373B;
+defparam \Selector0~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: IOIBUF_X0_Y14_N8
+cycloneiii_io_ibuf \reset~input (
+	.i(reset),
+	.ibar(gnd),
+	.o(\reset~input_o ));
+// synopsys translate_off
+defparam \reset~input .bus_hold = "false";
+defparam \reset~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: CLKCTRL_G2
+cycloneiii_clkctrl \reset~inputclkctrl (
+	.ena(vcc),
+	.inclk({vcc,vcc,vcc,\reset~input_o }),
+	.clkselect(2'b00),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.outclk(\reset~inputclkctrl_outclk ));
+// synopsys translate_off
+defparam \reset~inputclkctrl .clock_type = "global clock";
+defparam \reset~inputclkctrl .ena_register_mode = "none";
+// synopsys translate_on
+
+// Location: FF_X1_Y27_N3
+dffeas \state_reg.ACTIVO (
+	.clk(\clk~inputclkctrl_outclk ),
+	.d(\Selector0~0_combout ),
+	.asdata(vcc),
+	.clrn(!\reset~inputclkctrl_outclk ),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\state_reg.ACTIVO~q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \state_reg.ACTIVO .is_wysiwyg = "true";
+defparam \state_reg.ACTIVO .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X1_Y27_N16
+cycloneiii_lcell_comb \Selector2~0 (
+// Equation(s):
+// \Selector2~0_combout  = (\Equal1~0_combout  & (\estado_ascensor[2]~input_o  & ((\state_reg.EMERGENCIA~q ) # (\state_reg.ACTIVO~q )))) # (!\Equal1~0_combout  & (((\state_reg.EMERGENCIA~q  & \state_reg.ACTIVO~q ))))
+
+	.dataa(\estado_ascensor[2]~input_o ),
+	.datab(\Equal1~0_combout ),
+	.datac(\state_reg.EMERGENCIA~q ),
+	.datad(\state_reg.ACTIVO~q ),
+	.cin(gnd),
+	.combout(\Selector2~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \Selector2~0 .lut_mask = 16'hB880;
+defparam \Selector2~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X1_Y27_N17
+dffeas \state_reg.EMERGENCIA (
+	.clk(\clk~inputclkctrl_outclk ),
+	.d(\Selector2~0_combout ),
+	.asdata(vcc),
+	.clrn(!\reset~inputclkctrl_outclk ),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\state_reg.EMERGENCIA~q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \state_reg.EMERGENCIA .is_wysiwyg = "true";
+defparam \state_reg.EMERGENCIA .power_up = "low";
+// synopsys translate_on
+
+assign luz_cabina = \luz_cabina~output_o ;
+
+assign luz_emergencia = \luz_emergencia~output_o ;
+
+endmodule

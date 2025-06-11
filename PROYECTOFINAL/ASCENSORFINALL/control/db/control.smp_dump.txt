@@ -1,0 +1,10 @@
+
+State Machine - |control|estado_actual
+Name estado_actual.EMERGENCIA estado_actual.MOVIENDO_ABAJO estado_actual.MOVIENDO_ARRIBA estado_actual.CERRANDO_PUERTA estado_actual.PUERTA_ABIERTA estado_actual.ABRIENDO_PUERTA estado_actual.INACTIVO 
+estado_actual.INACTIVO 0 0 0 0 0 0 0 
+estado_actual.ABRIENDO_PUERTA 0 0 0 0 0 1 1 
+estado_actual.PUERTA_ABIERTA 0 0 0 0 1 0 1 
+estado_actual.CERRANDO_PUERTA 0 0 0 1 0 0 1 
+estado_actual.MOVIENDO_ARRIBA 0 0 1 0 0 0 1 
+estado_actual.MOVIENDO_ABAJO 0 1 0 0 0 0 1 
+estado_actual.EMERGENCIA 1 0 0 0 0 0 1 

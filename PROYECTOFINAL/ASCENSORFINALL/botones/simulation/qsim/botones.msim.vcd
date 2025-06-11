@@ -1,0 +1,1039 @@
+$comment
+	File created using the following command:
+		vcd file botones.msim.vcd -direction
+$end
+$date
+	Thu May 08 15:15:19 2025
+$end
+$version
+	ModelSim Version 10.1d
+$end
+$timescale
+	1ps
+$end
+$scope module botones_vlg_vec_tst $end
+$var reg 1 ! boton_abrir $end
+$var reg 1 " boton_cerrar $end
+$var reg 1 # boton_notificar $end
+$var reg 5 $ botones_bajar [4:0] $end
+$var reg 5 % botones_cabina [4:0] $end
+$var reg 5 & botones_subir [4:0] $end
+$var reg 1 ' clk $end
+$var reg 1 ( reset $end
+$var wire 1 ) boton_abrir_filtrado $end
+$var wire 1 * boton_cerrar_filtrado $end
+$var wire 1 + boton_notificar_filtrado $end
+$var wire 1 , botones_bajar_filtrados [4] $end
+$var wire 1 - botones_bajar_filtrados [3] $end
+$var wire 1 . botones_bajar_filtrados [2] $end
+$var wire 1 / botones_bajar_filtrados [1] $end
+$var wire 1 0 botones_bajar_filtrados [0] $end
+$var wire 1 1 botones_cabina_filtrados [4] $end
+$var wire 1 2 botones_cabina_filtrados [3] $end
+$var wire 1 3 botones_cabina_filtrados [2] $end
+$var wire 1 4 botones_cabina_filtrados [1] $end
+$var wire 1 5 botones_cabina_filtrados [0] $end
+$var wire 1 6 botones_subir_filtrados [4] $end
+$var wire 1 7 botones_subir_filtrados [3] $end
+$var wire 1 8 botones_subir_filtrados [2] $end
+$var wire 1 9 botones_subir_filtrados [1] $end
+$var wire 1 : botones_subir_filtrados [0] $end
+$var wire 1 ; sampler $end
+$scope module i1 $end
+$var wire 1 < gnd $end
+$var wire 1 = vcc $end
+$var wire 1 > unknown $end
+$var tri1 1 ? devclrn $end
+$var tri1 1 @ devpor $end
+$var tri1 1 A devoe $end
+$var wire 1 B botones_subir_filtrados[0]~output_o $end
+$var wire 1 C botones_subir_filtrados[1]~output_o $end
+$var wire 1 D botones_subir_filtrados[2]~output_o $end
+$var wire 1 E botones_subir_filtrados[3]~output_o $end
+$var wire 1 F botones_subir_filtrados[4]~output_o $end
+$var wire 1 G botones_bajar_filtrados[0]~output_o $end
+$var wire 1 H botones_bajar_filtrados[1]~output_o $end
+$var wire 1 I botones_bajar_filtrados[2]~output_o $end
+$var wire 1 J botones_bajar_filtrados[3]~output_o $end
+$var wire 1 K botones_bajar_filtrados[4]~output_o $end
+$var wire 1 L botones_cabina_filtrados[0]~output_o $end
+$var wire 1 M botones_cabina_filtrados[1]~output_o $end
+$var wire 1 N botones_cabina_filtrados[2]~output_o $end
+$var wire 1 O botones_cabina_filtrados[3]~output_o $end
+$var wire 1 P botones_cabina_filtrados[4]~output_o $end
+$var wire 1 Q boton_abrir_filtrado~output_o $end
+$var wire 1 R boton_cerrar_filtrado~output_o $end
+$var wire 1 S boton_notificar_filtrado~output_o $end
+$var wire 1 T clk~input_o $end
+$var wire 1 U clk~inputclkctrl_outclk $end
+$var wire 1 V botones_subir[0]~input_o $end
+$var wire 1 W reg_subir_0[0]~feeder_combout $end
+$var wire 1 X reset~input_o $end
+$var wire 1 Y reset~inputclkctrl_outclk $end
+$var wire 1 Z reg_subir_1[0]~feeder_combout $end
+$var wire 1 [ botones_subir_filtrados[0]~reg0feeder_combout $end
+$var wire 1 \ botones_subir_filtrados[0]~reg0_q $end
+$var wire 1 ] botones_subir[1]~input_o $end
+$var wire 1 ^ reg_subir_0[1]~feeder_combout $end
+$var wire 1 _ reg_subir_1[1]~feeder_combout $end
+$var wire 1 ` botones_subir_filtrados[1]~reg0feeder_combout $end
+$var wire 1 a botones_subir_filtrados[1]~reg0_q $end
+$var wire 1 b botones_subir[2]~input_o $end
+$var wire 1 c reg_subir_0[2]~feeder_combout $end
+$var wire 1 d reg_subir_1[2]~feeder_combout $end
+$var wire 1 e botones_subir_filtrados[2]~reg0feeder_combout $end
+$var wire 1 f botones_subir_filtrados[2]~reg0_q $end
+$var wire 1 g botones_subir[3]~input_o $end
+$var wire 1 h reg_subir_0[3]~feeder_combout $end
+$var wire 1 i reg_subir_1[3]~feeder_combout $end
+$var wire 1 j botones_subir_filtrados[3]~reg0feeder_combout $end
+$var wire 1 k botones_subir_filtrados[3]~reg0_q $end
+$var wire 1 l botones_subir[4]~input_o $end
+$var wire 1 m reg_subir_0[4]~feeder_combout $end
+$var wire 1 n reg_subir_1[4]~feeder_combout $end
+$var wire 1 o botones_subir_filtrados[4]~reg0feeder_combout $end
+$var wire 1 p botones_subir_filtrados[4]~reg0_q $end
+$var wire 1 q botones_bajar[0]~input_o $end
+$var wire 1 r reg_bajar_0[0]~feeder_combout $end
+$var wire 1 s reg_bajar_1[0]~feeder_combout $end
+$var wire 1 t botones_bajar_filtrados[0]~reg0feeder_combout $end
+$var wire 1 u botones_bajar_filtrados[0]~reg0_q $end
+$var wire 1 v botones_bajar[1]~input_o $end
+$var wire 1 w reg_bajar_0[1]~feeder_combout $end
+$var wire 1 x reg_bajar_1[1]~feeder_combout $end
+$var wire 1 y botones_bajar_filtrados[1]~reg0feeder_combout $end
+$var wire 1 z botones_bajar_filtrados[1]~reg0_q $end
+$var wire 1 { botones_bajar[2]~input_o $end
+$var wire 1 | reg_bajar_0[2]~feeder_combout $end
+$var wire 1 } reg_bajar_1[2]~feeder_combout $end
+$var wire 1 ~ botones_bajar_filtrados[2]~reg0feeder_combout $end
+$var wire 1 !! botones_bajar_filtrados[2]~reg0_q $end
+$var wire 1 "! botones_bajar[3]~input_o $end
+$var wire 1 #! reg_bajar_0[3]~feeder_combout $end
+$var wire 1 $! reg_bajar_1[3]~feeder_combout $end
+$var wire 1 %! botones_bajar_filtrados[3]~reg0feeder_combout $end
+$var wire 1 &! botones_bajar_filtrados[3]~reg0_q $end
+$var wire 1 '! botones_bajar[4]~input_o $end
+$var wire 1 (! reg_bajar_0[4]~feeder_combout $end
+$var wire 1 )! reg_bajar_1[4]~feeder_combout $end
+$var wire 1 *! botones_bajar_filtrados[4]~reg0feeder_combout $end
+$var wire 1 +! botones_bajar_filtrados[4]~reg0_q $end
+$var wire 1 ,! botones_cabina[0]~input_o $end
+$var wire 1 -! reg_cabina_0[0]~feeder_combout $end
+$var wire 1 .! reg_cabina_1[0]~feeder_combout $end
+$var wire 1 /! botones_cabina_filtrados[0]~reg0feeder_combout $end
+$var wire 1 0! botones_cabina_filtrados[0]~reg0_q $end
+$var wire 1 1! botones_cabina[1]~input_o $end
+$var wire 1 2! reg_cabina_0[1]~feeder_combout $end
+$var wire 1 3! reg_cabina_1[1]~feeder_combout $end
+$var wire 1 4! botones_cabina_filtrados[1]~reg0feeder_combout $end
+$var wire 1 5! botones_cabina_filtrados[1]~reg0_q $end
+$var wire 1 6! botones_cabina[2]~input_o $end
+$var wire 1 7! reg_cabina_0[2]~feeder_combout $end
+$var wire 1 8! reg_cabina_1[2]~feeder_combout $end
+$var wire 1 9! botones_cabina_filtrados[2]~reg0feeder_combout $end
+$var wire 1 :! botones_cabina_filtrados[2]~reg0_q $end
+$var wire 1 ;! botones_cabina[3]~input_o $end
+$var wire 1 <! reg_cabina_0[3]~feeder_combout $end
+$var wire 1 =! reg_cabina_1[3]~feeder_combout $end
+$var wire 1 >! botones_cabina_filtrados[3]~reg0feeder_combout $end
+$var wire 1 ?! botones_cabina_filtrados[3]~reg0_q $end
+$var wire 1 @! botones_cabina[4]~input_o $end
+$var wire 1 A! reg_cabina_0[4]~feeder_combout $end
+$var wire 1 B! reg_cabina_1[4]~feeder_combout $end
+$var wire 1 C! botones_cabina_filtrados[4]~reg0feeder_combout $end
+$var wire 1 D! botones_cabina_filtrados[4]~reg0_q $end
+$var wire 1 E! boton_abrir~input_o $end
+$var wire 1 F! reg_abrir_0~feeder_combout $end
+$var wire 1 G! reg_abrir_0~q $end
+$var wire 1 H! reg_abrir_1~feeder_combout $end
+$var wire 1 I! reg_abrir_1~q $end
+$var wire 1 J! boton_abrir_filtrado~reg0feeder_combout $end
+$var wire 1 K! boton_abrir_filtrado~reg0_q $end
+$var wire 1 L! boton_cerrar~input_o $end
+$var wire 1 M! reg_cerrar_0~feeder_combout $end
+$var wire 1 N! reg_cerrar_0~q $end
+$var wire 1 O! reg_cerrar_1~feeder_combout $end
+$var wire 1 P! reg_cerrar_1~q $end
+$var wire 1 Q! boton_cerrar_filtrado~reg0feeder_combout $end
+$var wire 1 R! boton_cerrar_filtrado~reg0_q $end
+$var wire 1 S! boton_notificar~input_o $end
+$var wire 1 T! reg_notificar_0~feeder_combout $end
+$var wire 1 U! reg_notificar_0~q $end
+$var wire 1 V! reg_notificar_1~feeder_combout $end
+$var wire 1 W! reg_notificar_1~q $end
+$var wire 1 X! boton_notificar_filtrado~reg0feeder_combout $end
+$var wire 1 Y! boton_notificar_filtrado~reg0_q $end
+$var wire 1 Z! reg_cabina_0 [4] $end
+$var wire 1 [! reg_cabina_0 [3] $end
+$var wire 1 \! reg_cabina_0 [2] $end
+$var wire 1 ]! reg_cabina_0 [1] $end
+$var wire 1 ^! reg_cabina_0 [0] $end
+$var wire 1 _! reg_subir_0 [4] $end
+$var wire 1 `! reg_subir_0 [3] $end
+$var wire 1 a! reg_subir_0 [2] $end
+$var wire 1 b! reg_subir_0 [1] $end
+$var wire 1 c! reg_subir_0 [0] $end
+$var wire 1 d! reg_bajar_0 [4] $end
+$var wire 1 e! reg_bajar_0 [3] $end
+$var wire 1 f! reg_bajar_0 [2] $end
+$var wire 1 g! reg_bajar_0 [1] $end
+$var wire 1 h! reg_bajar_0 [0] $end
+$var wire 1 i! reg_subir_1 [4] $end
+$var wire 1 j! reg_subir_1 [3] $end
+$var wire 1 k! reg_subir_1 [2] $end
+$var wire 1 l! reg_subir_1 [1] $end
+$var wire 1 m! reg_subir_1 [0] $end
+$var wire 1 n! reg_cabina_1 [4] $end
+$var wire 1 o! reg_cabina_1 [3] $end
+$var wire 1 p! reg_cabina_1 [2] $end
+$var wire 1 q! reg_cabina_1 [1] $end
+$var wire 1 r! reg_cabina_1 [0] $end
+$var wire 1 s! reg_bajar_1 [4] $end
+$var wire 1 t! reg_bajar_1 [3] $end
+$var wire 1 u! reg_bajar_1 [2] $end
+$var wire 1 v! reg_bajar_1 [1] $end
+$var wire 1 w! reg_bajar_1 [0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0!
+0"
+0#
+b0 $
+b0 %
+b0 &
+0'
+0(
+0k
+0l
+0m
+0n
+0o
+0p
+0q
+0r
+0s
+0t
+0u
+0v
+0w
+0x
+0y
+0z
+0{
+0|
+0}
+0~
+0!!
+0"!
+0#!
+0$!
+0%!
+0&!
+0'!
+0(!
+0)!
+0*!
+0+!
+0,!
+0-!
+0.!
+0/!
+00!
+01!
+02!
+03!
+04!
+05!
+06!
+07!
+08!
+09!
+0:!
+0;!
+0<!
+0=!
+0>!
+0?!
+0@!
+0A!
+0B!
+0C!
+0D!
+0E!
+0F!
+0G!
+0H!
+0)
+0*
+0+
+00
+0/
+0.
+0-
+0,
+05
+04
+03
+02
+01
+0:
+09
+08
+07
+06
+x;
+0<
+1=
+x>
+1?
+1@
+1A
+0B
+0C
+0D
+0E
+0F
+0G
+0H
+0I
+0J
+0K
+0L
+0M
+0N
+0O
+0P
+0Q
+0R
+0S
+0T
+0U
+0V
+0W
+0X
+0Y
+0Z
+0[
+0\
+0]
+0^
+0_
+0`
+0a
+0b
+0c
+0d
+0e
+0f
+0g
+0h
+0i
+0j
+0I!
+0J!
+0K!
+0L!
+0M!
+0N!
+0O!
+0P!
+0Q!
+0R!
+0S!
+0T!
+0U!
+0V!
+0W!
+0X!
+0Y!
+0^!
+0]!
+0\!
+0[!
+0Z!
+0c!
+0b!
+0a!
+0`!
+0_!
+0h!
+0g!
+0f!
+0e!
+0d!
+0m!
+0l!
+0k!
+0j!
+0i!
+0r!
+0q!
+0p!
+0o!
+0n!
+0w!
+0v!
+0u!
+0t!
+0s!
+$end
+#10000
+1'
+1T
+1U
+0;
+#20000
+0'
+0T
+0U
+1;
+#30000
+1'
+1T
+1U
+0;
+#40000
+0'
+0T
+0U
+1;
+#50000
+1#
+1'
+1S!
+1T
+1U
+0;
+1T!
+#60000
+0'
+0T
+0U
+1;
+#70000
+1'
+1T
+1U
+0;
+1U!
+1V!
+#80000
+0'
+0T
+0U
+1;
+#90000
+1'
+1T
+1U
+0;
+1W!
+1X!
+#100000
+0'
+0T
+0U
+1;
+#110000
+1'
+1T
+1U
+0;
+1Y!
+1S
+1+
+#120000
+0'
+0T
+0U
+1;
+#130000
+0#
+1'
+0S!
+1T
+1U
+0;
+0T!
+#140000
+0'
+0T
+0U
+1;
+#150000
+1'
+1T
+1U
+0;
+0U!
+0V!
+#160000
+1!
+0'
+1E!
+0T
+0U
+1;
+1F!
+#170000
+1'
+1T
+1U
+0;
+0W!
+1G!
+0X!
+1H!
+#180000
+0'
+0T
+0U
+1;
+#190000
+1'
+1T
+1U
+0;
+1I!
+0Y!
+1J!
+0S
+0+
+#200000
+0'
+0T
+0U
+1;
+#210000
+1'
+1T
+1U
+0;
+1K!
+1Q
+1)
+#220000
+0!
+0'
+0E!
+0T
+0U
+1;
+0F!
+#230000
+1'
+1T
+1U
+0;
+0G!
+0H!
+#240000
+0'
+0T
+0U
+1;
+#250000
+1'
+1T
+1U
+0;
+0I!
+0J!
+#260000
+1"
+0'
+1L!
+0T
+0U
+1;
+1M!
+#270000
+1'
+1T
+1U
+0;
+1N!
+0K!
+1O!
+0Q
+0)
+#280000
+0'
+0T
+0U
+1;
+#290000
+1'
+1T
+1U
+0;
+1P!
+1Q!
+#300000
+0'
+0T
+0U
+1;
+#310000
+0"
+1'
+0L!
+1T
+1U
+0;
+0M!
+1R!
+1R
+1*
+#320000
+0'
+0T
+0U
+1;
+#330000
+1'
+1T
+1U
+0;
+0N!
+0O!
+#340000
+0'
+0T
+0U
+1;
+#350000
+1'
+1T
+1U
+0;
+0P!
+0Q!
+#360000
+0'
+0T
+0U
+1;
+#370000
+b10000 $
+1'
+1'!
+1T
+1U
+0;
+1(!
+0R!
+0R
+0*
+#380000
+0'
+0T
+0U
+1;
+#390000
+1'
+1T
+1U
+0;
+1d!
+1)!
+#400000
+0'
+0T
+0U
+1;
+#410000
+b0 $
+1'
+0'!
+1T
+1U
+0;
+0(!
+1s!
+1*!
+#420000
+0'
+0T
+0U
+1;
+#430000
+1'
+1T
+1U
+0;
+0d!
+1+!
+0)!
+1K
+1,
+#440000
+0'
+0T
+0U
+1;
+#450000
+1'
+1T
+1U
+0;
+0s!
+0*!
+#460000
+0'
+0T
+0U
+1;
+#470000
+1'
+1T
+1U
+0;
+0+!
+0K
+0,
+#480000
+b1000 $
+0'
+1"!
+0T
+0U
+1;
+1#!
+#490000
+1'
+1T
+1U
+0;
+1e!
+1$!
+#500000
+0'
+0T
+0U
+1;
+#510000
+1'
+1T
+1U
+0;
+1t!
+1%!
+#520000
+b0 $
+0'
+0"!
+0T
+0U
+1;
+0#!
+#530000
+1'
+1T
+1U
+0;
+0e!
+1&!
+0$!
+1J
+1-
+#540000
+0'
+0T
+0U
+1;
+#550000
+1'
+1T
+1U
+0;
+0t!
+0%!
+#560000
+b100 $
+0'
+1{
+0T
+0U
+1;
+1|
+#570000
+1'
+1T
+1U
+0;
+1f!
+0&!
+1}
+0J
+0-
+#580000
+0'
+0T
+0U
+1;
+#590000
+1'
+1T
+1U
+0;
+1u!
+1~
+#600000
+0'
+0T
+0U
+1;
+#610000
+b0 $
+1'
+0{
+1T
+1U
+0;
+0|
+1!!
+1I
+1.
+#620000
+0'
+0T
+0U
+1;
+#630000
+1'
+1T
+1U
+0;
+0f!
+0}
+#640000
+0'
+0T
+0U
+1;
+#650000
+1'
+1T
+1U
+0;
+0u!
+0~
+#660000
+0'
+0T
+0U
+1;
+#670000
+1'
+1T
+1U
+0;
+0!!
+0I
+0.
+#680000
+b10 $
+0'
+1v
+0T
+0U
+1;
+1w
+#690000
+1'
+1T
+1U
+0;
+1g!
+1x
+#700000
+0'
+0T
+0U
+1;
+#710000
+1'
+1T
+1U
+0;
+1v!
+1y
+#720000
+0'
+0T
+0U
+1;
+#730000
+b0 $
+1'
+0v
+1T
+1U
+0;
+0w
+1z
+1H
+1/
+#740000
+0'
+0T
+0U
+1;
+#750000
+1'
+1T
+1U
+0;
+0g!
+0x
+#760000
+0'
+0T
+0U
+1;
+#770000
+1'
+1T
+1U
+0;
+0v!
+0y
+#780000
+0'
+0T
+0U
+1;
+#790000
+1'
+1T
+1U
+0;
+0z
+0H
+0/
+#800000
+0'
+0T
+0U
+1;
+#810000
+b1 $
+1'
+1q
+1T
+1U
+0;
+1r
+#820000
+0'
+0T
+0U
+1;
+#830000
+1'
+1T
+1U
+0;
+1h!
+1s
+#840000
+0'
+0T
+0U
+1;
+#850000
+1'
+1T
+1U
+0;
+1w!
+1t
+#860000
+0'
+0T
+0U
+1;
+#870000
+1'
+1T
+1U
+0;
+1u
+1G
+10
+#880000
+0'
+0T
+0U
+1;
+#890000
+1'
+1T
+1U
+0;
+#900000
+0'
+0T
+0U
+1;
+#910000
+b0 $
+1'
+0q
+1T
+1U
+0;
+0r
+#920000
+0'
+0T
+0U
+1;
+#930000
+1'
+1T
+1U
+0;
+0h!
+0s
+#940000
+0'
+0T
+0U
+1;
+#950000
+1'
+1T
+1U
+0;
+0w!
+0t
+#960000
+0'
+0T
+0U
+1;
+#970000
+1'
+1T
+1U
+0;
+0u
+0G
+00
+#980000
+0'
+0T
+0U
+1;
+#990000
+1'
+1T
+1U
+0;
+#1000000

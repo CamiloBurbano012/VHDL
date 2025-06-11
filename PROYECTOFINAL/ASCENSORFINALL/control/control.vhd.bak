@@ -1,0 +1,86 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity FSM_Control is
+    Port (
+        clk            : in  STD_LOGIC;
+        rst            : in  STD_LOGIC;
+        solicitud      : in  STD_LOGIC_VECTOR(4 downto 0);
+        piso_actual    : in  INTEGER range 0 to 4;
+        puerta_cerrada : in  STD_LOGIC;
+        sobrepeso      : in  STD_LOGIC;
+        fallo_energia  : in  STD_LOGIC;
+
+        ir_a_piso      : out INTEGER range 0 to 4;
+        enable_puerta  : out STD_LOGIC;
+        mover          : out STD_LOGIC;
+        direccion      : out STD_LOGIC;
+        inactivo       : out STD_LOGIC
+    );
+end FSM_Control;
+
+architecture Behavioral of FSM_Control is
+    type estado_tipo is (ESPERA, MOVER_ASCENSOR, ABRIR_PUERTA, BLOQUEADO);
+    signal estado_actual, estado_siguiente : estado_tipo;
+
+    signal destino : INTEGER range 0 to 4 := 0;
+begin
+
+    proceso_estado: process(clk, rst)
+    begin
+        if rst = '1' then
+            estado_actual <= ESPERA;
+        elsif rising_edge(clk) then
+            if fallo_energia = '1' then
+                estado_actual <= BLOQUEADO;
+            else
+                estado_actual <= estado_siguiente;
+            end if;
+        end if;
+    end process;
+
+    proceso_control: process(estado_actual, solicitud, piso_actual, puerta_cerrada, sobrepeso)
+    begin
+        mover <= '0';
+        direccion <= '0';
+        enable_puerta <= '0';
+        inactivo <= '0';
+        ir_a_piso <= piso_actual;
+        destino := piso_actual;
+        estado_siguiente <= estado_actual;
+
+        case estado_actual is
+            when ESPERA =>
+                inactivo <= '1';
+                for i in 0 to 4 loop
+                    if solicitud(i) = '1' and sobrepeso = '0' then
+                        destino := i;
+                        estado_siguiente <= MOVER_ASCENSOR;
+                    end if;
+                end loop;
+
+            when MOVER_ASCENSOR =>
+                inactivo <= '0';
+                mover <= '1';
+                ir_a_piso <= destino;
+                if piso_actual < destino then
+                    direccion <= '1';
+                else
+                    direccion <= '0';
+                end if;
+                if piso_actual = destino and puerta_cerrada = '1' then
+                    estado_siguiente <= ABRIR_PUERTA;
+                end if;
+
+            when ABRIR_PUERTA =>
+                enable_puerta <= '1';
+                estado_siguiente <= ESPERA;
+
+            when BLOQUEADO =>
+                mover <= '0';
+                enable_puerta <= '0';
+                inactivo <= '1';
+        end case;
+    end process;
+end Behavioral;

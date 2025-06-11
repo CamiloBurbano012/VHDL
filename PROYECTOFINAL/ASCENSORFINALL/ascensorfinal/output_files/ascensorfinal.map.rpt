@@ -1,0 +1,666 @@
+Analysis & Synthesis report for ascensorfinal
+Wed Jun 11 10:15:58 2025
+Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |ascensorfinal|luces:u_luces|state_reg
+  9. State Machine - |ascensorfinal|puerta:u_puerta|estado_actual
+ 10. State Machine - |ascensorfinal|control:u_control|estado_actual
+ 11. Registers Removed During Synthesis
+ 12. General Register Statistics
+ 13. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 14. Parameter Settings for User Entity Instance: Debounce_Button:u_debounce_abrir
+ 15. Parameter Settings for User Entity Instance: Debounce_Button:u_debounce_cerrar
+ 16. Parameter Settings for User Entity Instance: Debounce_Button:u_debounce_emergencia
+ 17. Parameter Settings for User Entity Instance: memoria:u_memoria
+ 18. Parameter Settings for User Entity Instance: Timer:timer_espera_puerta
+ 19. Parameter Settings for User Entity Instance: Timer:timer_cierre_puerta
+ 20. Parameter Settings for User Entity Instance: Timer:timer_movimiento_piso
+ 21. Port Connectivity Checks: "Display:u_display_piso4"
+ 22. Port Connectivity Checks: "Display:u_display_piso3"
+ 23. Port Connectivity Checks: "Display:u_display_piso2"
+ 24. Port Connectivity Checks: "Display:u_display_piso1"
+ 25. Port Connectivity Checks: "Display:u_display_piso0"
+ 26. Port Connectivity Checks: "sensor:u_sensor"
+ 27. Port Connectivity Checks: "puerta:u_puerta"
+ 28. Port Connectivity Checks: "personas:u_personas"
+ 29. Port Connectivity Checks: "control:u_control"
+ 30. Elapsed Time Per Partition
+ 31. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++---------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                    ;
++------------------------------------+--------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Wed Jun 11 10:15:58 2025      ;
+; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
+; Revision Name                      ; ascensorfinal                              ;
+; Top-level Entity Name              ; ascensorfinal                              ;
+; Family                             ; Cyclone III                                ;
+; Total logic elements               ; 475                                        ;
+;     Total combinational functions  ; 412                                        ;
+;     Dedicated logic registers      ; 264                                        ;
+; Total registers                    ; 264                                        ;
+; Total pins                         ; 78                                         ;
+; Total virtual pins                 ; 0                                          ;
+; Total memory bits                  ; 0                                          ;
+; Embedded Multiplier 9-bit elements ; 0                                          ;
+; Total PLLs                         ; 0                                          ;
++------------------------------------+--------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                     ; EP3C16F484C6       ;                    ;
+; Top-level entity name                                                      ; ascensorfinal      ; ascensorfinal      ;
+; Family name                                                                ; Cyclone III        ; Cyclone IV GX      ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                 ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM Block Balancing                                                   ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; On                 ; On                 ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
+; Synthesis Seed                                                             ; 1                  ; 1                  ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 8           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processors 2-8         ;   0.0%      ;
++----------------------------+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                     ;
++----------------------------------------+-----------------+-----------------+---------------------------------------------------------------------+---------+
+; File Name with User-Entered Path       ; Used in Netlist ; File Type       ; File Name with Absolute Path                                        ; Library ;
++----------------------------------------+-----------------+-----------------+---------------------------------------------------------------------+---------+
+; ../debounce_button/debounce_button.vhd ; yes             ; User VHDL File  ; C:/altera/13.1/ASCENSOR_2_CORTE/debounce_button/debounce_button.vhd ;         ;
+; ../Timer/Timer.vhd                     ; yes             ; User VHDL File  ; C:/altera/13.1/ASCENSOR_2_CORTE/Timer/Timer.vhd                     ;         ;
+; ../sensor/sensor.vhd                   ; yes             ; User VHDL File  ; C:/altera/13.1/ASCENSOR_2_CORTE/sensor/sensor.vhd                   ;         ;
+; ../puerta/puerta.vhd                   ; yes             ; User VHDL File  ; C:/altera/13.1/ASCENSOR_2_CORTE/puerta/puerta.vhd                   ;         ;
+; ../personas/personas.vhd               ; yes             ; User VHDL File  ; C:/altera/13.1/ASCENSOR_2_CORTE/personas/personas.vhd               ;         ;
+; ../motores/motores.vhd                 ; yes             ; User VHDL File  ; C:/altera/13.1/ASCENSOR_2_CORTE/motores/motores.vhd                 ;         ;
+; ../memoria/memoria.vhd                 ; yes             ; User VHDL File  ; C:/altera/13.1/ASCENSOR_2_CORTE/memoria/memoria.vhd                 ;         ;
+; ../luces/luces.vhd                     ; yes             ; User VHDL File  ; C:/altera/13.1/ASCENSOR_2_CORTE/luces/luces.vhd                     ;         ;
+; ../display/display.vhd                 ; yes             ; User VHDL File  ; C:/altera/13.1/ASCENSOR_2_CORTE/display/display.vhd                 ;         ;
+; ../control/control.vhd                 ; yes             ; User VHDL File  ; C:/altera/13.1/ASCENSOR_2_CORTE/control/control.vhd                 ;         ;
+; ../botones/botones.vhd                 ; yes             ; User VHDL File  ; C:/altera/13.1/ASCENSOR_2_CORTE/botones/botones.vhd                 ;         ;
+; ../alarmas/alarmas.vhd                 ; yes             ; User VHDL File  ; C:/altera/13.1/ASCENSOR_2_CORTE/alarmas/alarmas.vhd                 ;         ;
+; ascensorfinal.vhd                      ; yes             ; User VHDL File  ; C:/altera/13.1/ASCENSOR_2_CORTE/ascensorfinal/ascensorfinal.vhd     ;         ;
++----------------------------------------+-----------------+-----------------+---------------------------------------------------------------------+---------+
+
+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimated Total logic elements              ; 475       ;
+;                                             ;           ;
+; Total combinational functions               ; 412       ;
+; Logic element usage by number of LUT inputs ;           ;
+;     -- 4 input functions                    ; 166       ;
+;     -- 3 input functions                    ; 76        ;
+;     -- <=2 input functions                  ; 170       ;
+;                                             ;           ;
+; Logic elements by mode                      ;           ;
+;     -- normal mode                          ; 274       ;
+;     -- arithmetic mode                      ; 138       ;
+;                                             ;           ;
+; Total registers                             ; 264       ;
+;     -- Dedicated logic registers            ; 264       ;
+;     -- I/O registers                        ; 0         ;
+;                                             ;           ;
+; I/O pins                                    ; 78        ;
+; Embedded Multiplier 9-bit elements          ; 0         ;
+; Maximum fan-out node                        ; clk~input ;
+; Maximum fan-out                             ; 227       ;
+; Total fan-out                               ; 2277      ;
+; Average fan-out                             ; 2.74      ;
++---------------------------------------------+-----------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                          ;
++--------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------+--------------+
+; Compilation Hierarchy Node                 ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                  ; Library Name ;
++--------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------+--------------+
+; |ascensorfinal                             ; 412 (32)          ; 264 (11)     ; 0           ; 0            ; 0       ; 0         ; 78   ; 0            ; |ascensorfinal                                       ; work         ;
+;    |Debounce_Button:u_debounce_abrir|      ; 22 (22)           ; 19 (19)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ascensorfinal|Debounce_Button:u_debounce_abrir      ; work         ;
+;    |Debounce_Button:u_debounce_cerrar|     ; 22 (22)           ; 19 (19)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ascensorfinal|Debounce_Button:u_debounce_cerrar     ; work         ;
+;    |Debounce_Button:u_debounce_emergencia| ; 22 (22)           ; 19 (19)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ascensorfinal|Debounce_Button:u_debounce_emergencia ; work         ;
+;    |Display:u_display_interno|             ; 4 (4)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ascensorfinal|Display:u_display_interno             ; work         ;
+;    |Timer:timer_cierre_puerta|             ; 40 (40)           ; 28 (28)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ascensorfinal|Timer:timer_cierre_puerta             ; work         ;
+;    |Timer:timer_movimiento_piso|           ; 59 (59)           ; 25 (25)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ascensorfinal|Timer:timer_movimiento_piso           ; work         ;
+;    |alarmas:u_alarmas|                     ; 2 (2)             ; 2 (2)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ascensorfinal|alarmas:u_alarmas                     ; work         ;
+;    |botones:u_botones|                     ; 0 (0)             ; 30 (30)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ascensorfinal|botones:u_botones                     ; work         ;
+;    |control:u_control|                     ; 32 (32)           ; 14 (14)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ascensorfinal|control:u_control                     ; work         ;
+;    |luces:u_luces|                         ; 5 (5)             ; 2 (2)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ascensorfinal|luces:u_luces                         ; work         ;
+;    |memoria:u_memoria|                     ; 40 (40)           ; 34 (34)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ascensorfinal|memoria:u_memoria                     ; work         ;
+;    |motores:u_motores|                     ; 0 (0)             ; 3 (3)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ascensorfinal|motores:u_motores                     ; work         ;
+;    |personas:u_personas|                   ; 14 (14)           ; 4 (4)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ascensorfinal|personas:u_personas                   ; work         ;
+;    |puerta:u_puerta|                       ; 118 (118)         ; 54 (54)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ascensorfinal|puerta:u_puerta                       ; work         ;
++--------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------------------------------+
+; State Machine - |ascensorfinal|luces:u_luces|state_reg                                                           ;
++-------------------------+-------------------------+----------------------+------------------+--------------------+
+; Name                    ; state_reg.MANTENIMIENTO ; state_reg.EMERGENCIA ; state_reg.ACTIVO ; state_reg.INACTIVO ;
++-------------------------+-------------------------+----------------------+------------------+--------------------+
+; state_reg.INACTIVO      ; 0                       ; 0                    ; 0                ; 0                  ;
+; state_reg.ACTIVO        ; 0                       ; 0                    ; 1                ; 1                  ;
+; state_reg.EMERGENCIA    ; 0                       ; 1                    ; 0                ; 1                  ;
+; state_reg.MANTENIMIENTO ; 1                       ; 0                    ; 0                ; 1                  ;
++-------------------------+-------------------------+----------------------+------------------+--------------------+
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |ascensorfinal|puerta:u_puerta|estado_actual                                                                                                                                                        ;
++-----------------------------+--------------------------+------------------------+-----------------------------+-----------------------+------------------------+----------------------------+-----------------------+
+; Name                        ; estado_actual.EMERGENCIA ; estado_actual.CERRANDO ; estado_actual.ESPERA_CERRAR ; estado_actual.ABIERTA ; estado_actual.ABRIENDO ; estado_actual.ESPERA_ABRIR ; estado_actual.CERRADA ;
++-----------------------------+--------------------------+------------------------+-----------------------------+-----------------------+------------------------+----------------------------+-----------------------+
+; estado_actual.CERRADA       ; 0                        ; 0                      ; 0                           ; 0                     ; 0                      ; 0                          ; 0                     ;
+; estado_actual.ESPERA_ABRIR  ; 0                        ; 0                      ; 0                           ; 0                     ; 0                      ; 1                          ; 1                     ;
+; estado_actual.ABRIENDO      ; 0                        ; 0                      ; 0                           ; 0                     ; 1                      ; 0                          ; 1                     ;
+; estado_actual.ABIERTA       ; 0                        ; 0                      ; 0                           ; 1                     ; 0                      ; 0                          ; 1                     ;
+; estado_actual.ESPERA_CERRAR ; 0                        ; 0                      ; 1                           ; 0                     ; 0                      ; 0                          ; 1                     ;
+; estado_actual.CERRANDO      ; 0                        ; 1                      ; 0                           ; 0                     ; 0                      ; 0                          ; 1                     ;
+; estado_actual.EMERGENCIA    ; 1                        ; 0                      ; 0                           ; 0                     ; 0                      ; 0                          ; 1                     ;
++-----------------------------+--------------------------+------------------------+-----------------------------+-----------------------+------------------------+----------------------------+-----------------------+
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |ascensorfinal|control:u_control|estado_actual                                                                                                                                                                                                                                                                                                                     ;
++-------------------------------------+--------------------------+-------------------------+-------------------------------+-------------------------------------+-------------------------------+----------------------------+------------------------+------------------------------------+-------------------------------+---------------------------------+----------------------+
+; Name                                ; estado_actual.EMERGENCIA ; estado_actual.SOBREPESO ; estado_actual.PUERTA_CERRANDO ; estado_actual.PUERTA_ABIERTA_ESPERA ; estado_actual.PUERTA_ABRIENDO ; estado_actual.LLEGADA_PISO ; estado_actual.MOVIENDO ; estado_actual.CALCULANDO_DIRECCION ; estado_actual.LEYENDO_DESTINO ; estado_actual.ESPERANDO_LLAMADA ; estado_actual.INICIO ;
++-------------------------------------+--------------------------+-------------------------+-------------------------------+-------------------------------------+-------------------------------+----------------------------+------------------------+------------------------------------+-------------------------------+---------------------------------+----------------------+
+; estado_actual.INICIO                ; 0                        ; 0                       ; 0                             ; 0                                   ; 0                             ; 0                          ; 0                      ; 0                                  ; 0                             ; 0                               ; 0                    ;
+; estado_actual.ESPERANDO_LLAMADA     ; 0                        ; 0                       ; 0                             ; 0                                   ; 0                             ; 0                          ; 0                      ; 0                                  ; 0                             ; 1                               ; 1                    ;
+; estado_actual.LEYENDO_DESTINO       ; 0                        ; 0                       ; 0                             ; 0                                   ; 0                             ; 0                          ; 0                      ; 0                                  ; 1                             ; 0                               ; 1                    ;
+; estado_actual.CALCULANDO_DIRECCION  ; 0                        ; 0                       ; 0                             ; 0                                   ; 0                             ; 0                          ; 0                      ; 1                                  ; 0                             ; 0                               ; 1                    ;
+; estado_actual.MOVIENDO              ; 0                        ; 0                       ; 0                             ; 0                                   ; 0                             ; 0                          ; 1                      ; 0                                  ; 0                             ; 0                               ; 1                    ;
+; estado_actual.LLEGADA_PISO          ; 0                        ; 0                       ; 0                             ; 0                                   ; 0                             ; 1                          ; 0                      ; 0                                  ; 0                             ; 0                               ; 1                    ;
+; estado_actual.PUERTA_ABRIENDO       ; 0                        ; 0                       ; 0                             ; 0                                   ; 1                             ; 0                          ; 0                      ; 0                                  ; 0                             ; 0                               ; 1                    ;
+; estado_actual.PUERTA_ABIERTA_ESPERA ; 0                        ; 0                       ; 0                             ; 1                                   ; 0                             ; 0                          ; 0                      ; 0                                  ; 0                             ; 0                               ; 1                    ;
+; estado_actual.PUERTA_CERRANDO       ; 0                        ; 0                       ; 1                             ; 0                                   ; 0                             ; 0                          ; 0                      ; 0                                  ; 0                             ; 0                               ; 1                    ;
+; estado_actual.SOBREPESO             ; 0                        ; 1                       ; 0                             ; 0                                   ; 0                             ; 0                          ; 0                      ; 0                                  ; 0                             ; 0                               ; 1                    ;
+; estado_actual.EMERGENCIA            ; 1                        ; 0                       ; 0                             ; 0                                   ; 0                             ; 0                          ; 0                      ; 0                                  ; 0                             ; 0                               ; 1                    ;
++-------------------------------------+--------------------------+-------------------------+-------------------------------+-------------------------------------+-------------------------------+----------------------------+------------------------+------------------------------------+-------------------------------+---------------------------------+----------------------+
+
+
++--------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                             ;
++---------------------------------------+----------------------------------------+
+; Register name                         ; Reason for Removal                     ;
++---------------------------------------+----------------------------------------+
+; luces:u_luces|state_reg.MANTENIMIENTO ; Stuck at GND due to stuck port data_in ;
+; luces:u_luces|state_reg.INACTIVO      ; Lost fanout                            ;
+; memoria:u_memoria|wr_ptr_reg[3]       ; Lost fanout                            ;
+; memoria:u_memoria|rd_ptr_reg[3]       ; Lost fanout                            ;
+; Total Number of Removed Registers = 4 ;                                        ;
++---------------------------------------+----------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 264   ;
+; Number of registers using Synchronous Clear  ; 64    ;
+; Number of registers using Synchronous Load   ; 26    ;
+; Number of registers using Asynchronous Clear ; 237   ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 84    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                      ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------+
+; 3:1                ; 3 bits    ; 6 LEs         ; 0 LEs                ; 6 LEs                  ; Yes        ; |ascensorfinal|piso_actual_int[0]                               ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 0 LEs                ; 8 LEs                  ; Yes        ; |ascensorfinal|memoria:u_memoria|count[3]                       ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |ascensorfinal|alarmas:u_alarmas|alarma_visual                  ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |ascensorfinal|Debounce_Button:u_debounce_emergencia|counter[2] ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |ascensorfinal|Debounce_Button:u_debounce_abrir|counter[0]      ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |ascensorfinal|Debounce_Button:u_debounce_cerrar|counter[13]    ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |ascensorfinal|personas:u_personas|total[1]                     ;
+; 4:1                ; 23 bits   ; 46 LEs        ; 46 LEs               ; 0 LEs                  ; Yes        ; |ascensorfinal|Timer:timer_movimiento_piso|count[2]             ;
+; 4:1                ; 26 bits   ; 52 LEs        ; 52 LEs               ; 0 LEs                  ; Yes        ; |ascensorfinal|Timer:timer_cierre_puerta|count[11]              ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |ascensorfinal|control:u_control|siguiente_estado.INICIO        ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |ascensorfinal|control:u_control|motor_subir_int                ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |ascensorfinal|estado_ascensor_luces[0]                         ;
+; 8:1                ; 4 bits    ; 20 LEs        ; 8 LEs                ; 12 LEs                 ; No         ; |ascensorfinal|luces:u_luces|Selector3                          ;
+; 10:1               ; 3 bits    ; 18 LEs        ; 12 LEs               ; 6 LEs                  ; No         ; |ascensorfinal|puerta:u_puerta|Selector36                       ;
+; 11:1               ; 2 bits    ; 14 LEs        ; 4 LEs                ; 10 LEs                 ; No         ; |ascensorfinal|puerta:u_puerta|Selector35                       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Debounce_Button:u_debounce_abrir ;
++------------------+---------+--------------------------------------------------+
+; Parameter Name   ; Value   ; Type                                             ;
++------------------+---------+--------------------------------------------------+
+; debounce_time_ms ; 50      ; Signed Integer                                   ;
+; clk_freq_hz      ; 1000000 ; Signed Integer                                   ;
++------------------+---------+--------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Debounce_Button:u_debounce_cerrar ;
++------------------+---------+---------------------------------------------------+
+; Parameter Name   ; Value   ; Type                                              ;
++------------------+---------+---------------------------------------------------+
+; debounce_time_ms ; 50      ; Signed Integer                                    ;
+; clk_freq_hz      ; 1000000 ; Signed Integer                                    ;
++------------------+---------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Debounce_Button:u_debounce_emergencia ;
++------------------+---------+-------------------------------------------------------+
+; Parameter Name   ; Value   ; Type                                                  ;
++------------------+---------+-------------------------------------------------------+
+; debounce_time_ms ; 50      ; Signed Integer                                        ;
+; clk_freq_hz      ; 1000000 ; Signed Integer                                        ;
++------------------+---------+-------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: memoria:u_memoria ;
++----------------+-------+---------------------------------------+
+; Parameter Name ; Value ; Type                                  ;
++----------------+-------+---------------------------------------+
+; DATA_WIDTH     ; 3     ; Signed Integer                        ;
+; DEPTH          ; 8     ; Signed Integer                        ;
++----------------+-------+---------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Timer:timer_espera_puerta ;
++----------------+----------+--------------------------------------------+
+; Parameter Name ; Value    ; Type                                       ;
++----------------+----------+--------------------------------------------+
+; timer_duration ; 10000000 ; Signed Integer                             ;
++----------------+----------+--------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Timer:timer_cierre_puerta ;
++----------------+----------+--------------------------------------------+
+; Parameter Name ; Value    ; Type                                       ;
++----------------+----------+--------------------------------------------+
+; timer_duration ; 45000000 ; Signed Integer                             ;
++----------------+----------+--------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Timer:timer_movimiento_piso ;
++----------------+---------+-----------------------------------------------+
+; Parameter Name ; Value   ; Type                                          ;
++----------------+---------+-----------------------------------------------+
+; timer_duration ; 5000000 ; Signed Integer                                ;
++----------------+---------+-----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------+
+; Port Connectivity Checks: "Display:u_display_piso4" ;
++------------+-------+----------+---------------------+
+; Port       ; Type  ; Severity ; Details             ;
++------------+-------+----------+---------------------+
+; piso[1..0] ; Input ; Info     ; Stuck at GND        ;
+; piso[2]    ; Input ; Info     ; Stuck at VCC        ;
++------------+-------+----------+---------------------+
+
+
++-----------------------------------------------------+
+; Port Connectivity Checks: "Display:u_display_piso3" ;
++------------+-------+----------+---------------------+
+; Port       ; Type  ; Severity ; Details             ;
++------------+-------+----------+---------------------+
+; piso[1..0] ; Input ; Info     ; Stuck at VCC        ;
+; piso[2]    ; Input ; Info     ; Stuck at GND        ;
++------------+-------+----------+---------------------+
+
+
++-----------------------------------------------------+
+; Port Connectivity Checks: "Display:u_display_piso2" ;
++---------+-------+----------+------------------------+
+; Port    ; Type  ; Severity ; Details                ;
++---------+-------+----------+------------------------+
+; piso[2] ; Input ; Info     ; Stuck at GND           ;
+; piso[1] ; Input ; Info     ; Stuck at VCC           ;
+; piso[0] ; Input ; Info     ; Stuck at GND           ;
++---------+-------+----------+------------------------+
+
+
++-----------------------------------------------------+
+; Port Connectivity Checks: "Display:u_display_piso1" ;
++------------+-------+----------+---------------------+
+; Port       ; Type  ; Severity ; Details             ;
++------------+-------+----------+---------------------+
+; piso[2..1] ; Input ; Info     ; Stuck at GND        ;
+; piso[0]    ; Input ; Info     ; Stuck at VCC        ;
++------------+-------+----------+---------------------+
+
+
++-----------------------------------------------------+
+; Port Connectivity Checks: "Display:u_display_piso0" ;
++------+-------+----------+---------------------------+
+; Port ; Type  ; Severity ; Details                   ;
++------+-------+----------+---------------------------+
+; piso ; Input ; Info     ; Stuck at GND              ;
++------+-------+----------+---------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "sensor:u_sensor"                                                                           ;
++-------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port        ; Type   ; Severity ; Details                                                                             ;
++-------------+--------+----------+-------------------------------------------------------------------------------------+
+; piso_actual ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; error       ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "puerta:u_puerta"                                                                             ;
++---------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port          ; Type   ; Severity ; Details                                                                             ;
++---------------+--------+----------+-------------------------------------------------------------------------------------+
+; alarma_sonora ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; alarma_visual ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++---------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------+
+; Port Connectivity Checks: "personas:u_personas"           ;
++-------------------------+-------+----------+--------------+
+; Port                    ; Type  ; Severity ; Details      ;
++-------------------------+-------+----------+--------------+
+; personas_entraron[3..1] ; Input ; Info     ; Stuck at GND ;
+; personas_salieron[3..1] ; Input ; Info     ; Stuck at GND ;
++-------------------------+-------+----------+--------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "control:u_control"                                                                               ;
++-------------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port              ; Type   ; Severity ; Details                                                                             ;
++-------------------+--------+----------+-------------------------------------------------------------------------------------+
+; alarma_sonora_fsm ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; alarma_visual_fsm ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; luces_cabina_fsm  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:01     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Analysis & Synthesis
+    Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
+    Info: Processing started: Wed Jun 11 10:15:52 2025
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ascensorfinal -c ascensorfinal
+Info (20030): Parallel compilation is enabled and will use 8 of the 8 processors detected
+Info (12021): Found 2 design units, including 1 entities, in source file /altera/13.1/ascensor_2_corte/debounce_button/debounce_button.vhd
+    Info (12022): Found design unit 1: Debounce_Button-Behavioral
+    Info (12023): Found entity 1: Debounce_Button
+Info (12021): Found 2 design units, including 1 entities, in source file /altera/13.1/ascensor_2_corte/timer/timer.vhd
+    Info (12022): Found design unit 1: Timer-Behavioral
+    Info (12023): Found entity 1: Timer
+Info (12021): Found 2 design units, including 1 entities, in source file /altera/13.1/ascensor_2_corte/sensor/sensor.vhd
+    Info (12022): Found design unit 1: sensor-Behavioral
+    Info (12023): Found entity 1: sensor
+Info (12021): Found 2 design units, including 1 entities, in source file /altera/13.1/ascensor_2_corte/puerta/puerta.vhd
+    Info (12022): Found design unit 1: puerta-Behavioral
+    Info (12023): Found entity 1: puerta
+Info (12021): Found 2 design units, including 1 entities, in source file /altera/13.1/ascensor_2_corte/personas/personas.vhd
+    Info (12022): Found design unit 1: personas-Behavioral
+    Info (12023): Found entity 1: personas
+Info (12021): Found 2 design units, including 1 entities, in source file /altera/13.1/ascensor_2_corte/motores/motores.vhd
+    Info (12022): Found design unit 1: motores-Behavioral
+    Info (12023): Found entity 1: motores
+Info (12021): Found 2 design units, including 1 entities, in source file /altera/13.1/ascensor_2_corte/memoria/memoria.vhd
+    Info (12022): Found design unit 1: memoria-Behavioral
+    Info (12023): Found entity 1: memoria
+Info (12021): Found 2 design units, including 1 entities, in source file /altera/13.1/ascensor_2_corte/luces/luces.vhd
+    Info (12022): Found design unit 1: luces-Behavioral
+    Info (12023): Found entity 1: luces
+Info (12021): Found 2 design units, including 1 entities, in source file /altera/13.1/ascensor_2_corte/display/display.vhd
+    Info (12022): Found design unit 1: Display-Behavioral
+    Info (12023): Found entity 1: Display
+Info (12021): Found 2 design units, including 1 entities, in source file /altera/13.1/ascensor_2_corte/control/control.vhd
+    Info (12022): Found design unit 1: control-Behavioral
+    Info (12023): Found entity 1: control
+Info (12021): Found 2 design units, including 1 entities, in source file /altera/13.1/ascensor_2_corte/botones/botones.vhd
+    Info (12022): Found design unit 1: botones-Behavioral
+    Info (12023): Found entity 1: botones
+Info (12021): Found 2 design units, including 1 entities, in source file /altera/13.1/ascensor_2_corte/alarmas/alarmas.vhd
+    Info (12022): Found design unit 1: alarmas-Behavioral
+    Info (12023): Found entity 1: alarmas
+Info (12021): Found 2 design units, including 1 entities, in source file ascensorfinal.vhd
+    Info (12022): Found design unit 1: ascensorfinal-Behavioral
+    Info (12023): Found entity 1: ascensorfinal
+Info (12127): Elaborating entity "ascensorfinal" for the top level hierarchy
+Warning (10036): Verilog HDL or VHDL warning at ascensorfinal.vhd(223): object "alarma_sonora_fsm_ctrl" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at ascensorfinal.vhd(224): object "alarma_visual_fsm_ctrl" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at ascensorfinal.vhd(225): object "luces_cabina_fsm_ctrl" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at ascensorfinal.vhd(252): object "error_sensor" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at ascensorfinal.vhd(253): object "piso_sensor_vec" assigned a value but never read
+Warning (10492): VHDL Process Statement warning at ascensorfinal.vhd(369): signal "fallo_energia" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Info (12128): Elaborating entity "botones" for hierarchy "botones:u_botones"
+Info (12128): Elaborating entity "Debounce_Button" for hierarchy "Debounce_Button:u_debounce_abrir"
+Info (12128): Elaborating entity "memoria" for hierarchy "memoria:u_memoria"
+Info (12128): Elaborating entity "control" for hierarchy "control:u_control"
+Info (12128): Elaborating entity "personas" for hierarchy "personas:u_personas"
+Info (12128): Elaborating entity "motores" for hierarchy "motores:u_motores"
+Info (12128): Elaborating entity "puerta" for hierarchy "puerta:u_puerta"
+Info (12128): Elaborating entity "sensor" for hierarchy "sensor:u_sensor"
+Info (12128): Elaborating entity "alarmas" for hierarchy "alarmas:u_alarmas"
+Warning (10631): VHDL Process Statement warning at alarmas.vhd(22): inferring latch(es) for signal or variable "toggle_visual", which holds its previous value in one or more paths through the process
+Info (10041): Inferred latch for "toggle_visual" at alarmas.vhd(22)
+Info (12128): Elaborating entity "luces" for hierarchy "luces:u_luces"
+Warning (10036): Verilog HDL or VHDL warning at luces.vhd(25): object "luz_auto_off" assigned a value but never read
+Info (12128): Elaborating entity "Display" for hierarchy "Display:u_display_piso0"
+Info (12128): Elaborating entity "Timer" for hierarchy "Timer:timer_espera_puerta"
+Info (12128): Elaborating entity "Timer" for hierarchy "Timer:timer_cierre_puerta"
+Info (12128): Elaborating entity "Timer" for hierarchy "Timer:timer_movimiento_piso"
+Info (276014): Found 1 instances of uninferred RAM logic
+    Info (276004): RAM logic "memoria:u_memoria|fifo_memory" is uninferred due to inappropriate RAM size
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "luces_cabina" is stuck at VCC
+    Warning (13410): Pin "display_piso0[0]" is stuck at GND
+    Warning (13410): Pin "display_piso0[1]" is stuck at GND
+    Warning (13410): Pin "display_piso0[2]" is stuck at GND
+    Warning (13410): Pin "display_piso0[3]" is stuck at GND
+    Warning (13410): Pin "display_piso0[4]" is stuck at GND
+    Warning (13410): Pin "display_piso0[5]" is stuck at GND
+    Warning (13410): Pin "display_piso0[6]" is stuck at VCC
+    Warning (13410): Pin "display_piso1[0]" is stuck at VCC
+    Warning (13410): Pin "display_piso1[1]" is stuck at GND
+    Warning (13410): Pin "display_piso1[2]" is stuck at GND
+    Warning (13410): Pin "display_piso1[3]" is stuck at VCC
+    Warning (13410): Pin "display_piso1[4]" is stuck at VCC
+    Warning (13410): Pin "display_piso1[5]" is stuck at VCC
+    Warning (13410): Pin "display_piso1[6]" is stuck at VCC
+    Warning (13410): Pin "display_piso2[0]" is stuck at GND
+    Warning (13410): Pin "display_piso2[1]" is stuck at GND
+    Warning (13410): Pin "display_piso2[2]" is stuck at VCC
+    Warning (13410): Pin "display_piso2[3]" is stuck at GND
+    Warning (13410): Pin "display_piso2[4]" is stuck at GND
+    Warning (13410): Pin "display_piso2[5]" is stuck at VCC
+    Warning (13410): Pin "display_piso2[6]" is stuck at GND
+    Warning (13410): Pin "display_piso3[0]" is stuck at GND
+    Warning (13410): Pin "display_piso3[1]" is stuck at GND
+    Warning (13410): Pin "display_piso3[2]" is stuck at GND
+    Warning (13410): Pin "display_piso3[3]" is stuck at GND
+    Warning (13410): Pin "display_piso3[4]" is stuck at VCC
+    Warning (13410): Pin "display_piso3[5]" is stuck at VCC
+    Warning (13410): Pin "display_piso3[6]" is stuck at GND
+    Warning (13410): Pin "display_piso4[0]" is stuck at VCC
+    Warning (13410): Pin "display_piso4[1]" is stuck at GND
+    Warning (13410): Pin "display_piso4[2]" is stuck at GND
+    Warning (13410): Pin "display_piso4[3]" is stuck at VCC
+    Warning (13410): Pin "display_piso4[4]" is stuck at VCC
+    Warning (13410): Pin "display_piso4[5]" is stuck at GND
+    Warning (13410): Pin "display_piso4[6]" is stuck at GND
+    Warning (13410): Pin "display_interno[1]" is stuck at GND
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 3 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 4 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "ir_sensors[1]"
+    Warning (15610): No output dependent on input pin "ir_sensors[2]"
+    Warning (15610): No output dependent on input pin "ir_sensors[3]"
+    Warning (15610): No output dependent on input pin "ir_sensors[4]"
+Info (21057): Implemented 558 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 28 input pins
+    Info (21059): Implemented 50 output pins
+    Info (21061): Implemented 480 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 51 warnings
+    Info: Peak virtual memory: 4710 megabytes
+    Info: Processing ended: Wed Jun 11 10:15:58 2025
+    Info: Elapsed time: 00:00:06
+    Info: Total CPU time (on all processors): 00:00:04
+
+

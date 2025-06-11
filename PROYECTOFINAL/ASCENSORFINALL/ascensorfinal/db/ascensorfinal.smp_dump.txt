@@ -1,0 +1,31 @@
+
+State Machine - |ascensorfinal|luces:u_luces|state_reg
+Name state_reg.MANTENIMIENTO state_reg.EMERGENCIA state_reg.ACTIVO state_reg.INACTIVO 
+state_reg.INACTIVO 0 0 0 0 
+state_reg.ACTIVO 0 0 1 1 
+state_reg.EMERGENCIA 0 1 0 1 
+state_reg.MANTENIMIENTO 1 0 0 1 
+
+State Machine - |ascensorfinal|puerta:u_puerta|estado_actual
+Name estado_actual.EMERGENCIA estado_actual.CERRANDO estado_actual.ESPERA_CERRAR estado_actual.ABIERTA estado_actual.ABRIENDO estado_actual.ESPERA_ABRIR estado_actual.CERRADA 
+estado_actual.CERRADA 0 0 0 0 0 0 0 
+estado_actual.ESPERA_ABRIR 0 0 0 0 0 1 1 
+estado_actual.ABRIENDO 0 0 0 0 1 0 1 
+estado_actual.ABIERTA 0 0 0 1 0 0 1 
+estado_actual.ESPERA_CERRAR 0 0 1 0 0 0 1 
+estado_actual.CERRANDO 0 1 0 0 0 0 1 
+estado_actual.EMERGENCIA 1 0 0 0 0 0 1 
+
+State Machine - |ascensorfinal|control:u_control|estado_actual
+Name estado_actual.EMERGENCIA estado_actual.SOBREPESO estado_actual.PUERTA_CERRANDO estado_actual.PUERTA_ABIERTA_ESPERA estado_actual.PUERTA_ABRIENDO estado_actual.LLEGADA_PISO estado_actual.MOVIENDO estado_actual.CALCULANDO_DIRECCION estado_actual.LEYENDO_DESTINO estado_actual.ESPERANDO_LLAMADA estado_actual.INICIO 
+estado_actual.INICIO 0 0 0 0 0 0 0 0 0 0 0 
+estado_actual.ESPERANDO_LLAMADA 0 0 0 0 0 0 0 0 0 1 1 
+estado_actual.LEYENDO_DESTINO 0 0 0 0 0 0 0 0 1 0 1 
+estado_actual.CALCULANDO_DIRECCION 0 0 0 0 0 0 0 1 0 0 1 
+estado_actual.MOVIENDO 0 0 0 0 0 0 1 0 0 0 1 
+estado_actual.LLEGADA_PISO 0 0 0 0 0 1 0 0 0 0 1 
+estado_actual.PUERTA_ABRIENDO 0 0 0 0 1 0 0 0 0 0 1 
+estado_actual.PUERTA_ABIERTA_ESPERA 0 0 0 1 0 0 0 0 0 0 1 
+estado_actual.PUERTA_CERRANDO 0 0 1 0 0 0 0 0 0 0 1 
+estado_actual.SOBREPESO 0 1 0 0 0 0 0 0 0 0 1 
+estado_actual.EMERGENCIA 1 0 0 0 0 0 0 0 0 0 1 

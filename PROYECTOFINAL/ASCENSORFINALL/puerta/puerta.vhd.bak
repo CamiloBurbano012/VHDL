@@ -1,0 +1,109 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity puerta is
+    Port (
+        clk            : in  STD_LOGIC;
+        rst            : in  STD_LOGIC;
+        enable         : in  STD_LOGIC;
+        abrir          : in  STD_LOGIC;
+        cerrar         : in  STD_LOGIC;
+        fallo_energia  : in  STD_LOGIC;
+
+        puerta_abierta : out STD_LOGIC;
+        puerta_cerrada : out STD_LOGIC;
+        alarma_sonora  : out STD_LOGIC;
+        alarma_visual  : out STD_LOGIC
+    );
+end puerta;
+
+architecture Behavioral of puerta is
+    type estado_tipo is (CERRADA, ESPERA_10S, ABRIENDO, ABIERTA, ESPERA_45S, CERRANDO, BLOQUEO);
+    signal estado_actual, estado_siguiente : estado_tipo;
+
+    signal contador : INTEGER := 0;
+    constant T10s : INTEGER := 10000000; -- Ajustar según frecuencia del reloj
+    constant T45s : INTEGER := 45000000;
+begin
+
+    proceso_estado: process(clk, rst)
+    begin
+        if rst = '1' then
+            estado_actual <= CERRADA;
+            contador <= 0;
+        elsif rising_edge(clk) then
+            if fallo_energia = '1' then
+                estado_actual <= BLOQUEO;
+            else
+                estado_actual <= estado_siguiente;
+            end if;
+        end if;
+    end process;
+
+    proceso_transiciones: process(estado_actual, enable, abrir, cerrar, contador)
+    begin
+        -- valores por defecto
+        puerta_abierta <= '0';
+        puerta_cerrada <= '0';
+        alarma_sonora <= '0';
+        alarma_visual <= '0';
+        estado_siguiente <= estado_actual;
+
+        case estado_actual is
+            when CERRADA =>
+                puerta_cerrada <= '1';
+                if enable = '1' then
+                    estado_siguiente <= ESPERA_10S;
+                    contador <= 0;
+                elsif abrir = '1' then
+                    estado_siguiente <= ABRIENDO;
+                end if;
+
+            when ESPERA_10S =>
+                puerta_cerrada <= '1';
+                if contador < T10s then
+                    contador <= contador + 1;
+                else
+                    estado_siguiente <= ABRIENDO;
+                    contador <= 0;
+                end if;
+
+            when ABRIENDO =>
+                alarma_sonora <= '1';
+                alarma_visual <= '1';
+                estado_siguiente <= ABIERTA;
+
+            when ABIERTA =>
+                puerta_abierta <= '1';
+                estado_siguiente <= ESPERA_45S;
+                contador <= 0;
+
+            when ESPERA_45S =>
+                puerta_abierta <= '1';
+                if contador < T45s then
+                    contador <= contador + 1;
+                else
+                    estado_siguiente <= CERRANDO;
+                    contador <= 0;
+                end if;
+
+            when CERRANDO =>
+                alarma_sonora <= '1';
+                alarma_visual <= '1';
+                estado_siguiente <= CERRADA;
+
+            when BLOQUEO =>
+                puerta_cerrada <= '1';
+                alarma_sonora <= '1';
+                alarma_visual <= '1';
+                if fallo_energia = '0' then
+                    estado_siguiente <= CERRADA;
+                end if;
+
+            when others =>
+                estado_siguiente <= CERRADA;
+        end case;
+    end process;
+
+end Behavioral;

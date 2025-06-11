@@ -1,0 +1,63 @@
+entity alarmas is
+    Port (
+        clk           : in STD_LOGIC;
+        rst           : in STD_LOGIC;
+        sobrepeso     : in STD_LOGIC;
+        fallo_energia : in STD_LOGIC;
+        alarma_visual : out STD_LOGIC;
+        alarma_sonora : out STD_LOGIC
+    );
+end alarmas;
+
+architecture Behavioral of alarmas is
+    type state_type is (IDLE, ACTIVAR_ALARMA);
+    signal estado_actual, estado_siguiente : state_type;
+begin
+    -- Proceso de la máquina de estados
+    process(clk, rst)
+    begin
+        if rst = '1' then
+            estado_actual <= IDLE;  -- Estado inicial (sin alarma)
+        elsif rising_edge(clk) then
+            estado_actual <= estado_siguiente;  -- Cambio de estado en cada ciclo de reloj
+        end if;
+    end process;
+
+    -- Lógica de transición de estados
+    process(estado_actual, sobrepeso, fallo_energia)
+    begin
+        case estado_actual is
+            when IDLE =>
+                -- Sin alarma si no hay fallo de energía ni sobrepeso
+                if sobrepeso = '1' or fallo_energia = '1' then
+                    estado_siguiente <= ACTIVAR_ALARMA;
+                else
+                    estado_siguiente <= IDLE;
+                end if;
+
+            when ACTIVAR_ALARMA =>
+                -- Mantener alarma activada mientras persista el sobrepeso o fallo
+                if sobrepeso = '0' and fallo_energia = '0' then
+                    estado_siguiente <= IDLE;  -- Volver a estado inactivo
+                else
+                    estado_siguiente <= ACTIVAR_ALARMA;
+                end if;
+        end case;
+    end process;
+
+    -- Salidas de las alarmas
+    process(estado_actual)
+    begin
+        case estado_actual is
+            when IDLE =>
+                alarma_visual <= '0';
+                alarma_sonora <= '0';
+
+            when ACTIVAR_ALARMA =>
+                alarma_visual <= '1';
+                alarma_sonora <= '1';
+        end case;
+    end process;
+
+end Behavioral;
+

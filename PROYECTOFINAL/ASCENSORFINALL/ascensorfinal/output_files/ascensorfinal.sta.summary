@@ -1,0 +1,77 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 85C Model Setup 'clk'
+Slack : -3.563
+TNS   : -430.706
+
+Type  : Slow 1200mV 85C Model Setup 'puerta:u_puerta|clk_1kHz'
+Slack : -2.306
+TNS   : -74.722
+
+Type  : Slow 1200mV 85C Model Hold 'clk'
+Slack : -0.160
+TNS   : -0.160
+
+Type  : Slow 1200mV 85C Model Hold 'puerta:u_puerta|clk_1kHz'
+Slack : 0.343
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clk'
+Slack : -3.000
+TNS   : -230.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'puerta:u_puerta|clk_1kHz'
+Slack : -1.000
+TNS   : -37.000
+
+Type  : Slow 1200mV 0C Model Setup 'clk'
+Slack : -3.133
+TNS   : -371.551
+
+Type  : Slow 1200mV 0C Model Setup 'puerta:u_puerta|clk_1kHz'
+Slack : -1.995
+TNS   : -63.525
+
+Type  : Slow 1200mV 0C Model Hold 'clk'
+Slack : -0.149
+TNS   : -0.149
+
+Type  : Slow 1200mV 0C Model Hold 'puerta:u_puerta|clk_1kHz'
+Slack : 0.299
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clk'
+Slack : -3.000
+TNS   : -230.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'puerta:u_puerta|clk_1kHz'
+Slack : -1.000
+TNS   : -37.000
+
+Type  : Fast 1200mV 0C Model Setup 'clk'
+Slack : -1.527
+TNS   : -156.902
+
+Type  : Fast 1200mV 0C Model Setup 'puerta:u_puerta|clk_1kHz'
+Slack : -0.841
+TNS   : -25.598
+
+Type  : Fast 1200mV 0C Model Hold 'clk'
+Slack : -0.196
+TNS   : -0.196
+
+Type  : Fast 1200mV 0C Model Hold 'puerta:u_puerta|clk_1kHz'
+Slack : 0.179
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clk'
+Slack : -3.000
+TNS   : -243.725
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'puerta:u_puerta|clk_1kHz'
+Slack : -1.000
+TNS   : -37.000
+
+------------------------------------------------------------

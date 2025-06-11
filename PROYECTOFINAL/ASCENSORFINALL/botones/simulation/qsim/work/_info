@@ -1,0 +1,81 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\altera\13.1\ASCENSOR_2_CORTE\botones\simulation\qsim
+vbotones
+Z1 !s100 X3XP:=7DQK5S?6lPVF4J80
+Z2 I:95:@GdHKo[9<;Z@PG4Ug1
+Z3 V<z=IlOM0k1BXRFcbeDWT60
+Z4 dC:\altera\13.1\ASCENSOR_2_CORTE\botones\simulation\qsim
+Z5 w1746735316
+Z6 8botones.vo
+Z7 Fbotones.vo
+L0 31
+Z8 OV;L;10.1d;51
+r1
+31
+Z9 !s90 -work|work|botones.vo|
+Z10 o-work work -O0
+!i10b 1
+!s85 0
+Z11 !s108 1746735318.379000
+Z12 !s107 botones.vo|
+!s101 -O0
+vbotones_vlg_check_tst
+!i10b 1
+Z13 !s100 bF:h:cMafh9n<1V9bo8MO0
+Z14 IHi9ZBYIzzzCdaQdzg3WLT0
+Z15 Vh8U<D[faHOL<z8eg_E^Yh0
+R4
+Z16 w1746735314
+Z17 8Waveform.vwf.vt
+Z18 FWaveform.vwf.vt
+L0 71
+R8
+r1
+!s85 0
+31
+Z19 !s108 1746735318.548000
+Z20 !s107 Waveform.vwf.vt|
+Z21 !s90 -work|work|Waveform.vwf.vt|
+!s101 -O0
+R10
+vbotones_vlg_sample_tst
+!i10b 1
+Z22 !s100 bDki@8jI7Q0mFbk14d:Ug2
+Z23 Ie<T:=kmK6f;@z4Mg5bO[F1
+Z24 VW3njQ_iRaQ<6m7E:?6ic_1
+R4
+R16
+R17
+R18
+L0 29
+R8
+r1
+!s85 0
+31
+R19
+R20
+R21
+!s101 -O0
+R10
+vbotones_vlg_vec_tst
+!i10b 1
+!s100 =Cjj5<^iUJA4HcIkXW1U81
+Im:WI8NXJ4KDmDYIeAOPf^1
+Z25 VL]LK5mzhY>TZ5<:4bPn?e0
+R4
+R16
+R17
+R18
+Z26 L0 514
+R8
+r1
+!s85 0
+31
+R19
+R20
+R21
+!s101 -O0
+R10

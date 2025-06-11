@@ -1,0 +1,81 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\altera\13.1\ASCENSOR_2_CORTE\puerta\simulation\qsim
+vpuerta
+Z1 ISFIb2NCC9[@LPP=LWSg5>0
+Z2 Vbdb]iVH8chJE2<f;CPi9k2
+Z3 dC:\altera\13.1\ASCENSOR_2_CORTE\puerta\simulation\qsim
+Z4 w1746738009
+Z5 8puerta.vo
+Z6 Fpuerta.vo
+L0 31
+Z7 OV;L;10.1d;51
+r1
+31
+Z8 o-work work -O0
+!i10b 1
+Z9 !s100 m7S@63Gi1=z66i<h6M2RN2
+!s85 0
+Z10 !s108 1746738011.487000
+Z11 !s107 puerta.vo|
+Z12 !s90 -work|work|puerta.vo|
+!s101 -O0
+vpuerta_vlg_check_tst
+!i10b 1
+!s100 7SBIBRXbEN@F2P[RS=T>33
+Ijf5WeVQR8E@OoTOERY:H21
+VESbdg?f?KQR:XXWC>=3cZ3
+R3
+Z13 w1746738007
+Z14 8Waveform.vwf.vt
+Z15 FWaveform.vwf.vt
+L0 67
+R7
+r1
+!s85 0
+31
+Z16 !s108 1746738011.639000
+Z17 !s107 Waveform.vwf.vt|
+Z18 !s90 -work|work|Waveform.vwf.vt|
+!s101 -O0
+R8
+vpuerta_vlg_sample_tst
+!i10b 1
+!s100 ATnCfNE`>FJ@VNKX4H39X1
+I9VA:n8:AbY7@=NQL_VQba1
+VG:YEYWmKIgYlTn;hfn2Hf0
+R3
+R13
+R14
+R15
+L0 29
+R7
+r1
+!s85 0
+31
+R16
+R17
+R18
+!s101 -O0
+R8
+vpuerta_vlg_vec_tst
+!i10b 1
+!s100 O_QjA@;I5dY2@dOzETa=n1
+IYNMXRgG;oRR8c2Rg3H;@S1
+VCTTZ[Kgb?_V?P]]g[lcgi3
+R3
+R13
+R14
+R15
+L0 243
+R7
+r1
+!s85 0
+31
+R16
+R17
+R18
+!s101 -O0
+R8

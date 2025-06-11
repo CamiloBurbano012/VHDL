@@ -1,0 +1,84 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+
+entity motor is
+    Port (
+        clk         : in  STD_LOGIC;              -- Reloj de sistema
+        reset       : in  STD_LOGIC;              -- Reset síncrono
+        piso        : in  STD_LOGIC_VECTOR(2 downto 0);  -- Valor del piso (0 a 4)
+        puerta_cmd  : in  STD_LOGIC;              -- 1 = abrir, 0 = cerrar
+        pwm_ascensor: out STD_LOGIC;              -- PWM para servo ascensor
+        pwm_puerta  : out STD_LOGIC               -- PWM para servo puerta
+    );
+end motor;
+
+architecture arch_motor of motor is
+
+    constant PWM_PERIOD : integer := 1_000_000;
+    type pulse_table is array(0 to 4) of integer;
+    constant piso_pulsos : pulse_table := (
+        50_000,   -- Piso 0 (1ms)
+        62_500,   -- Piso 1 (≈1.25ms)
+        75_000,   -- Piso 2 (1.5ms)
+        87_500,   -- Piso 3 (1.75ms)
+        100_000   -- Piso 4 (2ms)
+    );
+
+    constant PUERTA_CERRADA : integer := 50_000; -- 1ms
+    constant PUERTA_ABIERTA : integer := 100_000; -- 2ms
+
+    signal cnt_pwm    : integer range 0 to PWM_PERIOD := 0;
+    signal duty_asc   : integer := 50_000;
+    signal duty_puert : integer := 50_000;
+
+begin
+
+    pwm_process : process(clk)
+    begin
+        if rising_edge(clk) then
+            if reset = '1' then
+                cnt_pwm <= 0;
+                pwm_ascensor <= '0';
+                pwm_puerta <= '0';
+            else
+                if cnt_pwm < PWM_PERIOD - 1 then
+                    cnt_pwm <= cnt_pwm + 1;
+                else
+                    cnt_pwm <= 0;
+                end if;
+
+                if cnt_pwm < duty_asc then
+                    pwm_ascensor <= '1';
+                else
+                    pwm_ascensor <= '0';
+                end if;
+
+                if cnt_pwm < duty_puert then
+                    pwm_puerta <= '1';
+                else
+                    pwm_puerta <= '0';
+                end if;
+            end if;
+        end if;
+    end process;
+
+    process(piso, puerta_cmd)
+    begin
+        variable piso_idx: integer;
+        piso_idx := to_integer(unsigned(piso));
+        if piso_idx > 4 then
+            piso_idx := 4;
+        elsif piso_idx < 0 then
+            piso_idx := 0;
+        end if;
+        duty_asc <= piso_pulsos(piso_idx);
+
+        if puerta_cmd = '1' then
+            duty_puert <= PUERTA_ABIERTA;
+        else
+            duty_puert <= PUERTA_CERRADA;
+        end if;
+    end process;
+
+end arch_motor;

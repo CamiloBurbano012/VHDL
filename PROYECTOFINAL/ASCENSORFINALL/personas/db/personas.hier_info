@@ -1,0 +1,24 @@
+|personas
+clk => total[0].CLK
+clk => total[1].CLK
+clk => total[2].CLK
+clk => total[3].CLK
+rst => total[0].ACLR
+rst => total[1].ACLR
+rst => total[2].ACLR
+rst => total[3].ACLR
+personas_entraron[0] => Add0.IN4
+personas_entraron[1] => Add0.IN3
+personas_entraron[2] => Add0.IN2
+personas_entraron[3] => Add0.IN1
+personas_salieron[0] => Add1.IN10
+personas_salieron[1] => Add1.IN9
+personas_salieron[2] => Add1.IN8
+personas_salieron[3] => Add1.IN7
+sobrepeso <= LessThan2.DB_MAX_OUTPUT_PORT_TYPE
+personas_actuales[0] <= total[0].DB_MAX_OUTPUT_PORT_TYPE
+personas_actuales[1] <= total[1].DB_MAX_OUTPUT_PORT_TYPE
+personas_actuales[2] <= total[2].DB_MAX_OUTPUT_PORT_TYPE
+personas_actuales[3] <= total[3].DB_MAX_OUTPUT_PORT_TYPE
+
+

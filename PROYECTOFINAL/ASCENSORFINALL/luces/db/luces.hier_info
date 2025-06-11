@@ -1,0 +1,13 @@
+|luces
+clk => state_reg~1.DATAIN
+reset => state_reg~3.DATAIN
+estado_ascensor[0] => Equal0.IN2
+estado_ascensor[0] => Equal1.IN1
+estado_ascensor[1] => Equal0.IN1
+estado_ascensor[1] => Equal1.IN0
+estado_ascensor[2] => Equal0.IN0
+estado_ascensor[2] => Equal1.IN2
+luz_cabina <= <VCC>
+luz_emergencia <= luz_emergencia.DB_MAX_OUTPUT_PORT_TYPE
+
+
